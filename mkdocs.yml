@@ -8,6 +8,8 @@ pages:
 - 'index.md'
 - 'getting_started.md'
 - 'demo.md'
+- 'usage.md'
 - 'debugger.md'
 - 'register.md'
+- 'hook.md'
 - 'memory.md'
