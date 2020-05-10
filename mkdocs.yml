@@ -7,7 +7,7 @@ theme: readthedocs
 pages:
 - 'index.md'
 - 'getting_started.md'
+- 'demo.md'
+- 'debugger.md'
 - 'register.md'
 - 'memory.md'
-- 'scripting.md'
-- 'demo.md'
