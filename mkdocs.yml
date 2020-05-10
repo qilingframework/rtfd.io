@@ -8,7 +8,7 @@ site_favicon: favicon.png
 nav:
 - 'Introduction': 'index.md'
 - 'Getting Started': 'getting_started.md'
-- 'Demonstration': 'demo.md'
+- 'Demo': 'demo.md'
 - 'How-to': 'usage.md'
 - 'Print': 'print.md'
 - 'Hijack': 'hijack.md'
