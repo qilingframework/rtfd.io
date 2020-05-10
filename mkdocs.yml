@@ -5,17 +5,17 @@ repo_url: https://github.com/qilingframework/rtfd.io
 theme: readthedocs
 site_favicon: favicon.ico
 
-pages:
-- ['index.md', 'Introduction']
-- ['getting_started.md', 'Getting Started']
-- ['demo.md', 'Demonstration']
-- ['usage.md', 'How-to']
-- ['print.md', 'Print']
-- ['hijack.md', 'Hijack']
-- ['profile.md', Profile']
-- ['debugger.md', 'Remote debugging']
-- ['register.md', 'Register']
-- ['memory.md', 'Memory']
-- ['struct.md', 'Struct']
-- ['hook.md', 'Hook']
-- ['faq.md', 'FAQ']
+nav:
+- 'Introduction': 'index.md'
+- 'Getting Started': 'getting_started.md'
+- 'Demonstration': 'demo.md'
+- 'How-to': 'usage.md'
+- 'Print': 'print.md'
+- 'Hijack': 'hijack.md'
+- 'Profile': 'profile.md'
+- 'Remote debugging': 'debugger.md'
+- 'Register': 'register.md'
+- 'Memory': 'memory.md'
+- 'Struct': 'struct.md'
+- 'Hook': 'hook.md'
+- 'FAQ': 'faq.md'
