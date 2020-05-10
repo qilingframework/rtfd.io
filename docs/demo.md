@@ -4,6 +4,9 @@ title: Demo
 
 ### Emulating a Windows EXE on a Linux machine.
 
+Using Quling Framework to emulate a Windows binary on a Linux amachine.
+
+Example code
 ```python
 from qiling import *
 
@@ -21,6 +24,9 @@ if __name__ == "__main__":
 
 ### Dynamically patch a Windows crackme, make it always display "Congratulation" dialog.
 
+Using Qiling Framework to dynamically patch a Windows Crackme and making it always displays "Congratulation" dialog.
+
+Example code
 ```python
 from qiling import *
 
@@ -57,18 +63,168 @@ if __name__ == "__main__":
 
 Solving a simple CTF challenge with Qiling Framework and IDAPro
 
+Youtube video
 [![Solving a simple CTF challenge with Qiling Framework and IDAPro](https://i.ytimg.com/vi/SPjVAt2FkKA/0.jpg)](https://www.youtube.com/watch?v=SPjVAt2FkKA "Video DEMO 2")
 
 ### Fuzzing with Qiling Unicornalf
 
 More information on fuzzing with Qiling Unicornalf can be found [here](https://github.com/qilingframework/qiling/tree/dev/examples/fuzzing/README.md).
 
+Example code
+```python
+import unicornafl
+
+# Make sure Qiling uses our patched unicorn instead of it's own, second so without instrumentation!
+unicornafl.monkeypatch()
+
+import sys, os
+from binascii import hexlify
+
+from capstone.x86_const import *
+
+sys.path.append("../..")
+from qiling import *
+
+# we cache this for some extra speed
+stdin_fstat = os.fstat(sys.stdin.fileno())
+
+# This is mostly taken from the crackmes
+class MyPipe():
+    def __init__(self):
+        self.buf = b''
+
+    def write(self, s):
+        self.buf += s
+
+    def read(self, size):
+        if size <= len(self.buf):
+            ret = self.buf[: size]
+            self.buf = self.buf[size:]
+        else:
+            ret = self.buf
+            self.buf = ''
+        return ret
+
+    def fileno(self):
+        return 0
+
+    def show(self):
+        pass
+
+    def clear(self):
+        pass
+
+    def flush(self):
+        pass
+
+    def close(self):
+        self.outpipe.close()
+
+    def fstat(self):
+        return stdin_fstat
+
+
+def main(input_file, enable_trace=False):
+    stdin = MyPipe()
+    ql = Qiling(["./x8664_fuzz"], "../rootfs/x8664_linux",
+                stdin=stdin,
+                stdout=1 if enable_trace else None,
+                stderr=1 if enable_trace else None,
+                console = True if enable_trace else False)
+
+    # or this for output:
+    # ... stdout=sys.stdout, stderr=sys.stderr)
+
+    def place_input_callback(uc, input, _, data):
+        stdin.write(input)
+
+    def start_afl(_ql: Qiling):
+        """
+        Callback from inside
+        """
+        # We start our AFL forkserver or run once if AFL is not available.
+        # This will only return after the fuzzing stopped.
+        try:
+            #print("Starting afl_fuzz().")
+            if not _ql.uc.afl_fuzz(input_file=input_file,
+                        place_input_callback=place_input_callback,
+                        exits=[ql.os.exit_point]):
+                print("Ran once without AFL attached.")
+                os._exit(0)  # that's a looot faster than tidying up.
+        except unicornafl.UcAflError as ex:
+            # This hook trigers more than once in this example.
+            # If this is the exception cause, we don't care.
+            # TODO: Chose a better hook position :)
+            if ex != unicornafl.UC_AFL_RET_CALLED_TWICE:
+                raise
+    
+    # 64 bit loader addrs are placed at 0x7ffbf0100000
+    # see loader/elf.py:load_with_ld(..)
+    X64BASE = int(ql.profile.get("OS64", "load_address"),16)
+    
+    # crash in case we reach stackcheck_fail:
+    # 1225:	e8 16 fe ff ff       	callq  1040 <__stack_chk_fail@plt>
+    ql.hook_address(callback=lambda x: os.abort(), address=X64BASE + 0x1225)
+
+    # Add hook at main() that will fork Unicorn and start instrumentation.
+    # main starts at X64BASE + 0x122c
+    main_addr = X64BASE + 0x122c
+    ql.hook_address(callback=start_afl, address=main_addr)
+
+    if enable_trace:
+        # The following lines are only for `-t` debug output
+
+        md = Cs(CS_ARCH_X86, CS_MODE_64)
+        count = [0]
+
+        def spaced_hex(data):
+            return b' '.join(hexlify(data)[i:i+2] for i in range(0, len(hexlify(data)), 2)).decode('utf-8')
+
+        def disasm(count, ql, address, size):
+            buf = ql.mem.read(address, size)
+            try:
+                for i in md.disasm(buf, address):
+                    return "{:08X}\t{:08X}: {:24s} {:10s} {:16s}".format(count[0], i.address, spaced_hex(buf), i.mnemonic,
+                                                                        i.op_str)
+            except:
+                import traceback
+                print(traceback.format_exc())
+
+        def trace_cb(ql, address, size, count):
+            rtn = '{:100s}'.format(disasm(count, ql, address, size))
+            print(rtn)
+            count[0] += 1
+
+        ql.hook_code(trace_cb, count)
+
+    # okay, ready to roll.
+    # try:
+    ql.run()
+    # except Exception as ex:
+    #     # Probable unicorn memory error. Treat as crash.
+    #     print(ex)
+    #     os.abort()
+
+    os._exit(0)  # that's a looot faster than tidying up.
+
+
+if __name__ == "__main__":
+    if len(sys.argv) == 1:
+        raise ValueError("No input file provided.")
+    if len(sys.argv) > 2 and sys.argv[1] == "-t":
+        main(sys.argv[2], enable_trace=True)
+    else:
+        main(sys.argv[1])
+```
+
+Youtube video
 [![qiling DEMO 2: Fuzzing with Qiling Unicornalf](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/qilingfzz-s.png)](https://raw.githubusercontent.com/qilingframework/qiling/dev/examples/fuzzing/qilingfzz.png "Demo #2 Fuzzing with Qiling Unicornalf")
 
 ### Emulating ARM router firmware on Ubuntu X64 machine
 
 Qiling Framework hot-patch and emulates ARM router's /usr/bin/httpd on a X86_64Bit Ubuntu
 
+Example code
 ```python
 from qiling import *
 def my_sandbox(path, rootfs):
@@ -83,6 +239,7 @@ if __name__ == "__main__":
     my_sandbox(["rootfs/tendaac15/bin/httpd"], "rootfs/tendaac15")
 ```
 
+Youtube video
 [![qiling DEMO 3: Fully emulating httpd from ARM router firmware with Qiling on Ubuntu X64 machine](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/demo3-en.jpg)](https://www.youtube.com/watch?v=Nxu742-SNvw "Demo #3 Emulating ARM router firmware on Ubuntu X64 machine")
 
 ### Emulating UEFI
@@ -118,53 +275,3 @@ if __name__ == "__main__":
 ```
 
 [![qiling DEMO 4: Emulating UEFI](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/demo4-s.png)](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/demo4-en.png "Demo #4 Emulating UEFI")
-
----
-
-### Qltool
-
-Qiling Framework also provides a friendly tool named `qltool` to quickly emulate shellcode & executable binaries.
-
-With qltool, easy execution can be performed:
-
-
-With shellcode:
-
-```
-$ ./qltool shellcode --os linux --arch arm --hex -f examples/shellcodes/linarm32_tcp_reverse_shell.hex
-$ ./qltool shellcode --os linux --arch x86 --asm -f examples/shellcodes/lin32_execve.asm
-$ ./qltool shellcode --os linux --arch arm --hex -f examples/shellcodes/linarm32_tcp_reverse_shell.hex --strace
-```
-
-With binary file:
-
-```
-$ ./qltool run -f examples/rootfs/x8664_linux/bin/x8664_hello --rootfs  examples/rootfs/x8664_linux/
-$ ./qltool run -f examples/rootfs/mips32el_linux/bin/mips32el_hello --rootfs examples/rootfs/mips32el_linux
-```
-
-With UEFI file:
-
-```
-$ ./qltool run -f examples/rootfs/x8664_efi/bin/TcgPlatformSetupPolicy --rootfs examples/rootfs/x8664_efi --env examples/rootfs/x8664_efi/rom2_nvar.pickel
-```
-
-With binary and GDB debugger enable:
-
-```
-$ ./qltool run -f examples/rootfs/x8664_linux/bin/x8664_hello --gdb 127.0.0.1:9999 --rootfs examples/rootfs/x8664_linux
-```
-
-With binary file and argv:
-
-```
-$ ./qltool run -f examples/rootfs/x8664_linux/bin/x8664_args --rootfs examples/rootfs/x8664_linux --args test1 test2 test3
-$ ./qltool run --rootfs examples/rootfs/x8664_linux examples/rootfs/x8664_linux/bin/x8664_args test1 test2 test3
-```
-
-with binary file and various output format:
-
-```
-$ ./qltool run -f examples/rootfs/mips32el_linux/bin/mips32el_hello --rootfs examples/rootfs/mips32el_linux --output=disasm
-$ ./qltool run -f examples/rootfs/mips32el_linux/bin/mips32el_hello --rootfs examples/rootfs/mips32el_linux --strace
-```
