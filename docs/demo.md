@@ -4,7 +4,7 @@ title: Demo
 
 ### Emulating a Windows EXE on a Linux machine.
 
-Using Quling Framework to emulate a Windows binary on a Linux amachine.
+Using Qiling Framework to emulate a Windows binary on a Linux amachine.
 
 Example code
 ```python
