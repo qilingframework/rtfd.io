@@ -41,7 +41,7 @@ X8664_WIN = unhexlify(
 
 
 ql = Qiling(shellcoder=X8664_WIN, archtype="x86", ostype="windows", rootfs="../examples/rootfs/x86_windows", output="default")
-    ql.run()
+ql.run()
 ```
 
 #### Initialization
