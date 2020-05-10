@@ -42,22 +42,22 @@ ql.reg.eax =  0xFF
 
 This is for pc and sp only.
 
-##### Reading from PC/SP on current arch, defined by ql.archtype
+- Reading from PC/SP on current arch, defined by ql.archtype
 ```
 ql.reg.arch_pc
 ```
 
 ```
-ql.reg.arch_pc
+ql.reg.arch_sp
 ```
 
-##### Reading to PC/SP on current arch, defined by ql.archtype
+- Reading to PC/SP on current arch, defined by ql.archtype
 ```
 ql.reg.arch_pc = 0xFF
 ```
 
 ```
-ql.reg.arch_pc = 0xFF
+ql.reg.arch_sp = 0xFF
 ```
 
 
