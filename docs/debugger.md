@@ -38,7 +38,7 @@ Only tested on IDAPro 7.4
 1. Run Qiling code, with gdbserver enable, as shown in the sample script above.
 2. Configure IDAPro like below
 
-![GDB-IDA](./GDBSERVER-IDA.png)
+![GDB-IDA](https://github.com/qilingframework/qiling/raw/master/docs/GDBSERVER-IDA.png)
 
 3. Make sure to select the correct architecture of target code
 4. Make sure you rebase your code so breakpoint will work
