@@ -2,6 +2,8 @@
 title: Register
 ---
 
+Reference: qiling/arch/register.py
+
 ### Reading
 
 read from string "exa"
@@ -40,7 +42,7 @@ ql.reg.eax =  0xFF
 
 This is for pc and sp only.
 
-##### Weading
+##### Reading from PC/SP on current arch, defined by ql.archtype
 ```
 ql.reg.arch_pc
 ```
@@ -49,11 +51,49 @@ ql.reg.arch_pc
 ql.reg.arch_pc
 ```
 
-##### Writing
+##### Reading to PC/SP on current arch, defined by ql.archtype
 ```
 ql.reg.arch_pc = 0xFF
 ```
 
 ```
 ql.reg.arch_pc = 0xFF
+```
+
+
+### Store/Restore current arch register
+
+Store all the current running state register
+```
+all_registers = ql.reg.store
+```
+
+Restore all the save register from all_registers
+```
+all_registers = ql.reg.restore(all_register)
+```
+
+### Get register table
+```
+ql.reg.table
+```
+
+### Get current register name
+This will return "eax"
+```
+ql.reg.name(UC_X86_REG_EAX)
+```
+
+
+### Get register bit
+This is for archirecture comes with 64bit and 32bit register
+
+In 64 enviroment this will return 64
+```
+ql.reg.bit("rax")
+```
+
+In 64 enviroment this will return 32
+```
+ql.reg.bit("eax")
 ```
