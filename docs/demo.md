@@ -64,6 +64,7 @@ if __name__ == "__main__":
 Solving a simple CTF challenge with Qiling Framework and IDAPro
 
 Youtube video
+
 [![Solving a simple CTF challenge with Qiling Framework and IDAPro](https://i.ytimg.com/vi/SPjVAt2FkKA/0.jpg)](https://www.youtube.com/watch?v=SPjVAt2FkKA "Video DEMO 2")
 
 ### Fuzzing with Qiling Unicornalf
@@ -217,7 +218,8 @@ if __name__ == "__main__":
         main(sys.argv[1])
 ```
 
-Youtube video
+Screenshot
+
 [![qiling DEMO 2: Fuzzing with Qiling Unicornalf](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/qilingfzz-s.png)](https://raw.githubusercontent.com/qilingframework/qiling/dev/examples/fuzzing/qilingfzz.png "Demo #2 Fuzzing with Qiling Unicornalf")
 
 ### Emulating ARM router firmware on Ubuntu X64 machine
@@ -240,6 +242,7 @@ if __name__ == "__main__":
 ```
 
 Youtube video
+
 [![qiling DEMO 3: Fully emulating httpd from ARM router firmware with Qiling on Ubuntu X64 machine](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/demo3-en.jpg)](https://www.youtube.com/watch?v=Nxu742-SNvw "Demo #3 Emulating ARM router firmware on Ubuntu X64 machine")
 
 ### Emulating UEFI
@@ -273,5 +276,7 @@ if __name__ == "__main__":
     ql.set_api("hook_RegisterProtocolNotify", force_notify_RegisterProtocolNotify)
     ql.run()
 ```
+
+Screenshot
 
 [![qiling DEMO 4: Emulating UEFI](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/demo4-s.png)](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/demo4-en.png "Demo #4 Emulating UEFI")
