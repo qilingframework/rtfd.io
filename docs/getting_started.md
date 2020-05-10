@@ -96,7 +96,7 @@ If quick and easy way to deploy Qiling Framework is preferred, spin it with dock
 i. Pulling the Qiling Framework docker image from dockerhub by running command below.
 
 ```
-docker pull qilingframework/qiling:1.0
+docker pull qilingframework/qiling:latest
 ```
 
 or for Qiling Framework Docker 1.0 release.
