@@ -15,5 +15,6 @@ pages:
 - 'debugger.md'
 - 'register.md'
 - 'memory.md'
+- 'struct.md'
 - 'hook.md'
 - 'faq.md'
