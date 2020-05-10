@@ -1,6 +1,4 @@
-#### Initialization
-
-##To Run a binary file
+#### To run a binary file
 ```
 import sys
 from qiling import *
@@ -24,7 +22,7 @@ log_dir = qlog
 log_split = True
 ```
 
-##To Run a Shellcode
+#### To run a Shellcode
 ```
 import sys
 
@@ -40,7 +38,11 @@ ql = Qiling(shellcoder=X8664_WIN, archtype="x86", ostype="windows", rootfs="../e
     ql.run()
 ```
 
-### Binary File
+### Initialization
+
+How to initialiize Qiling
+
+#### Binary File
 In pre-loader(during initialization) state, there are multiple options that can be configured.
 
 available:
@@ -58,7 +60,7 @@ available:
   stderr=0,
 ```
 
-### Shellcode
+#### Shellcode
 In pre-loader(during initialization) state, there are multiple options that can be configured.
 
 available:
