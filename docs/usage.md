@@ -1,5 +1,5 @@
 ---
-title: How-Tos
+title: Usage
 ---
 
 Few examples provided and we will explain each and everypart of Qiling Framework
