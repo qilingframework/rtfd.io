@@ -2,7 +2,7 @@
 title: Demo
 ---
 
-### Below example shows how to use Qiling framework to emulate a Windows EXE on a Linux machine.
+### Qiling framework emulates a Windows EXE on a Linux machine.
 
 ```python
 from qiling import *
@@ -19,7 +19,7 @@ if __name__ == "__main__":
     my_sandbox(["examples/rootfs/x86_windows/bin/x86_hello.exe"], "examples/rootfs/x86_windows")
 ```
 
-### Below example shows how to use Qiling framework to dynamically patch a Windows crackme, make it always display "Congratulation" dialog.
+### Using Qiling framework to dynamically patch a Windows crackme, make it always display "Congratulation" dialog.
 
 ```python
 from qiling import *
@@ -53,29 +53,27 @@ if __name__ == "__main__":
     my_sandbox(["rootfs/x86_windows/bin/Easy_CrackMe.exe"], "rootfs/x86_windows")
 ```
 
-The below Youtube video shows how the above example works.
-
 ### GDBserver with IDAPro demo
 
-- Solving a simple CTF challenge with Qiling Framework and IDAPro
+Solving a simple CTF challenge with Qiling Framework and IDAPro
 
 [![Solving a simple CTF challenge with Qiling Framework and IDAPro](https://i.ytimg.com/vi/SPjVAt2FkKA/0.jpg)](https://www.youtube.com/watch?v=SPjVAt2FkKA "Video DEMO 2")
 
 ### Fuzzing with Qiling Unicornalf
 
-- More information on fuzzing with Qiling Unicornalf can be found [here](https://github.com/qilingframework/qiling/tree/dev/examples/fuzzing/README.md).
+More information on fuzzing with Qiling Unicornalf can be found [here](https://github.com/qilingframework/qiling/tree/dev/examples/fuzzing/README.md).
 
 [![qiling DEMO 2: Fuzzing with Qiling Unicornalf](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/qilingfzz-s.png)](https://raw.githubusercontent.com/qilingframework/qiling/dev/examples/fuzzing/qilingfzz.png "Demo #2 Fuzzing with Qiling Unicornalf")
 
 ### Emulating ARM router firmware on Ubuntu X64 machine
 
-- Qiling Framework hot-patch and emulates ARM router's /usr/bin/httpd on a X86_64Bit Ubuntu
+Qiling Framework hot-patch and emulates ARM router's /usr/bin/httpd on a X86_64Bit Ubuntu
 
 [![qiling DEMO 3: Fully emulating httpd from ARM router firmware with Qiling on Ubuntu X64 machine](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/demo3-en.jpg)](https://www.youtube.com/watch?v=Nxu742-SNvw "Demo #3 Emulating ARM router firmware on Ubuntu X64 machine")
 
 ### Emulating UEFI
 
-- Qiling Framework emulates UEFI
+Qiling Framework emulates UEFI
 
 [![qiling DEMO 4: Emulating UEFI](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/demo4-s.png)](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/demo4-en.png "Demo #4 Emulating UEFI")
 
@@ -128,11 +126,3 @@ with binary file and various output format:
 $ ./qltool run -f examples/rootfs/mips32el_linux/bin/mips32el_hello --rootfs examples/rootfs/mips32el_linux --output=disasm
 $ ./qltool run -f examples/rootfs/mips32el_linux/bin/mips32el_hello --rootfs examples/rootfs/mips32el_linux --strace
 ```
-
----
-
-### Gdbserver
-
-Qiling supports **Gdb remote debugging** now.
-
-See [EN](docs/GDBSERVER.md)|[CN](docs/GDBSERVER_CN.md)  for more details
