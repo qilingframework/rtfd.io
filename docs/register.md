@@ -4,7 +4,7 @@ title: Register
 
 Reference: qiling/arch/register.py
 
-### Reading
+### Read
 
 read from string "exa"
 ```
@@ -21,7 +21,7 @@ read eax
 eax = ql.reg.eax
 ```
 
-### Writing
+### Write
 write 0xFF to "eax"
 ```
 ql.reg.write("EAX", 0xFF)
