@@ -1,4 +1,6 @@
-# Qiling Debug Server
+---
+title: Remote Debugging
+---
 
 Qiling supports **remote debugging**, it will work with gdbserver compatible clients (e.g., IDApro). Currently, Qiling Framework only support gdbserver, please feel free to add more debug server.
 
