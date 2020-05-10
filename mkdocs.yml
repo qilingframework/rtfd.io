@@ -6,16 +6,16 @@ theme: readthedocs
 site_favicon: favicon.ico
 
 nav:
-- 'index.md'
-- 'getting_started.md'
-- 'demo.md'
-- 'usage.md'
-- 'print.md'
-- 'hijack.md'
-- 'profile.md'
-- 'debugger.md'
-- 'register.md'
-- 'memory.md'
-- 'struct.md'
-- 'hook.md'
-- 'faq.md'
+- ['index.md', 'Introduction']
+- ['getting_started.md', 'Getting Started']
+- ['demo.md', 'Demonstration']
+- ['usage.md', 'How-to']
+- ['print.md', 'Print']
+- ['hijack.md', 'Hijack']
+- ['profile.md', Profile']
+- ['debugger.md', 'Remote debugging']
+- ['register.md', 'Register']
+- ['memory.md', 'Memory']
+- ['struct.md', 'Struct']
+- ['hook.md', 'Hook']
+- ['faq.md', 'FAQ']
