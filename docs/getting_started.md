@@ -99,6 +99,12 @@ i. Pulling the Qiling Framework docker image from dockerhub by running command b
 docker pull qilingframework/qiling:1.0
 ```
 
+or for Qiling Framework Docker 1.0 release.
+
+```
+docker pull qilingframework/qiling:1.0
+```
+
 ii. Running Qiling Framework docker with a bind mount
 
 Required DLLs can be bind-mounted to Qiling Framework container. Presuming DLLs are located in /analysis/win.
