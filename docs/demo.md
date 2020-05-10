@@ -22,6 +22,7 @@ if __name__ == "__main__":
     my_sandbox(["examples/rootfs/x86_windows/bin/x86_hello.exe"], "examples/rootfs/x86_windows")
 ```
 
+
 ### Dynamically patch a Windows crackme, make it always display "Congratulation" dialog.
 
 Using Qiling Framework to dynamically patch a Windows Crackme and making it always displays "Congratulation" dialog.
@@ -59,6 +60,11 @@ if __name__ == "__main__":
     my_sandbox(["rootfs/x86_windows/bin/Easy_CrackMe.exe"], "rootfs/x86_windows")
 ```
 
+Youtube video
+
+[![qiling DEMO 2: Hotpatching a windows crackme](https://img.youtube.com/vi/p17ONUbCnUU/0.jpg)](https://www.youtube.com/watch?v=p17ONUbCnUU "Video DEMO 2")
+
+
 ### GDBserver with IDAPro
 
 Solving a simple CTF challenge with Qiling Framework and IDAPro
@@ -66,6 +72,7 @@ Solving a simple CTF challenge with Qiling Framework and IDAPro
 Youtube video
 
 [![Solving a simple CTF challenge with Qiling Framework and IDAPro](https://i.ytimg.com/vi/SPjVAt2FkKA/0.jpg)](https://www.youtube.com/watch?v=SPjVAt2FkKA "Video DEMO 2")
+
 
 ### Fuzzing with Qiling Unicornalf
 
@@ -222,6 +229,7 @@ Screenshot
 
 [![qiling DEMO 2: Fuzzing with Qiling Unicornalf](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/qilingfzz-s.png)](https://raw.githubusercontent.com/qilingframework/qiling/dev/examples/fuzzing/qilingfzz.png "Demo #2 Fuzzing with Qiling Unicornalf")
 
+
 ### Emulating ARM router firmware on Ubuntu X64 machine
 
 Qiling Framework hot-patch and emulates ARM router's /usr/bin/httpd on a X86_64Bit Ubuntu
@@ -244,6 +252,7 @@ if __name__ == "__main__":
 Youtube video
 
 [![qiling DEMO 3: Fully emulating httpd from ARM router firmware with Qiling on Ubuntu X64 machine](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/demo3-en.jpg)](https://www.youtube.com/watch?v=Nxu742-SNvw "Demo #3 Emulating ARM router firmware on Ubuntu X64 machine")
+
 
 ### Emulating UEFI
 
