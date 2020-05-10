@@ -1,8 +1,10 @@
-## How to use Qiling Framework
+---
+title: How-Tos
+---
 
-Quick Example
+Few examples provided and we will explain each and everypart of Qiling Framework
 
-#### To run a binary file
+#### Execute a fie
 ```
 import sys
 from qiling import *
@@ -26,7 +28,7 @@ log_dir = qlog
 log_split = True
 ```
 
-#### To run a Shellcode
+#### Execute a shellcode
 ```
 import sys
 
@@ -42,11 +44,11 @@ ql = Qiling(shellcoder=X8664_WIN, archtype="x86", ostype="windows", rootfs="../e
     ql.run()
 ```
 
-### Initialization
+#### Initialization
 
 How to initialiize Qiling
 
-#### Binary File
+- Binary file: ql = Qiling()
 In pre-loader(during initialization) state, there are multiple options that can be configured.
 
 available:
@@ -64,7 +66,7 @@ available:
   stderr=0,
 ```
 
-#### Shellcode
+- Shellcode: ql = Qiling()
 In pre-loader(during initialization) state, there are multiple options that can be configured.
 
 available:
@@ -76,7 +78,7 @@ available:
   ostype=None,
   archtype=None,
   bigendian=False,
-  output=None,
+  output=None, # output = ["debug","off","disasm","dump"] // dump=(disam + debug)
   verbose=1,
   profile=None,
   console=True,
@@ -87,10 +89,33 @@ available:
 
 
 
-required for shellcode execution only:
+#### Definition after ql=Qiling()
 ```
-ostype
-arch
+        ##################################
+        # Definition after ql=Qiling()   #
+        ##################################
+        self.patch_bin = []
+        self.patch_lib = []
+        self.patched_lib = []
+        self.log_file_fd = None
+        self.fs_mapper = []
+        self.debug_stop = False
+        self.internal_exception = None
+        self.platform = platform.system()
+        self.debugger = None
+        # due to the instablity of multithreading, added a swtich for multithreading
+        self.multithread = False
+        # To use IPv6 or not, to avoid binary double bind. ipv6 and ipv4 bind the same port at the same time
+        self.ipv6 = False
+        # Bind to localhost
+        self.bindtolocalhost = True
+        # by turning this on, you must run your analysis with sudo
+        self.root = False
+        # syscall filter for strace-like functionality
+        self.strace_filter = None
+        self.remotedebugsession = None
+        self.automatize_input = False
+        self.libcache = False
 ```
 
 ql.profile settings
@@ -99,23 +124,6 @@ stack_address = 0xhexaddress
 stack_size = 0xhexaddress
 interp_address = 0xhexaddress
 mmap_address = 0xhexaddress
-```
-
-additional options
-```
-output = ["debug","off","disasm","dump"] // dump=(disam + debug)
-console
-log_dir = path to all the logs
-```
-#### Pre-Execution Settings
-APIs allow users to instuments an executeable file/shellcode before execution.
-```
-ql.set_callback
-ql.patch
-ql.root
-ql.debug
-ql.set_syscall
-ql.set_api
 ```
 
 
