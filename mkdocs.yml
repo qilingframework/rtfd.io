@@ -1,10 +1,10 @@
 site_name: Qiling Framework Documentation
 site_description: Qiling Framework advanced binary analysis framework.
 site_favicon: img/favico.ico 
-site_url: https://qilingframework.readthedocs.org
+site_url: https://qilingframework.rtfd.io
 repo_url: https://github.com/qilingframework/rtfd.io
 theme: readthedocs
-pages:
+nav:
 - 'index.md'
 - 'getting_started.md'
 - 'demo.md'
