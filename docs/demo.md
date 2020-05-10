@@ -81,7 +81,7 @@ Qiling Framework emulates UEFI
 
 ### Qltool
 
-Qiling also provides a friendly tool named `qltool` to quickly emulate shellcode & executable binaries.
+Qiling Framework also provides a friendly tool named `qltool` to quickly emulate shellcode & executable binaries.
 
 With qltool, easy execution can be performed:
 
