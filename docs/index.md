@@ -34,7 +34,7 @@ This project is released and distributed under [free software license GPLv2](COP
 - SUN bowen (w1tcher) <w1tcher.bupt@gmail.com>
 - CHEN huitao (null) <null@qiling.io>
 - YU tong (sp1ke) <spikeinhouse@gmail.com>
-- Earl Marcus (klks84) klks84@gmail.com 
+- Earl Marcus (klks84) <klks84@gmail.com> 
 
 #### Travis-CI, Docker and Website
 - FOO Kevin (chfl4gs) <chbsd64@qiling.io>
