@@ -69,11 +69,53 @@ More information on fuzzing with Qiling Unicornalf can be found [here](https://g
 
 Qiling Framework hot-patch and emulates ARM router's /usr/bin/httpd on a X86_64Bit Ubuntu
 
+```python
+from qiling import *
+def my_sandbox(path, rootfs):
+    ql = Qiling(path, rootfs, stdin = sys.stdin, stdout = sys.stdout, stderr = sys.stderr)
+    # Patch 0x00005930 from br0 to ens33
+    ql.patch(0x00005930, b'ens33\x00', file_name = b'libChipApi.so')
+    ql.root = False
+    ql.run()
+
+
+if __name__ == "__main__":
+    my_sandbox(["rootfs/tendaac15/bin/httpd"], "rootfs/tendaac15")
+```
+
 [![qiling DEMO 3: Fully emulating httpd from ARM router firmware with Qiling on Ubuntu X64 machine](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/demo3-en.jpg)](https://www.youtube.com/watch?v=Nxu742-SNvw "Demo #3 Emulating ARM router firmware on Ubuntu X64 machine")
 
 ### Emulating UEFI
 
 Qiling Framework emulates UEFI
+
+```python
+import sys
+import pickle
+sys.path.append("..")
+from qiling import *
+from qiling.os.uefi.const import *
+
+def force_notify_RegisterProtocolNotify(ql, address, params):
+    event_id = params['Event']
+    if event_id in ql.loader.events:
+        ql.loader.events[event_id]['Guid'] = params["Protocol"]
+        # let's force notify
+        event = ql.loader.events[event_id]
+        event["Set"] = True
+        ql.loader.notify_list.append((event_id, event['NotifyFunction'], event['NotifyContext']))
+        ######
+        return EFI_SUCCESS
+    return EFI_INVALID_PARAMETER
+
+
+if __name__ == "__main__":
+    with open("rootfs/x8664_efi/rom2_nvar.pickel", 'rb') as f:
+        env = pickle.load(f)
+    ql = Qiling(["rootfs/x8664_efi/bin/TcgPlatformSetupPolicy"], "rootfs/x8664_efi", env=env)
+    ql.set_api("hook_RegisterProtocolNotify", force_notify_RegisterProtocolNotify)
+    ql.run()
+```
 
 [![qiling DEMO 4: Emulating UEFI](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/demo4-s.png)](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/demo4-en.png "Demo #4 Emulating UEFI")
 
