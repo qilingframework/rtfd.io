@@ -10,6 +10,7 @@ nav:
 - 'Getting Started': 'getting_started.md'
 - 'Demo': 'demo.md'
 - 'How-to': 'usage.md'
+- 'qltool': 'qltool.md'
 - 'Print': 'print.md'
 - 'Hijack': 'hijack.md'
 - 'Profile': 'profile.md'
