@@ -5,7 +5,7 @@ repo_url: https://github.com/qilingframework/rtfd.io
 theme: readthedocs
 site_favicon: favicon.ico
 
-nav:
+pages:
 - ['index.md', 'Introduction']
 - ['getting_started.md', 'Getting Started']
 - ['demo.md', 'Demonstration']
