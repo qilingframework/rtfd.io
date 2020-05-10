@@ -2,7 +2,7 @@
 title: Demo
 ---
 
-### Qiling framework emulates a Windows EXE on a Linux machine.
+### Emulating a Windows EXE on a Linux machine.
 
 ```python
 from qiling import *
@@ -19,7 +19,7 @@ if __name__ == "__main__":
     my_sandbox(["examples/rootfs/x86_windows/bin/x86_hello.exe"], "examples/rootfs/x86_windows")
 ```
 
-### Using Qiling framework to dynamically patch a Windows crackme, make it always display "Congratulation" dialog.
+### Dynamically patch a Windows crackme, make it always display "Congratulation" dialog.
 
 ```python
 from qiling import *
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     my_sandbox(["rootfs/x86_windows/bin/Easy_CrackMe.exe"], "rootfs/x86_windows")
 ```
 
-### GDBserver with IDAPro demo
+### GDBserver with IDAPro
 
 Solving a simple CTF challenge with Qiling Framework and IDAPro
 
