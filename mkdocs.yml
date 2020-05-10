@@ -16,6 +16,6 @@ nav:
 - 'Remote debugging': 'debugger.md'
 - 'Register': 'register.md'
 - 'Memory': 'memory.md'
-- 'Struct': 'struct.md'
+- 'Pack and Unpack': 'struct.md'
 - 'Hook': 'hook.md'
 - 'FAQ': 'faq.md'
