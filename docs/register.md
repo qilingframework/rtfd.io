@@ -68,7 +68,7 @@ Store all the current running state register
 all_registers = ql.reg.store
 ```
 
-Restore all the save register from all_registers
+Restore all the saved registers from "all_registers"
 ```
 all_registers = ql.reg.restore(all_register)
 ```

@@ -15,3 +15,8 @@ ql.set_syscall
 ```
 ql.patch
 ```
+
+```
+ql.compile(ASM, ql.archtype)
+```
+
