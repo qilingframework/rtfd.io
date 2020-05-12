@@ -26,7 +26,8 @@ log_split = True
 
 Default profile for different OS:
 
-- Windows: qiling/pofiles/windows.ql (https://github.com/qilingframework/qiling/blob/dev/qiling/profiles/freebsd.ql)
-- Linux: qiling/pofiles/linux.ql (https://github.com/qilingframework/qiling/blob/dev/qiling/profiles/freebsd.ql)
-- MacOS: qiling/pofiles/macos.ql (https://github.com/qilingframework/qiling/blob/dev/qiling/profiles/freebsd.ql)
-- UEFI: qiling/pofiles/uefi.ql (https://github.com/qilingframework/qiling/blob/dev/qiling/profiles/freebsd.ql)
+- Windows: [qiling/pofiles/windows.ql](https://github.com/qilingframework/qiling/blob/dev/qiling/profiles/windows.ql)
+- Linux: [qiling/pofiles/linux.ql](https://github.com/qilingframework/qiling/blob/dev/qiling/profiles/linux.ql)
+- MacOS: [qiling/pofiles/macos.ql](https://github.com/qilingframework/qiling/blob/dev/qiling/profiles/macos.ql)
+- UEFI: [qiling/pofiles/uefi.ql](https://github.com/qilingframework/qiling/blob/dev/qiling/profiles/uefi.ql)
+- UEFI: [qiling/pofiles/freebsd.ql](https://github.com/qilingframework/qiling/blob/dev/qiling/profiles/freebsd.ql)
