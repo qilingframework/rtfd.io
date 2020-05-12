@@ -2,7 +2,7 @@
 title: Usage
 ---
 
-Few examples provided and we will explain each and everypart of Qiling Framework
+Few examples provided and we will explain each and every part of Qiling Framework
 
 ### Execute a fie
 ```
@@ -42,7 +42,7 @@ ql.run()
 
 ### Initialization: ql=Qiling()
 
-How to initialiize Qiling
+How to initialize Qiling
 
 ##### Binary file: ql = Qiling()
 In pre-loader(during initialization) state, there are multiple options that can be configured.
@@ -80,7 +80,7 @@ Available options:
 
 
 ##### Shellcode: ql = Qiling()
-In pre-loader(during initialization) state, there are multiple options that can be configured.
+In pre-loader (during initialization) state, there are multiple options that can be configured.
 
 Available options:
 
@@ -136,7 +136,7 @@ Available options:
 
 
 ### Execution: ql.run()
-Inorder to start execution. we just need to call ql.run(). But in certain cases, such as partial execution there are addition 4 option in ql.run()
+In order to start execution. we just need to call ql.run(). But in certain cases, such as partial execution there are additional 4 options in ql.run()
 
 ```
 ql.run(begin, end, timeout, count)
@@ -148,4 +148,4 @@ ql = Qiling()
 ql.run(begin = 0xFE, end = 0xFF)
 ql.run(begin = 0xAE, end = 0xFF)
 ```
-This will only allow program to execute between 0xFE till 0xFF. So activity like fuzzing dont have to execute the entire file from start till end. Only fuzz the targeted sections.
+This will only allow program to execute between 0xFE till 0xFF. So activity like fuzzing does not have to execute the entire file from start till end and only fuzz the targeted sections.
