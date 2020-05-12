@@ -91,31 +91,23 @@ available:
 ```
 
 ### Setup: after ql=Qiling() and before ql.run()
-```
-        ##################################
-        # Definition after ql=Qiling()   #
-        ##################################
-        self.patch_bin = []
-        self.patch_lib = []
-        self.patched_lib = []
-        self.log_file_fd = None
-        self.fs_mapper = []
-        self.debug_stop = False
-        self.internal_exception = None
-        self.platform = platform.system()
-        self.debugger = None
-        # due to the instablity of multithreading, added a swtich for multithreading
-        self.multithread = False
-        # To use IPv6 or not, to avoid binary double bind. ipv6 and ipv4 bind the same port at the same time
-        self.ipv6 = False
-        # Bind to localhost
-        self.bindtolocalhost = True
-        # by turning this on, you must run your analysis with sudo
-        self.root = False
-        # syscall filter for strace-like functionality
-        self.strace_filter = None
-        self.remotedebugsession = None
-        self.automatize_input = False
+  ##### ql.fs_mapper = [] 
+  map a actual file or directory to rootfs. eg, ql.fs_mapper('/etc','/etc')
+  
+  ql.debug_stop = False # stop after missing posix syscall or api
+  self.debugger = None # remote debugger. please refer to 
+  # due to the instablity of multithreading, added a swtich for multithreading
+  self.multithread = False
+  # To use IPv6 or not, to avoid binary double bind. ipv6 and ipv4 bind the same port at the same time
+  self.ipv6 = False
+  # Bind to localhost
+  self.bindtolocalhost = True
+  # by turning this on, you must run your analysis with sudo
+  self.root = False
+  # syscall filter for strace-like functionality
+  self.strace_filter = None
+  self.remotedebugsession = None
+  self.automatize_input = False
 ```
 
 ### Execution: ql.run()
