@@ -5,7 +5,7 @@
 Qiling is an advanced binary emulation framework, with the following features:
 
 - Cross platform: Windows, MacOS, Linux, BSD, UEFI
-- Cross architecture: X86, X86_64, Arm, Arm64, Mips
+- Cross architecture: X86, X86_64, Arm, Arm64, MIPS
 - Multiple file formats: PE, MachO, ELF
 - Emulate & sandbox machine code in a isolated environment
 - Supports cross architecture and platform debugging capabalities
@@ -22,7 +22,7 @@ Visit our website [https://www.qiling.io](https://www.qiling.io) for more inform
 
 #### License
 
-This project is released and distributed under [free software license GPLv2](COPYING).
+This project is released and distributed under [free software license GPLv2](https://github.com/qilingframework/qiling/blob/master/COPYING).
 
 ---
 
