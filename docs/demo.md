@@ -232,7 +232,7 @@ Screenshot
 
 ### Emulating ARM router firmware on Ubuntu X64 machine
 
-Qiling Framework hot-patch and emulates ARM router's /usr/bin/httpd on a X86_64Bit Ubuntu
+Qiling Framework hot-patch and emulates ARM router's httpd on a X86_64Bit Ubuntu
 
 Example code
 ```python
