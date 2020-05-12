@@ -42,7 +42,7 @@ ql = Qiling(shellcoder=X8664_WIN, archtype="x86", ostype="windows", rootfs="../e
 ql.run()
 ```
 
-### Initialization
+### Initialization: ql=Qiling()
 
 How to initialiize Qiling
 
@@ -90,7 +90,7 @@ available:
   stderr=0,
 ```
 
-### Definition after ql=Qiling() and before ql.run()
+### Setup: after ql=Qiling() and before ql.run()
 ```
         ##################################
         # Definition after ql=Qiling()   #
@@ -118,7 +118,7 @@ available:
         self.automatize_input = False
 ```
 
-### ql.run
+### Execution: ql.run()
 Inorder to start execution. we just need to call ql.run(). But in certain cases, such as partial execution there are addition 4 option in ql.run()
 
 ```
