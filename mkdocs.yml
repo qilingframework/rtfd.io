@@ -9,7 +9,7 @@ nav:
 - 'Introduction': 'index.md'
 - 'Getting Started': 'getting_started.md'
 - 'Demo': 'demo.md'
-- 'How-to': 'usage.md'
+- 'How-to-start': 'usage.md'
 - 'qltool': 'qltool.md'
 - 'Print': 'print.md'
 - 'Hijack': 'hijack.md'
