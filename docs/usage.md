@@ -4,7 +4,7 @@ title: Usage
 
 Few examples provided and we will explain each and everypart of Qiling Framework
 
-#### Execute a fie
+### Execute a fie
 ```
 import sys
 from qiling import *
@@ -26,7 +26,7 @@ log_dir = qlog
 log_split = True
 ```
 
-#### Execute a shellcode
+### Execute a shellcode
 ```
 import sys
 
@@ -42,7 +42,7 @@ ql = Qiling(shellcoder=X8664_WIN, archtype="x86", ostype="windows", rootfs="../e
 ql.run()
 ```
 
-#### Initialization
+### Initialization
 
 How to initialiize Qiling
 
@@ -62,6 +62,7 @@ available:
   log_split=None,
   append=None,
   console=True,
+  libcache=False,
   stdin=0,
   stdout=0,
   stderr=0,
@@ -89,9 +90,7 @@ available:
   stderr=0,
 ```
 
-
-
-#### Definition after ql=Qiling()
+### Definition after ql=Qiling() and before ql.run()
 ```
         ##################################
         # Definition after ql=Qiling()   #
@@ -117,85 +116,13 @@ available:
         self.strace_filter = None
         self.remotedebugsession = None
         self.automatize_input = False
-        self.libcache = False
 ```
 
-ql.profile settings
-```
-stack_address = 0xhexaddress
-stack_size = 0xhexaddress
-interp_address = 0xhexaddress
-mmap_address = 0xhexaddress
-```
-
-
-#### Qiling's Coding Style
-Some tips if you with to sent your pull request to Qiling Framework
-```
-ql.nprint("")
-```
-ql.nprint will not print anything when output="off"
-
+### ql.run
+Inorder to start execution. we just need to call ql.run(). But in certain cases, such as partial execution there are addition 4 option in ql.run()
 
 ```
-ql.dprint(D_INFO,"")
-```
-ql.dprint will only print anything when output="dump" or output="debug"
-
-### 
-
-In pre-loader(during initialization) state, there are multiple options that can be configured.
-
-required:
-```
-path
-rootfs
+ql.run(begin, end, timeout, count)
 ```
 
-required for shellcode execution only:
-```
-ostype
-arch
-```
-
-ql.profile settings
-```
-stack_address = 0xhexaddress
-stack_size = 0xhexaddress
-interp_address = 0xhexaddress
-mmap_address = 0xhexaddress
-```
-
-additional options
-```
-output = ["debug","off","disasm","dump"] // dump=(disam + debug)
-console
-log_dir = path to all the logs
-```
-#### Pre-Execution Settings
-APIs allow users to instuments an executeable file/shellcode before execution.
-```
-ql.set_callback
-ql.patch
-ql.root
-ql.debug
-ql.set_syscall
-ql.set_api
-```
-
-
-#### Qiling's Coding Style
-Some tips if you with to sent your pull request to Qiling Framework
-```
-ql.nprint("")
-```
-ql.nprint will not print anything when output="off"
-
-
-```
-ql.dprint(D_INFO,"")
-```
-ql.dprint will only print anything when output="dump" or output="debug"
-
-### 
-
+With these settings, by settings ql.run(begin = 0xFE, end = 0xFF) will allow program execute between 0xFE till 0xFF. So activity like fuzzing dont have to execute the entire file from start till end and increse overhead in fuzzing process.
