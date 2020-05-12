@@ -50,20 +50,29 @@ In pre-loader(during initialization) state, there are multiple options that can 
 available:
 
 - filename=None 
-  - binary file and argv in [] format, example ["filename","-argv1","argv2"]
-- rootfs=None,
--  env=None,
--  output=None,
--  verbose=1,
--  profile=None # please refer to [profile section](https://docs.qiling.io/en/latest/profile/)
--  log_dir=None # send print out to a log file
--  log_split=None # split log, only use it with multithreading
--  append=None # append a string to standard log directory or filename
--  console=True # print out to console or not. console = False means no print out
--  libcache=False,
--  stdin=0,
--  stdout=0,
--  stderr=0,
+  + binary file and argv in [] format, example ["filename","-argv1","argv2"]
+- rootfs=None
+  + virtual "/" folder, this is a "jail" file system when executing Qiling
+- env=None
+  + always in {}, example {"SHELL":"/bin/bash","HOME":"/tmp"}
+- output=None
+  + output = ["default", "debug", "disasm", "dump"] and dump=(disam + debug)  
+- verbose=1
+  + from 1 till n, please refer to [print section](https://docs.qiling.io/en/latest/print/) for more details
+- profile=None
+  + please refer to [profile section](https://docs.qiling.io/en/latest/profile/) for more details
+- log_dir=None 
+  + send print out to a log file
+- log_split=None 
+  + split log, only use it with multithreading
+- append=None 
+  + append a string to standard log directory or filename
+- console=True 
+  + print out to console or not. console = False means no print out
+- libcache=False
+- stdin=0
+- stdout=0
+- stderr=0
 
 
 ##### Shellcode: ql = Qiling()
@@ -71,43 +80,54 @@ In pre-loader(during initialization) state, there are multiple options that can 
 
 available:
 
--  shellcoder=None,
--  rootfs=None,
--  env=None,
--  ostype=None,
--  archtype=None,
--  bigendian=False,
--  output=None, # output = ["debug","off","disasm","dump"] // dump=(disam + debug)
--  verbose=1,
--  profile=None,
--  log_dir=None,
--  console=True,
--  stdin=0,
--  stdout=0,
--  stderr=0,
+- shellcoder=None
+  + shellcode in binary mode
+- rootfs=None
+ + refer to above section, but not compulsory in shellcode  
+- env=None
+  + refer to above section
+- ostype=None
+  + "linux", "macos", "windows", "uefi", "freebsd"
+- archtype=None
+  + "x8664", "x86", "arm", "arm64", "mips"
+- bigendian=False
+  + Default is false, only availble for "arm" and "mips" for now
+- output=None
+  + refer to above section
+- verbose=1
+  + refer to above section
+- profile=None
+  + refer to above section
+- log_dir=None
+  + refer to above section
+- console=True
+  + refer to above section
+- stdin=0,
+- stdout=0,
+- stderr=0,
 
 ### Setup: after ql=Qiling() and before ql.run()
 All the options can be changed during setup
-##### ql.fs_mapper = [] 
-- map a actual file or directory to rootfs. eg, ql.fs_mapper('/etc','/etc')
+- ql.fs_mapper = [] 
+  + Map a actual file or directory to rootfs. eg, ql.fs_mapper('/etc','/etc')
 
-##### ql.debug_stop = False 
-- stop after missing posix syscall or api
+- ql.debug_stop = False 
+  + Default is false. Stop after missing posix syscall or api
   
-##### ql.debugger = None 
-- remote debugger. please refer to [here](https://docs.qiling.io/en/latest/debugger/)
+- ql.debugger = None 
+  + Remote debugger. Please refer to [here](https://docs.qiling.io/en/latest/debugger/)
 
-#####  ql.multithread = False
-- due to the instablity of multithreading, added a swtich for multithreading
+- ql.multithread = False
+  + Default is false. Due to the instablity of multithreading, added a swtich for multithreading
 
-##### ql.ipv6 = False
-- To use IPv6 or not, to avoid binary double bind. ipv6 and ipv4 bind the same port at the same time
+- ql.ipv6 = False
+  + Default is false. Use IPv6 or not, to avoid binary double bind. ipv6 and ipv4 bind the same port at the same time
 
-##### ql.bindtolocalhost = True
--  Bind to localhost
+- ql.bindtolocalhost = True
+  + Bind to localhost
 
-##### ql.root = False
-- by turning this on, you must run your analysis with sudo
+- ql.root = False
+  + by turning this on, you must run your analysis with sudo
 
 
 ### Execution: ql.run()
