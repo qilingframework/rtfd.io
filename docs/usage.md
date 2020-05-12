@@ -91,24 +91,28 @@ available:
 ```
 
 ### Setup: after ql=Qiling() and before ql.run()
-  ##### ql.fs_mapper = [] 
-  map a actual file or directory to rootfs. eg, ql.fs_mapper('/etc','/etc')
+All the options can be changed during setup
+##### ql.fs_mapper = [] 
+- map a actual file or directory to rootfs. eg, ql.fs_mapper('/etc','/etc')
+
+##### ql.debug_stop = False 
+- stop after missing posix syscall or api
   
-  ql.debug_stop = False # stop after missing posix syscall or api
-  self.debugger = None # remote debugger. please refer to 
-  # due to the instablity of multithreading, added a swtich for multithreading
-  self.multithread = False
-  # To use IPv6 or not, to avoid binary double bind. ipv6 and ipv4 bind the same port at the same time
-  self.ipv6 = False
-  # Bind to localhost
-  self.bindtolocalhost = True
-  # by turning this on, you must run your analysis with sudo
-  self.root = False
-  # syscall filter for strace-like functionality
-  self.strace_filter = None
-  self.remotedebugsession = None
-  self.automatize_input = False
-```
+##### ql.debugger = None 
+- remote debugger. please refer to [here](https://docs.qiling.io/en/latest/debugger/)
+
+#####  ql.multithread = False
+- due to the instablity of multithreading, added a swtich for multithreading
+
+##### ql.ipv6 = False
+- To use IPv6 or not, to avoid binary double bind. ipv6 and ipv4 bind the same port at the same time
+
+##### ql.bindtolocalhost = True
+-  Bind to localhost
+
+##### ql.root = False
+- by turning this on, you must run your analysis with sudo
+
 
 ### Execution: ql.run()
 Inorder to start execution. we just need to call ql.run(). But in certain cases, such as partial execution there are addition 4 option in ql.run()
