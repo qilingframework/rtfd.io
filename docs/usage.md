@@ -10,7 +10,7 @@ import sys
 from qiling import *
 
 def my_sandbox(path, rootfs):
-    ql = Qiling(path, rootfs, output="debug", profile = 'netgear.ql')
+    ql = Qiling(path, rootfs, output="debug", profile = 'netgear.ql', log_dir='qlog')
     ql.add_fs_mapper('/proc', '/proc')
     ql.run()
 
@@ -22,8 +22,6 @@ content of netgear.ql
 ```
 [MIPS]
 mmap_address = 0x7f7ee000
-log_dir = qlog
-log_split = True
 ```
 
 ### Execute a shellcode
