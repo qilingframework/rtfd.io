@@ -2,84 +2,94 @@
 title: Pack and Unpack
 ---
 
-pack with option "Q"
-C Type: unsigned long long 
-Size: 8 bytes
+Pack with option "Q":
+
+- C Type: unsigned long long 
+- size: 8 bytes
 ```
 ql.pack64()
 ```
 
-unpack with option "Q"
-C Type: unsigned long long 
-Size: 8 bytes
+Unpack with option "Q":
+
+- C Type: unsigned long long 
+- size: 8 bytes
 ```
 ql.upack64()
 ```
 
-pack with option "q"
-C Type: long 
-Size: 8 bytes
+Pack with option "q":
+
+- C Type: long 
+- size: 8 bytes
 ```
 ql.pack64s()
 ```
 
-unpack with option "q"
-C Type: long 
-Size: 8 bytes
+Unpack with option "q":
+
+- C Type: long 
+- size: 8 bytes
 ```
 ql.unpack64s()
 ```
 
-pack with option "I", with endian check
-C Type: unsigned int 
-Size: 4 bytes
+Pack with option "I", with endian check:
+
+- C Type: unsigned int 
+- size: 4 bytes
 ```
 ql.pack32()
 ```
 
-unpack with option "I", with endian check
-C Type: unsigned int 
-Size: 4 bytes
+Unpack with option "I", with endian check:
+- C Type: unsigned int 
+- size: 4 bytes
 ```
 ql.unpack32()
 ```
 
-pack with option "i", with endian check
-C Type: int 
-Size: 4 bytes
+Pack with option "i", with endian check:
+
+- C Type: int 
+- size: 4 bytes
 ```
 ql.pack32s
 ```
 
-unpack with option "i", with endian check
-C Type: int 
-Size: 4 bytes
+Unpack with option "i", with endian check:
+
+- C Type: int 
+- size: 4 bytes
 ```
 ql.unpack32s()
 ```
 
-unpack with option "i"
-C Type: int 
-Size: 4 bytes
+Unpack with option "i":
+
+- C Type: int 
+- size: 4 bytes
 ```
 unpack32_ne()
 ```
 
-pack with option "H", with endian check
-C Type: unsigned short 
-Size: 2 bytes
+Pack with option "H", with endian check:
+
+- C Type: unsigned short 
+- size: 2 bytes
 ```
 ql.pack16()
 ```
 
-unpack with option "H", with endian check
-C Type: unsigned short 
-Size: 2 bytes
+Unpack with option "H", with endian check:
+
+- C Type: unsigned short 
+- size: 2 bytes
 ```
 ql.unpack16()
 ```
 
-if archbit == 64 then ql.pack64 else ql.pack32
+If archbit == 64 then ql.pack64 else ql.pack32
 ```
 ql.pack()
 ```
