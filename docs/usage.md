@@ -58,6 +58,9 @@ available:
   output=None,
   verbose=1,
   profile=None,
+  log_dir=None,
+  log_split=None,
+  append=None,
   console=True,
   stdin=0,
   stdout=0,
@@ -79,6 +82,7 @@ available:
   output=None, # output = ["debug","off","disasm","dump"] // dump=(disam + debug)
   verbose=1,
   profile=None,
+  log_dir=None,
   console=True,
   stdin=0,
   stdout=0,
