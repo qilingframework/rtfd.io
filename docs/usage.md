@@ -51,8 +51,9 @@ In pre-loader(during initialization) state, there are multiple options that can 
 
 available:
 
--  filename=None,
--  rootfs=None,
+i.  filename=None 
+  - 
+ii.  rootfs=None,
 -  env=None,
 -  output=None,
 -  verbose=1,
