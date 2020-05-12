@@ -24,7 +24,7 @@ log_dir = qlog
 log_split = True
 ```
 
-Default profile for different OS:
+Default profile for different OSes:
 
 - Windows: [qiling/pofiles/windows.ql](https://github.com/qilingframework/qiling/blob/dev/qiling/profiles/windows.ql)
 - Linux: [qiling/pofiles/linux.ql](https://github.com/qilingframework/qiling/blob/dev/qiling/profiles/linux.ql)
