@@ -45,7 +45,7 @@ ql.run()
 How to initialize Qiling
 
 ##### Binary file: ql = Qiling()
-In pre-loader(during initialization) state, there are multiple options that can be configured.
+In pre-loader (during initialization) state, there are multiple options that can be configured.
 
 Available options:
 
@@ -64,11 +64,11 @@ Available options:
 - log_dir=None 
 > - send print out to a log file
 - log_split=None 
-> - split log, only use it with multithreading
+> - split log, only use it with multi-threading
 - append=None 
 > - append a string to standard log directory or filename
 - console=True 
-> - print out to console or not. console = False means no print out
+> - print out to console. console = False means no print out
 - libcache=False
 > - cache and reuse preloaded library. Do not have to reparse the same library
 - stdin=0
@@ -95,7 +95,7 @@ Available options:
 - archtype=None
 > - "x8664", "x86", "arm", "arm64", "mips"
 - bigendian=False
-> - Default is false, only availble for "arm" and "mips" for now
+> - Default is false, only available for "arm" and "mips" arch for now
 - output=None
 > - refer to above section
 - verbose=1
@@ -114,7 +114,7 @@ Available options:
 Available options:
 
 - ql.fs_mapper = [] 
-> - Map a actual file or directory to rootfs. eg, ql.fs_mapper('/etc','/etc')
+> - Map an actual file or directory to rootfs. eg, ql.fs_mapper('/etc','/etc')
 
 - ql.debug_stop = False 
 > - Default is false. Stop after missing posix syscall or api
@@ -123,7 +123,7 @@ Available options:
 > - Remote debugger. Please refer to [here](https://docs.qiling.io/en/latest/debugger/)
 
 - ql.multithread = False
-> - Default is false. Due to the instablity of multithreading, added a swtich for multithreading
+> - Default is false. Due to the instablity of multi-threading, added a swtich for multi-threading
 
 - ql.ipv6 = False
 > - Default is false. Use IPv6 or not, to avoid binary double bind. ipv6 and ipv4 bind the same port at the same time
@@ -136,7 +136,7 @@ Available options:
 
 
 ### Execution: ql.run()
-In order to start execution. we just need to call ql.run(). But in certain cases, such as partial execution there are additional 4 options in ql.run()
+In order to start a binary execution, we just need to call ql.run(). But in certain cases, such as partial execution, there are additional 4 options in ql.run()
 
 ```
 ql.run(begin, end, timeout, count)
