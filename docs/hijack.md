@@ -4,6 +4,12 @@ title: Hijack
 
 
 ```
+stdin
+stdout
+stderr
+```
+
+```
 ql.set_api
 ```
 

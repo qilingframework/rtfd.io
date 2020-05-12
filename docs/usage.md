@@ -47,7 +47,7 @@ How to initialiize Qiling
 ##### Binary file: ql = Qiling()
 In pre-loader(during initialization) state, there are multiple options that can be configured.
 
-available:
+Available options:
 
 - filename=None 
 > - binary file and argv in [] format, example ["filename","-argv1","argv2"]
@@ -70,15 +70,19 @@ available:
 - console=True 
 > - print out to console or not. console = False means no print out
 - libcache=False
+> - cache and reuse preloaded library. Do not have to reparse the same library
 - stdin=0
+> - stdio hijack, please refer to [hijack](https://docs.qiling.io/en/latest/hijack/)
 - stdout=0
+> - stdout hijack, please refer to [hijack](https://docs.qiling.io/en/latest/hijack/)
 - stderr=0
+> - stdout hijack, please refer to [hijack](https://docs.qiling.io/en/latest/hijack/)
 
 
 ##### Shellcode: ql = Qiling()
 In pre-loader(during initialization) state, there are multiple options that can be configured.
 
-available:
+Available options:
 
 - shellcoder=None
 > - shellcode in binary mode
@@ -102,9 +106,8 @@ available:
 > - refer to above section
 - console=True
 > - refer to above section
-- stdin=0,
-- stdout=0,
-- stderr=0,
+- libcache=False
+> - refer to above section
 
 ### Setup: after ql=Qiling() and before ql.run()
 
