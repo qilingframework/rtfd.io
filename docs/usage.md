@@ -10,10 +10,8 @@ import sys
 from qiling import *
 
 def my_sandbox(path, rootfs):
-    ql = Qiling(path, rootfs, output="debug")
-    ql.root = False
+    ql = Qiling(path, rootfs, output="debug", profile = 'netgear.ql')
     ql.add_fs_mapper('/proc', '/proc')
-    ql.profile('netgear.ql')
     ql.run()
 
 if __name__ == "__main__":
