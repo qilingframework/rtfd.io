@@ -27,7 +27,7 @@ if __name__ == "__main__":
     test_gdb(["../examples/rootfs/x8664_linux/bin/x8664_hello_static"], "../examples/rootfs/x8664_linux")
 ```
 
-By default, gdbserver listens on **localhost**, port **9999** and emulated code will pause at entrypoint.
+By default, debugging server listens on **localhost**, port **9999** and emulated code will pause at entrypoint.
 
 ---
 
@@ -35,13 +35,12 @@ By default, gdbserver listens on **localhost**, port **9999** and emulated code 
 
 Only tested on IDAPro 7.4
 
-1. Run Qiling code, with gdbserver enable, as shown in the sample script above.
+1. Run Qiling code, with debugging server enable, as shown in the sample script above.
 2. Configure IDAPro like below
 
 ![GDB-IDA](https://github.com/qilingframework/qiling/raw/master/docs/GDBSERVER-IDA.png)
 
-3. Make sure to select the correct architecture of target code
-4. Make sure you rebase your code so breakpoint will work
+3. It should just work
 
 ---
 
@@ -149,15 +148,49 @@ x/10xg
 
 ---
 
-### Todo
-
-1. Add support for more architectures
-2. Added support for more GDB commands
-3. Make it similar to GDB gdbserver
-
----
-
 ## Credits
 
 - Inspired by ideas from [uDdbg](https://github.com/iGio90/uDdbg)
+
+
+
+### Qiling 远程调试
+
+Qiling已支持**远程调试**。这意味着它能够与gdbserver兼容的客户端(例如IDApro)一起工作。到目前为止，Qiling 远程调试 只是支持gdbserver 欢迎添加更多的调试服务器
+
+
+### 开启远程调试模式
+
+```python
+from qiling import *
+
+def test_gdb(path, rootfs):
+    ql = Qiling(path, rootfs, output="off")
+
+    # 开启调试模式，监听本地，默认端口9999
+    ql.debugger = True
+    # 可以自定义地址，端口及调试器类型
+    # ql.debugger= ":9999"  # GDB server 监听 0.0.0.0:9999
+    # ql.debugger = "127.0.0.1:9999"  # GDB server 监听 127.0.0.1:9999
+    # ql.debugger = "gdb:127.0.0.1:9999"  # GDB server 监听 127.0.0.1:9999
+    # ql.debugger = "idapro:127.0.0.1:9999"  # IDA pro server 监听 127.0.0.1:9999
+    ql.run()  
+
+if __name__ == "__main__":
+    test_gdb(["../examples/rootfs/x8664_linux/bin/x8664_hello_static"], "../examples/rootfs/x8664_linux")
+```
+
+gdbserver默认监听**localhost**，端口**9999**，并且代码模拟将在入口点暂停
+
+---
+
+### 利用 IDA 连接远程调试模式
+
+当前仅在IDA7.4进行了测试
+
+1. 如上面的示例脚本中所示，启用gdbserver选项并运行
+2. 运行IDA并且像以下这样设置IDA:
+
+![GDB-IDA](https://github.com/qilingframework/qiling/raw/master/docs/GDBSERVER-IDA.png)
+
 
