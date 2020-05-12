@@ -107,7 +107,9 @@ available:
 - stderr=0,
 
 ### Setup: after ql=Qiling() and before ql.run()
+
 All the options can be changed during setup
+
 - ql.fs_mapper = [] 
 > - Map a actual file or directory to rootfs. eg, ql.fs_mapper('/etc','/etc')
 
