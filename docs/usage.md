@@ -136,7 +136,7 @@ Available options:
 
 
 ### Execution: ql.run()
-In order to start a binary execution, we just need to call ql.run(). But in certain cases, such as partial execution, there are additional 4 options in ql.run()
+In order to start a binary execution, we just need to call ql.run(). But in certain cases, such as partial execution, there are additional 4 options in ql.run() for more granular control.
 
 ```
 ql.run(begin, end, timeout, count)
