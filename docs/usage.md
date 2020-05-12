@@ -49,9 +49,9 @@ In pre-loader(during initialization) state, there are multiple options that can 
 
 available:
 
-i.  filename=None 
-  - 
-ii.  rootfs=None,
+- filename=None 
+  - binary file and argv in [] format, example ["filename","-argv1","argv2"]
+- rootfs=None,
 -  env=None,
 -  output=None,
 -  verbose=1,
