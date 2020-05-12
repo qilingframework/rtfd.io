@@ -46,49 +46,46 @@ ql.run()
 
 How to initialiize Qiling
 
-- Binary file: ql = Qiling()
+##### Binary file: ql = Qiling()
 In pre-loader(during initialization) state, there are multiple options that can be configured.
 
 available:
 
-```
-  filename=None,
-  rootfs=None,
-  env=None,
-  output=None,
-  verbose=1,
-  profile=None,
-  log_dir=None,
-  log_split=None,
-  append=None,
-  console=True,
-  libcache=False,
-  stdin=0,
-  stdout=0,
-  stderr=0,
-```
+-  filename=None,
+-  rootfs=None,
+-  env=None,
+-  output=None,
+-  verbose=1,
+-  profile=None # please refer to [profile section](https://docs.qiling.io/en/latest/profile/)
+-  log_dir=None # send print out to a log file
+-  log_split=None # split log, only use it with multithreading
+-  append=None # append a string to standard log directory or filename
+-  console=True # print out to console or not. console = False means no print out
+-  libcache=False,
+-  stdin=0,
+-  stdout=0,
+-  stderr=0,
 
-- Shellcode: ql = Qiling()
+
+##### Shellcode: ql = Qiling()
 In pre-loader(during initialization) state, there are multiple options that can be configured.
 
 available:
 
-```
-  shellcoder=None,
-  rootfs=None,
-  env=None,
-  ostype=None,
-  archtype=None,
-  bigendian=False,
-  output=None, # output = ["debug","off","disasm","dump"] // dump=(disam + debug)
-  verbose=1,
-  profile=None,
-  log_dir=None,
-  console=True,
-  stdin=0,
-  stdout=0,
-  stderr=0,
-```
+-  shellcoder=None,
+-  rootfs=None,
+-  env=None,
+-  ostype=None,
+-  archtype=None,
+-  bigendian=False,
+-  output=None, # output = ["debug","off","disasm","dump"] // dump=(disam + debug)
+-  verbose=1,
+-  profile=None,
+-  log_dir=None,
+-  console=True,
+-  stdin=0,
+-  stdout=0,
+-  stderr=0,
 
 ### Setup: after ql=Qiling() and before ql.run()
 All the options can be changed during setup
