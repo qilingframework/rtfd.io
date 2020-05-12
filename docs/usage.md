@@ -4,7 +4,7 @@ title: Usage
 
 Few examples are exhibited in this document and we will illustrate how Qiling Framework works
 
-### Execute a fie
+### Executing a fie
 ```
 import sys
 from qiling import *
@@ -24,7 +24,7 @@ content of netgear.ql
 mmap_address = 0x7f7ee000
 ```
 
-### Execute a shellcode
+### Executing a shellcode
 ```
 import sys
 
