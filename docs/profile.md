@@ -25,7 +25,11 @@ log_split = True
 ```
 
 Default profile for different OS
+
 - Windows: qiling/pofiles/windows.ql
+
 - Linux: qiling/pofiles/linux.ql
+
 - MacOS: qiling/pofiles/macos.ql
+
 - UEFI: qiling/pofiles/uefi.ql
