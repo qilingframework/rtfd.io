@@ -2,7 +2,7 @@
 title: Usage
 ---
 
-Few examples provided and we will explain each and every part of Qiling Framework
+Few examples are exhibited in this document and we will illustrate how Qiling Framework works
 
 ### Execute a fie
 ```
