@@ -2,7 +2,7 @@
 title: Profile
 ---
 
-Thre is a Qiling Frameworks default profile, custom user profile will override default settings.
+Thre is a Qiling Frameworks default profile, custom user profile will override default profile value.
 
 ```python
 from qiling import *
