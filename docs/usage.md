@@ -125,4 +125,10 @@ Inorder to start execution. we just need to call ql.run(). But in certain cases,
 ql.run(begin, end, timeout, count)
 ```
 
-With these settings, by settings ql.run(begin = 0xFE, end = 0xFF) will allow program execute between 0xFE till 0xFF. So activity like fuzzing dont have to execute the entire file from start till end and increse overhead in fuzzing process.
+For example,
+```
+ql = Qiling()
+ql.run(begin = 0xFE, end = 0xFF)
+ql.run(begin = 0xAE, end = 0xFF)
+```
+This will only allow program to execute between 0xFE till 0xFF. So activity like fuzzing dont have to execute the entire file from start till end. Only fuzz the targeted section or sections.
