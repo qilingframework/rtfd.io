@@ -50,7 +50,7 @@ In pre-loader(during initialization) state, there are multiple options that can 
 available:
 
 - filename=None 
-  + binary file and argv in [] format, example ["filename","-argv1","argv2"]
+  - - binary file and argv in [] format, example ["filename","-argv1","argv2"]
 - rootfs=None
   + virtual "/" folder, this is a "jail" file system when executing Qiling
 - env=None
