@@ -4,8 +4,9 @@ title: Print
 
 ### ql.print: Qiling style print
 
-```
-ql.nprint("this is a test print msg no. %i" % test)
+```python
+test = "test123"
+ql.nprint("this is a test print msg no. %s" % test)
 ```
 
 ### ql.dprint: Debug print
@@ -19,7 +20,7 @@ ql.nprint("this is a test print msg no. %i" % test)
 - D_RPRT
 > - Reporting output, main summarizing purposes
 
-```
-test = 1
-ql.dprint(D_INFO , "this is a debug msg no. %i" % test)
+```python
+test = "test456"
+ql.dprint(D_INFO , "this is a debug msg no. %s" % test)
 ```

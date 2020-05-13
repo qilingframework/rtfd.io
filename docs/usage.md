@@ -132,7 +132,7 @@ Available options:
 > - Bind to localhost
 
 - ql.root = False
-> - by turning this on, you must run your analysis with sudo
+> - change to True means analysis must run with with sudo. Impact, bind on default port which is 1024 or lower
 
 
 ### Execution: ql.run()
