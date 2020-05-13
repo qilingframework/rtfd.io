@@ -9,9 +9,9 @@ markdown_extensions:
  
 nav:
 - 'Introduction': 'index.md'
-- 'Getting Started': 'getting_started.md'
+- 'Installation': 'install.md'
 - 'Demo': 'demo.md'
-- 'How-to-start': 'howto.md'
+- 'Getting Started': 'howto.md'
 - 'qltool': 'qltool.md'
 - 'Print': 'print.md'
 - 'Hijack': 'hijack.md'
