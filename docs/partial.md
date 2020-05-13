@@ -34,7 +34,7 @@ int main(int argc, const char **argv)
 from qiling import *
 
 if __name__ == "__main__":
-    ql = Qiling(["rootfs/x8664_linux/bin/sleep_hello"], "rootfs/x8664_linux" , output= "default")
+    ql = Qiling(["rootfs/x8664_linux/bin/sleep_hello"], "rootfs/x8664_linux", output= "default")
     X64BASE = int(ql.profile.get("OS64", "load_address"), 16)
     begin_point = X64BASE + 0x109e
     end_point = X64BASE + 0x10bc
