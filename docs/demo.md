@@ -23,8 +23,23 @@ if __name__ == "__main__":
 ```
 
 
-### Qiling Framework: Emulating Windows Registry
+### Emulating Windows Registry
 Emulating Windows registry with Qiling Framework
+
+Example code
+```python
+import sys
+sys.path.append("..")
+from qiling import *
+
+def my_sandbox(path, rootfs):
+    ql = Qiling(path, rootfs, output = "debug")
+    ql.run()
+
+
+if __name__ == "__main__":
+    my_sandbox(["rootfs/x86_windows/bin/RegDemo.exe"], "rootfs/x86_windows")
+```
 
 Youtube video
 
