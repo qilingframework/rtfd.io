@@ -2,9 +2,9 @@
 title: Partial Execution
 ---
 
-- This example shows how Qiling able to bypass "not required to run code" and just execute part of a binary.
-- This is the C code, it will sleep for 3600 seconds before print helloworld
+This example shows how Qiling able to bypass "not required to run code" and just execute part of a binary.
 
+- This is the C code, it will sleep for 3600 seconds before print helloworld
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,10 +26,9 @@ int main(int argc, const char **argv)
     return 0;
 }
 ```
-
-- By doing a very minimun analysis, anything after 0x109e is free from sleep(3600)
-- So, ELF base address +  0x109e is the right address to start execution
-
+- Qiling's Partial Execution:
+> - By doing a very minimun analysis, anything after 0x109e is free from sleep(3600)
+> - So, ELF base address +  0x109e is the right address to start execution
 ```python
 from qiling import *
 
@@ -40,3 +39,5 @@ if __name__ == "__main__":
     end_point = X64BASE + 0x10bc
     ql.run(begin = begin_point, end = end_point)
 ```
+
+In any case or specifically fuzzer, Qiling do not have to run the entire binary. Just need to choose the right section, replicate the right context and memory segment will speedup the fuzzing speed.
