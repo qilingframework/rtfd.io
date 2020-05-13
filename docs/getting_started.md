@@ -7,14 +7,14 @@ title: Getting Started
 Qiling Framework is written in Python programming language and it works with different operating system and not limiting to any CPU architecture.
 
 For this installation guide, Ubuntu desktop 18.04.3 LTS 64bit is the base example (Qiling Framework works in other Linux distributions that run Python 3.5 and above). Grab a copy of official Ubuntu ISO images from [Ubuntu CD mirrors](https://launchpad.net/ubuntu/+cdmirrors). Update and the system and also install pip3, git and cmake
-```
+```bash
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt install python3-pip git cmake
 ```
 
 Once completed, clone a copy of Qiling Framework source from github and run setup to install it.
-```
+```bash
 git clone https://github.com/qilingframework/qiling
 cd qiling
 sudo pip3 install -r requirements.txt
@@ -22,7 +22,7 @@ sudo python3 setup.py install
 ```
 
 If you are using pyenv, run the command shown below.
-```
+```bash
 mv $(dirname $(which python))/python2.7 $(dirname $(which python))/python2.7.bak
 pip install -r requirements.txt
 python setup.py install
@@ -75,7 +75,7 @@ CMake Error at /usr/local/Cellar/cmake/3.15.4/share/cmake/Modules/CMakeTestCComp
 A temporary workaround is to install keystone-engine from source:
 * Remove `keystone-engine>=0.9.1.post3` line from `requirements.txt`
 * Install keystone-engine Python binding from source:
-```
+```bash
 git clone https://github.com/keystone-engine/keystone
 cd keystone
 mkdir build
@@ -95,13 +95,13 @@ If quick and easy way to deploy Qiling Framework is preferred, spin it with dock
 
 i. Pulling the Qiling Framework docker image from dockerhub by running command below.
 
-```
+```bash
 docker pull qilingframework/qiling:latest
 ```
 
 or for Qiling Framework Docker 1.0 release.
 
-```
+```bash
 docker pull qilingframework/qiling:1.0
 ```
 
@@ -109,14 +109,14 @@ ii. Running Qiling Framework docker with a bind mount
 
 Required DLLs can be bind-mounted to Qiling Framework container. Presuming DLLs are located in /analysis/win.
 
-```
+```bash
 docker run -dt --name qiling \
  -v /analysis/win/x86dlls:/qiling/examples/rootfs/x86_windows/dlls \
  -v /analysis/win/x8664dlls:/qiling/examples/rootfs/x8664_windows/dlls \
  qiling:1.0
 ```
 
-```
+```bash
 docker exec -it qiling bash
 ```
 
