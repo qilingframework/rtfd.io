@@ -6,33 +6,33 @@ Reference: qiling/arch/register.py
 
 ### Read
 
-read from string "exa"
+- Read from string "exa"
 ```
 ql.reg.read("EAX")
 ```
 
-read from Unicorn Engine const
+- Read from Unicorn Engine const
 ```
 ql.reg.read(UC_X86_REG_EAX)
 ```
 
-read eax
+- Read eax
 ```
 eax = ql.reg.eax
 ```
 
 ### Write
-write 0xFF to "eax"
+- Write 0xFF to "eax"
 ```
 ql.reg.write("EAX", 0xFF)
 ```
 
-write 0xFF to eax, via Unicorn Engine const
+- Write 0xFF to eax, via Unicorn Engine const
 ```
 ql.reg.write(UC_X86_REG_EAX, 0xFF)
 ```
 
-write 0xFF to eax
+- Write 0xFF to eax
 ```
 ql.reg.eax =  0xFF
 ```
@@ -40,60 +40,58 @@ ql.reg.eax =  0xFF
 
 ### Cross architecture registers
 
-This is for pc and sp only.
+- This is for pc and sp only.
 
-- Reading from PC/SP on current arch, defined by ql.archtype
+> - Reading from PC/SP on current arch, defined by ql.archtype
 ```
 ql.reg.arch_pc
-```
-
-```
 ql.reg.arch_sp
 ```
 
-- Reading to PC/SP on current arch, defined by ql.archtype
+> - Reading to PC/SP on current arch, defined by ql.archtype
 ```
 ql.reg.arch_pc = 0xFF
-```
-
-```
 ql.reg.arch_sp = 0xFF
 ```
 
 
-### Store/Restore current arch register
+### Save/Restore current arch register
 
-Store all the current running state register
+- 2 options to save all the current running state register
 ```
-all_registers = ql.reg.store
+all_registers = ql.reg.save
+all_registers_context = ql.reg.context_save
 ```
 
-Restore all the saved registers from "all_registers"
+- 2 options to restore all the saved registers from "all_registers"
 ```
-all_registers = ql.reg.restore(all_register)
+ql.reg.restore(all_registers)
+ql.reg.context_restore(all_registers_context)
 ```
+
 
 ### Get register table
+- Get the list of current arch register table
 ```
 ql.reg.table
 ```
 
 ### Get current register name
-This will return "eax"
+- This will return "eax"
 ```
 ql.reg.name(UC_X86_REG_EAX)
 ```
 
 
 ### Get register bit
-This is for archirecture comes with 64bit and 32bit register
+- This is for archirecture comes with 64bit and 32bit register
 
-In 64 enviroment this will return 64
+> - In 64 enviroment this will return 64
 ```
 ql.reg.bit("rax")
 ```
 
-In 64 enviroment this will return 32
+> - In 64 enviroment this will return 32
 ```
 ql.reg.bit("eax")
 ```

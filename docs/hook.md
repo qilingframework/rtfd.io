@@ -2,8 +2,10 @@
 title: Hook
 ---
 
-hook_address: hook a specific address and call a function
-```
+### ql.hook_address()
+
+- hook a specific address and call a function
+```python
     def stop(ql):
         ql.nprint("killerswtichfound")
         ql.console = False
@@ -15,8 +17,10 @@ hook_address: hook a specific address and call a function
     ql.run()
 ```
 
-hook_code: hook every instruction with self defined function
-```
+### ql.hook_code()
+
+- hook every instruction with self defined function
+```python
 def print_asm(ql, address, size):
     buf = ql.mem.read(address, size)
     for i in md.disasm(buf, address):
@@ -29,77 +33,92 @@ if __name__ == "__main__":
     ql.run()
 ```
 
-hook_intno: hook interupt number
-```
-ql.hook_intno(self.hook_syscall, 0x80)
-```
-
-hook_insn: 
-```
-self.ql.hook_insn(self.hook_syscall, UC_X86_INS_SYSCALL)
-```
-
-hook_block:
-```
+### ql.hook_block()
+- hook a block of code
+```python
 def ql_hook_block_disasm(ql, address, size):
     ql.nprint("\n[+] Tracing basic block at 0x%x" % (address))
 
 ql.hook_block(ql_hook_block_disasm)
 ```
 
-hook_intr: interupt
+### ql.hook_intno()
+
+- hook interupt number to invoke a custom fuction
+```
+ql.hook_intno(hook_syscall, 0x80)
+```
+
+### ql.hook_insn()
+
+- specific hook interupt number to invoke a custom fuction
+```
+ql.hook_insn(hook_syscall, UC_X86_INS_SYSCALL)
+```
+
+
+### ql.hook_int()
+- interupt
+```
+ql.hook_intr()
+```
+
+### ql.hook_mem_unmapped()
 ```
 ```
 
-hook_mem_unmapped
+### ql.hook_mem_read_invalid()
 ```
 ```
 
-hook_mem_read_invalid
+### ql.hook_mem_write_invalid()
 ```
 ```
 
-hook_mem_write_invalid
+### ql.hook_mem_fetch_invalid()
 ```
 ```
 
-hook_mem_fetch_invalid
+### qll.hook_mem_invalid()
 ```
 ```
 
-hook_mem_invalid
-```
-```
+### ql.hook_mem_read()
 
-hook_mem_read: monitory does of perform memory read on a specific address
-```
+- monitory a process performing memory read on a specific address
+```python
 def _mem_read(ql, addr, size, value):
     print("demo for ql.hook_mem_read")
 
 ql.hook_mem_read(_mem_read, 0xffffdef4)
 ```
 
-hook_mem_write: monitory does of perform memory write on a specific address
-```
+### ql.hook_mem_write()
+
+- monitory a process performing memory write on a specific address
+```python
 def _mem_write(ql, addr, size, value):
     print("demo for ql.hook_mem_read")
 
 ql.hook_mem_write(_mem_write, 0xffffdef4)
 ```
 
-hook_mem_fetch: monitory does of perform memory fetch on a specific address
-```
+### ql.hook_mem_fetch()
+
+- monitory a process performing memory fetch on a specific address
+```python
 def _mem_fetch(ql, addr, size, value):
     print("demo for ql.hook_mem_read")
 
 ql.hook_mem_fetch(_mem_write, 0xffffdef4)
 ```
 
-hook_del
+### ql.hook_del()
 ```
 ```
 
-clear_hooks: clear all hooks
+### ql.clear_hooks() 
+- clear all hooks
 ```
 ql.clear_hooks()
 ```
