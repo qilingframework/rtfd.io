@@ -3,7 +3,7 @@ title: Memory
 ---
 
 
-### Stack realted
+### Stack related
 - Pop
 ```
 ql.stack_pop(value)
