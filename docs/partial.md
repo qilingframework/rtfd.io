@@ -29,7 +29,7 @@ int main(int argc, const char **argv)
 - Qiling's Partial Execution:
 > - By doing a very minimun analysis, anything after 0x109e is free from sleep(3600)
 > - So, ELF base address +  0x109e is the right address to start execution
-> - During execution, it will by pass sleep sleep(3600) and print "Hello Wolrd" right away
+> - During execution, it will by pass sleep(3600) and print "Hello Wolrd" right away
 ```python
 from qiling import *
 
