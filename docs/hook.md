@@ -45,42 +45,42 @@ ql.hook_block(ql_hook_block_disasm)
 ### ql.hook_intno()
 
 - hooking interupt number to invoke a custom fuction
-```
+```python
 ql.hook_intno(hook_syscall, 0x80)
 ```
 
 ### ql.hook_insn()
 
 - hooking specific interupt number to invoke a custom fuction
-```
+```python
 ql.hook_insn(hook_syscall, UC_X86_INS_SYSCALL)
 ```
 
 
 ### ql.hook_int()
 - interupt
-```
+```python
 ql.hook_intr()
 ```
 
 ### ql.hook_mem_unmapped()
-```
+```python
 ```
 
 ### ql.hook_mem_read_invalid()
-```
+```python
 ```
 
 ### ql.hook_mem_write_invalid()
-```
+```python
 ```
 
 ### ql.hook_mem_fetch_invalid()
-```
+```python
 ```
 
 ### qll.hook_mem_invalid()
-```
+```python
 ```
 
 ### ql.hook_mem_read()
@@ -114,11 +114,11 @@ ql.hook_mem_fetch(_mem_write, 0xffffdef4)
 ```
 
 ### ql.hook_del()
-```
+```python
 ```
 
 ### ql.clear_hooks() 
 - clear all hooks
-```
+```python
 ql.clear_hooks()
 ```
