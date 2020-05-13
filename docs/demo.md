@@ -4,7 +4,7 @@ title: Demo
 
 ### Emulating a Windows EXE on a Linux machine.
 
-Using Qiling Framework to emulate a Windows binary on a Linux amachine.
+Using Qiling Framework to emulate a Windows binary on a Linux machine.
 
 Example code
 ```python
@@ -21,6 +21,15 @@ if __name__ == "__main__":
     # execute Windows EXE under our rootfs
     my_sandbox(["examples/rootfs/x86_windows/bin/x86_hello.exe"], "examples/rootfs/x86_windows")
 ```
+
+
+### Qiling Framework: Emulating Windows Registry
+Emulating Windows registry with Qiling Framework
+
+Youtube video
+
+[![Qiling Framework: Emulating Windows Registry](https://i.ytimg.com/vi/4nk8KNgbNzw/0.jpg)](https://www.youtube.com/watch?v=4nk8KNgbNzw)
+
 
 
 ### Dynamically patch a Windows crackme, make it always display "Congratulation" dialog.
@@ -72,6 +81,13 @@ Solving a simple CTF challenge with Qiling Framework and IDAPro
 Youtube video
 
 [![Solving a simple CTF challenge with Qiling Framework and IDAPro](https://i.ytimg.com/vi/SPjVAt2FkKA/0.jpg)](https://www.youtube.com/watch?v=SPjVAt2FkKA "Video DEMO 2")
+
+
+### Solving malformed ELF header + Anti-Debug crackme, with Qiling GDBserver + Qiling qltool
+
+Youtube video
+
+[![Solving malformed ELF header + Anti-Debug crackme, with Qiling GDBserver + Qiling qltool](https://i.ytimg.com/vi/TYGZ-GVRIaA/0.jpg)](https://www.youtube.com/watch?v=TYGZ-GVRIaA)
 
 
 ### Fuzzing with Qiling Unicornalf
