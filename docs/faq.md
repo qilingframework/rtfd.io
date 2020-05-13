@@ -11,7 +11,3 @@ title: FAQ
 
 ### Windows API often comes with functionsA and functionW do i need to implement both
 - Thanks for jhumble, he implemented wraps from functools to make A and W combile, please refer to [pull reuquest 261]https://github.com/qilingframework/qiling/pull/261
-
-
-
-
