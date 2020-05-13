@@ -2,7 +2,7 @@
 title: Remote Debugging
 ---
 
-Qiling supports **remote debugging**, it will work with gdbserver compatible clients (e.g., IDApro). Currently, Qiling Framework only support gdbserver, please feel free to add more debug server.
+Qiling supports **remote debugging**, it will work with gdbserver compatible clients (e.g., IDApro). Currently, Qiling Framework only supports gdbserver, please feel free to add more debug servers.
 
 ### Turning on debugger
 
@@ -35,12 +35,12 @@ By default, debugging server listens on **localhost**, port **9999** and emulate
 
 Only tested with IDAPro 7.4
 
-1. Run Qiling code, with debugging server enabled, as shown in the sample script above.
+1. Run Qiling code with debugging server enabled, as shown in the sample script above.
 2. Configure IDAPro as shown below
 
 ![GDB-IDA](https://github.com/qilingframework/qiling/raw/master/docs/GDBSERVER-IDA.png)
 
-3. It should just work
+3. It should work
 
 ---
 
