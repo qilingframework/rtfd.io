@@ -293,6 +293,50 @@ Screenshot
 
 Almost a complete emulation of Netgear R6220, a 32bit MIPS based router runs on a x86 64bit Ubuntu.
 
+Example code
+
+```python
+import sys
+sys.path.append("..")
+from qiling import *
+from qiling.os.posix import syscall
+
+
+def my_syscall_write(ql, write_fd, write_buf, write_count, *rest):
+    if write_fd == 2 and ql.os.file_des[2].__class__.__name__ == 'ql_pipe':
+        ql.os.definesyscall_return(-1)
+    else:
+        syscall.ql_syscall_write(ql, write_fd, write_buf, write_count, *rest)
+
+
+def my_netgear(path, rootfs):
+    ql = Qiling(
+                path, 
+                rootfs, 
+                output      = "debug", 
+                log_dir     = "qlog",
+               
+                )
+
+    ql.log_split        = True
+    ql.root             = False
+    ql.bindtolocalhost  = True
+    ql.multithread      = False
+    ql.mmap_start       = 0x7ffee000 - 0x800000
+    ql.add_fs_mapper('/proc', '/proc')
+    ql.set_syscall(4004, my_syscall_write)
+    ql.run()
+
+
+if __name__ == "__main__":
+    my_netgear(["rootfs/netgear_r6220/bin/mini_httpd",
+                "-d","/www",
+                "-r","NETGEAR R6220",
+                "-c","**.cgi",
+                "-t","300"], 
+                "rootfs/netgear_r6220")
+```
+
 Youtube video
 
 [![Qiling Framework: Emulating Netgear R6220](https://i.ytimg.com/vi/fGncO4sVCnY/0.jpg)](https://www.youtube.com/watch?v=fGncO4sVCnY)
