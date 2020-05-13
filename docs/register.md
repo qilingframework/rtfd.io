@@ -16,7 +16,7 @@ ql.reg.read("EAX")
 ql.reg.read(UC_X86_REG_EAX)
 ```
 
-- Read eax
+- Reading eax
 ```
 eax = ql.reg.eax
 ```

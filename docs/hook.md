@@ -4,7 +4,7 @@ title: Hook
 
 ### ql.hook_address()
 
-- hook a specific address and call a function
+- hooking a specific address and call a function
 ```python
     def stop(ql):
         ql.nprint("killerswtichfound")
@@ -19,7 +19,7 @@ title: Hook
 
 ### ql.hook_code()
 
-- hook every instruction with self defined function
+- hooking every instruction with self defined function
 ```python
 def print_asm(ql, address, size):
     buf = ql.mem.read(address, size)
@@ -34,7 +34,7 @@ if __name__ == "__main__":
 ```
 
 ### ql.hook_block()
-- hook a block of code
+- hooking a block of code
 ```python
 def ql_hook_block_disasm(ql, address, size):
     ql.nprint("\n[+] Tracing basic block at 0x%x" % (address))
@@ -44,14 +44,14 @@ ql.hook_block(ql_hook_block_disasm)
 
 ### ql.hook_intno()
 
-- hook interupt number to invoke a custom fuction
+- hooking interupt number to invoke a custom fuction
 ```
 ql.hook_intno(hook_syscall, 0x80)
 ```
 
 ### ql.hook_insn()
 
-- specific hook interupt number to invoke a custom fuction
+- hooking specific interupt number to invoke a custom fuction
 ```
 ql.hook_insn(hook_syscall, UC_X86_INS_SYSCALL)
 ```
@@ -85,7 +85,7 @@ ql.hook_intr()
 
 ### ql.hook_mem_read()
 
-- monitory a process performing memory read on a specific address
+- monitoring a process performing memory read on a specific address
 ```python
 def _mem_read(ql, addr, size, value):
     print("demo for ql.hook_mem_read")
@@ -95,7 +95,7 @@ ql.hook_mem_read(_mem_read, 0xffffdef4)
 
 ### ql.hook_mem_write()
 
-- monitory a process performing memory write on a specific address
+- monitoring a process performing memory write on a specific address
 ```python
 def _mem_write(ql, addr, size, value):
     print("demo for ql.hook_mem_read")
@@ -105,7 +105,7 @@ ql.hook_mem_write(_mem_write, 0xffffdef4)
 
 ### ql.hook_mem_fetch()
 
-- monitory a process performing memory fetch on a specific address
+- monitoring a process performing memory fetch on a specific address
 ```python
 def _mem_fetch(ql, addr, size, value):
     print("demo for ql.hook_mem_read")
