@@ -1,6 +1,4 @@
-<p align="center">
-<img width="150" height="150" src="https://raw.githubusercontent.com/qilingframework/qiling/master/docs/qiling_small.png">
-</p>
+![Qiling Framework](img/qiling_small.png){: .center .style="height:150px;width:150px"}
 
 Qiling is an advanced binary emulation framework, with the following features:
 
