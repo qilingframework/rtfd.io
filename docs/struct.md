@@ -50,7 +50,7 @@ ql.unpack32()
 ```
 ql.pack16()
 ```
-- pack for 16bits data
+- pack for 16bit data
 > - Pack with option "H", with endian check:
 > - C Type: unsigned short 
 > - Size: 2 bytes
