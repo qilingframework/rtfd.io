@@ -148,4 +148,4 @@ ql = Qiling()
 ql.run(begin = 0xFE, end = 0xFF)
 ql.run(begin = 0xAE, end = 0xFF)
 ```
-This will only allow program to execute between 0xFE till 0xFF. So activity like fuzzing does not have to execute the entire file from start till end and only fuzz the targeted sections. Please checkout the [sample code](https://docs.qiling.io/en/latest/partial/)
+This will only allow program to execute between 0xFE till 0xFF. So activity like fuzzing does not have to execute the entire file from start till end and only fuzz the targeted sections. Please check out the [sample code](https://docs.qiling.io/en/latest/partial/)
