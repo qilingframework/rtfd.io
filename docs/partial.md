@@ -30,6 +30,9 @@ int main(int argc, const char **argv)
 > - By doing a very minimum analysis, anything after 0x109e is free from sleep(3600)
 > - So, ELF base address +  0x109e is the right address to start execution
 > - During execution, it will by pass sleep(3600) and print "Hello Wolrd" right away
+
+<img src="_statics/idapro.png">
+
 ```python
 from qiling import *
 
