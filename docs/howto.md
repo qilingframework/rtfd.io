@@ -1,5 +1,5 @@
 ---
-title: Usage
+title: Getting Started
 ---
 
 Few examples are exhibited in this document and we will illustrate how Qiling Framework works
