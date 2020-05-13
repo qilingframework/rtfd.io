@@ -22,6 +22,7 @@ eax = ql.reg.eax
 ```
 
 ### Write
+
 - Writing 0xFF to "eax"
 ```
 ql.reg.write("EAX", 0xFF)
@@ -42,13 +43,12 @@ ql.reg.eax =  0xFF
 
 - This is for pc and sp only.
 
-> - Reading from PC/SP on current arch, defined by ql.archtype
 ```
 ql.reg.arch_pc
 ql.reg.arch_sp
 ```
 
-> - Reading to PC/SP on current arch, defined by ql.archtype
+> - Reading from PC/SP on current arch, defined by ql.archtype
 ```
 ql.reg.arch_pc = 0xFF
 ql.reg.arch_sp = 0xFF
@@ -71,12 +71,14 @@ ql.reg.context_restore(all_registers_context)
 
 
 ### Get register table
+
 - Getting the list of current arch register table
 ```
 ql.reg.table
 ```
 
 ### Get current register name
+
 - This will return "eax"
 ```
 ql.reg.name(UC_X86_REG_EAX)
@@ -84,6 +86,7 @@ ql.reg.name(UC_X86_REG_EAX)
 
 
 ### Get register bit
+
 - This is for architecture that comes with 64bit and 32bit register
 
 > - In 64bit environment this will return 64
