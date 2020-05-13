@@ -67,6 +67,7 @@ if __name__ == "__main__":
 ```
 
 Youtube video
+
 [![Catching Wannacry's killer swtich](https://i.ytimg.com/vi/gVtpcXBxwE8/0.jpg)](https://www.youtube.com/watch?v=gVtpcXBxwE8)
 
 
@@ -314,15 +315,12 @@ def my_netgear(path, rootfs):
                 path, 
                 rootfs, 
                 output      = "debug", 
-                log_dir     = "qlog",
-               
+                profile     = "netgear_6220.ql"
                 )
 
-    ql.log_split        = True
     ql.root             = False
     ql.bindtolocalhost  = True
     ql.multithread      = False
-    ql.mmap_start       = 0x7ffee000 - 0x800000
     ql.add_fs_mapper('/proc', '/proc')
     ql.set_syscall(4004, my_syscall_write)
     ql.run()
