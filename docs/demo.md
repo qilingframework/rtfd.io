@@ -31,6 +31,29 @@ Youtube video
 [![Qiling Framework: Emulating Windows Registry](https://i.ytimg.com/vi/4nk8KNgbNzw/0.jpg)](https://www.youtube.com/watch?v=4nk8KNgbNzw)
 
 
+### Catching Wannacry's killer swtich
+
+This demo executed wannacry.bin (md5 41b5ba4bf74e65845fa8c9861ca34508) and look for the killerswitch url
+
+Example code
+```python
+import sys
+sys.path.append("..")
+from qiling import *
+
+def stopatkillerswtich(ql):
+    print("killerswtch found")
+    ql.emu_stop()
+
+if __name__ == "__main__":
+    ql = Qiling(["rootfs/x86_windows/bin/wannacry.bin"], "rootfs/x86_windows", output="debug")
+    ql.hook_address(stopatkillerswtich, 0x40819a)
+    ql.run()
+```
+
+Youtube video
+[![Catching Wannacry's killer swtich](https://i.ytimg.com/vi/gVtpcXBxwE8/0.jpg)](https://www.youtube.com/watch?v=gVtpcXBxwE8)
+
 
 ### Dynamically patch a Windows crackme, make it always display "Congratulation" dialog.
 
@@ -44,6 +67,11 @@ def force_call_dialog_func(ql):
     # get DialogFunc address
     lpDialogFunc = ql.unpack32(ql.mem.read(ql.reg.esp - 0x8, 4))
     # setup stack memory for DialogFunc
+    
+    
+    Youtube video
+    [![]()](https://www.youtube.com/watch?v=gVtpcXBxwE8
+   ) 
     ql.stack_push(0)
     ql.stack_push(1001)
     ql.stack_push(273)
@@ -244,6 +272,15 @@ if __name__ == "__main__":
 Screenshot
 
 [![qiling DEMO 2: Fuzzing with Qiling Unicornalf](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/qilingfzz-s.png)](https://raw.githubusercontent.com/qilingframework/qiling/dev/examples/fuzzing/qilingfzz.png "Demo #2 Fuzzing with Qiling Unicornalf")
+
+
+### Emulating Netgear R6220
+
+Almost a complete emulation of Netgear R6220, a 32bit MIPS based router runs on a x86 64bit Ubuntu.
+
+Youtube video
+
+[![Qiling Framework: Emulating Netgear R6220](https://i.ytimg.com/vi/fGncO4sVCnY/0.jpg)](https://www.youtube.com/watch?v=fGncO4sVCnY)
 
 
 ### Emulating ARM router firmware on Ubuntu X64 machine
