@@ -6,12 +6,12 @@ Reference: qiling/arch/register.py
 
 ### Read
 
-- Read from string "exa"
+- Reading from string "exa"
 ```
 ql.reg.read("EAX")
 ```
 
-- Read from Unicorn Engine const
+- Reading from Unicorn Engine const
 ```
 ql.reg.read(UC_X86_REG_EAX)
 ```
@@ -22,17 +22,17 @@ eax = ql.reg.eax
 ```
 
 ### Write
-- Write 0xFF to "eax"
+- Writing 0xFF to "eax"
 ```
 ql.reg.write("EAX", 0xFF)
 ```
 
-- Write 0xFF to eax, via Unicorn Engine const
+- Writing 0xFF to eax, via Unicorn Engine const
 ```
 ql.reg.write(UC_X86_REG_EAX, 0xFF)
 ```
 
-- Write 0xFF to eax
+- Writing 0xFF to eax
 ```
 ql.reg.eax =  0xFF
 ```
@@ -71,7 +71,7 @@ ql.reg.context_restore(all_registers_context)
 
 
 ### Get register table
-- Get the list of current arch register table
+- Getting the list of current arch register table
 ```
 ql.reg.table
 ```
@@ -84,14 +84,14 @@ ql.reg.name(UC_X86_REG_EAX)
 
 
 ### Get register bit
-- This is for archirecture comes with 64bit and 32bit register
+- This is for architecture that comes with 64bit and 32bit register
 
-> - In 64 enviroment this will return 64
+> - In 64bit environment this will return 64
 ```
 ql.reg.bit("rax")
 ```
 
-> - In 64 enviroment this will return 32
+> - In 64bit environment this will return 32
 ```
 ql.reg.bit("eax")
 ```

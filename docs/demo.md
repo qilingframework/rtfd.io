@@ -4,7 +4,7 @@ title: Demo
 
 ### Emulating a Windows EXE on a Linux machine.
 
-Using Qiling Framework to emulate a Windows binary on a Linux amachine.
+Using Qiling Framework to emulate a Windows binary on a Linux machine.
 
 Example code
 ```python
@@ -23,6 +23,53 @@ if __name__ == "__main__":
 ```
 
 
+### Emulating Windows Registry
+Emulating Windows registry with Qiling Framework
+
+Example code
+```python
+import sys
+sys.path.append("..")
+from qiling import *
+
+def my_sandbox(path, rootfs):
+    ql = Qiling(path, rootfs, output = "debug")
+    ql.run()
+
+
+if __name__ == "__main__":
+    my_sandbox(["rootfs/x86_windows/bin/RegDemo.exe"], "rootfs/x86_windows")
+```
+
+Youtube video
+
+[![Qiling Framework: Emulating Windows Registry](https://i.ytimg.com/vi/4nk8KNgbNzw/0.jpg)](https://www.youtube.com/watch?v=4nk8KNgbNzw)
+
+
+### Catching Wannacry's killer swtich
+
+This demo executed wannacry.bin (md5 41b5ba4bf74e65845fa8c9861ca34508) and look for the killerswitch url
+
+Example code
+```python
+import sys
+sys.path.append("..")
+from qiling import *
+
+def stopatkillerswtich(ql):
+    print("killerswtch found")
+    ql.emu_stop()
+
+if __name__ == "__main__":
+    ql = Qiling(["rootfs/x86_windows/bin/wannacry.bin"], "rootfs/x86_windows", output="debug")
+    ql.hook_address(stopatkillerswtich, 0x40819a)
+    ql.run()
+```
+
+Youtube video
+[![Catching Wannacry's killer swtich](https://i.ytimg.com/vi/gVtpcXBxwE8/0.jpg)](https://www.youtube.com/watch?v=gVtpcXBxwE8)
+
+
 ### Dynamically patch a Windows crackme, make it always display "Congratulation" dialog.
 
 Using Qiling Framework to dynamically patch a Windows Crackme and making it always displays "Congratulation" dialog.
@@ -35,6 +82,11 @@ def force_call_dialog_func(ql):
     # get DialogFunc address
     lpDialogFunc = ql.unpack32(ql.mem.read(ql.reg.esp - 0x8, 4))
     # setup stack memory for DialogFunc
+    
+    
+    Youtube video
+    [![]()](https://www.youtube.com/watch?v=gVtpcXBxwE8
+   ) 
     ql.stack_push(0)
     ql.stack_push(1001)
     ql.stack_push(273)
@@ -72,6 +124,13 @@ Solving a simple CTF challenge with Qiling Framework and IDAPro
 Youtube video
 
 [![Solving a simple CTF challenge with Qiling Framework and IDAPro](https://i.ytimg.com/vi/SPjVAt2FkKA/0.jpg)](https://www.youtube.com/watch?v=SPjVAt2FkKA "Video DEMO 2")
+
+
+### Solving malformed ELF header + Anti-Debug crackme, with Qiling GDBserver + Qiling qltool
+
+Youtube video
+
+[![Solving malformed ELF header + Anti-Debug crackme, with Qiling GDBserver + Qiling qltool](https://i.ytimg.com/vi/TYGZ-GVRIaA/0.jpg)](https://www.youtube.com/watch?v=TYGZ-GVRIaA)
 
 
 ### Fuzzing with Qiling Unicornalf
@@ -228,6 +287,59 @@ if __name__ == "__main__":
 Screenshot
 
 [![qiling DEMO 2: Fuzzing with Qiling Unicornalf](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/qilingfzz-s.png)](https://raw.githubusercontent.com/qilingframework/qiling/dev/examples/fuzzing/qilingfzz.png "Demo #2 Fuzzing with Qiling Unicornalf")
+
+
+### Emulating Netgear R6220
+
+Almost a complete emulation of Netgear R6220, a 32bit MIPS based router runs on a x86 64bit Ubuntu.
+
+Example code
+
+```python
+import sys
+sys.path.append("..")
+from qiling import *
+from qiling.os.posix import syscall
+
+
+def my_syscall_write(ql, write_fd, write_buf, write_count, *rest):
+    if write_fd == 2 and ql.os.file_des[2].__class__.__name__ == 'ql_pipe':
+        ql.os.definesyscall_return(-1)
+    else:
+        syscall.ql_syscall_write(ql, write_fd, write_buf, write_count, *rest)
+
+
+def my_netgear(path, rootfs):
+    ql = Qiling(
+                path, 
+                rootfs, 
+                output      = "debug", 
+                log_dir     = "qlog",
+               
+                )
+
+    ql.log_split        = True
+    ql.root             = False
+    ql.bindtolocalhost  = True
+    ql.multithread      = False
+    ql.mmap_start       = 0x7ffee000 - 0x800000
+    ql.add_fs_mapper('/proc', '/proc')
+    ql.set_syscall(4004, my_syscall_write)
+    ql.run()
+
+
+if __name__ == "__main__":
+    my_netgear(["rootfs/netgear_r6220/bin/mini_httpd",
+                "-d","/www",
+                "-r","NETGEAR R6220",
+                "-c","**.cgi",
+                "-t","300"], 
+                "rootfs/netgear_r6220")
+```
+
+Youtube video
+
+[![Qiling Framework: Emulating Netgear R6220](https://i.ytimg.com/vi/fGncO4sVCnY/0.jpg)](https://www.youtube.com/watch?v=fGncO4sVCnY)
 
 
 ### Emulating ARM router firmware on Ubuntu X64 machine
