@@ -4,7 +4,7 @@ title: Hijack
 
 # stdio: stdin, stdout, stderr
 
-- Qiling able to hijack stdin, stdout, stderr and and replace with custom functions.
+- Qiling is able to hijack stdin, stdout, stderr and and replace with custom functions.
 
 ```python
 from qiling import *
@@ -62,7 +62,7 @@ if __name__ == "__main__":
 
 ### ql.set_api()
 
-- Mostly use in Windows API or posix's Libc function repalcement
+- Mostly used in Windows API or posix's Libc function replacement
 
 ```python
 from qiling import *
@@ -126,7 +126,7 @@ if __name__ == "__main__":
 
 ### ql.patch()
 
-- Pathch a binary or patch a lib from that load by the binary
+- Patching a binary or patching a lib loaded by the binary
 
 ```python
 ql.patch(0x0000000000000575, b'qiling\x00', file_name = b'libpatch_test.so')
