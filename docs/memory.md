@@ -2,7 +2,27 @@
 title: Memory
 ---
 
-Reference: qiling/os/memory.py
+
+### Stack realted
+- Pop
+```
+ql.stack_pop(value)
+```
+
+- push
+```
+ql.stack_push(value)
+```
+
+- Read
+```
+ql.stack_read(address)
+```
+
+- Write
+```
+ql.stack_write(value, address)
+```
 
 ### Read from a memory address
 ```
