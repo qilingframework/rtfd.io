@@ -137,7 +137,7 @@ ql.patch(0x0000000000000575, b'qiling\x00')
 
 - Backed by keystone engine, compile any code into binary. Mainly for ql.patch()
 
-```
+```python
 ql.compile(ASM, ql.archtype)
 ```
 
