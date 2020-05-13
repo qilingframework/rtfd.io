@@ -1,4 +1,4 @@
-![Qiling Framework](img/qiling_small.png){: style="height:150px;width:150px;align:center"}
+![Qiling Framework](img/qiling_small.png){: style="height:150px;width:150px;text-align:center"}
 
 Qiling is an advanced binary emulation framework, with the following features:
 
