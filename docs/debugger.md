@@ -33,10 +33,10 @@ By default, debugging server listens on **localhost**, port **9999** and emulate
 
 ### Debug with IDA
 
-Only tested on IDAPro 7.4
+Only tested with IDAPro 7.4
 
-1. Run Qiling code, with debugging server enable, as shown in the sample script above.
-2. Configure IDAPro like below
+1. Run Qiling code, with debugging server enabled, as shown in the sample script above.
+2. Configure IDAPro as shown below
 
 ![GDB-IDA](https://github.com/qilingframework/qiling/raw/master/docs/GDBSERVER-IDA.png)
 
