@@ -1,11 +1,11 @@
 ---
-title: Usage
+title: Getting Started
 ---
 
 Few examples are exhibited in this document and we will illustrate how Qiling Framework works
 
 ### Executing a fie
-```
+```python
 import sys
 from qiling import *
 
@@ -25,7 +25,7 @@ mmap_address = 0x7f7ee000
 ```
 
 ### Executing a shellcode
-```
+```python
 import sys
 
 from binascii import unhexlify
@@ -138,12 +138,12 @@ Available options:
 ### Execution: ql.run()
 In order to start a binary execution, we just need to call ql.run(). But in certain cases, such as partial execution, there are additional 4 options in ql.run() for more granular control.
 
-```
+```python
 ql.run(begin, end, timeout, count)
 ```
 
 For example,
-```
+```python
 ql = Qiling()
 ql.run(begin = 0xFE, end = 0xFF)
 ql.run(begin = 0xAE, end = 0xFF)

@@ -4,12 +4,14 @@ site_url: https://qilingframework.rtfd.io
 #repo_url: https://github.com/qilingframework/rtfd.io
 theme: readthedocs
 site_favicon: favicon.png
-
+markdown_extensions:
+  - attr_list
+ 
 nav:
 - 'Introduction': 'index.md'
-- 'Getting Started': 'getting_started.md'
+- 'Installation': 'install.md'
 - 'Demo': 'demo.md'
-- 'How-to-start': 'howto.md'
+- 'Getting Started': 'howto.md'
 - 'qltool': 'qltool.md'
 - 'Print': 'print.md'
 - 'Hijack': 'hijack.md'

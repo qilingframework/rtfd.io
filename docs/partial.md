@@ -31,7 +31,7 @@ int main(int argc, const char **argv)
 > - So, ELF base address +  0x109e is the right address to start execution
 > - During execution, it will by pass sleep(3600) and print "Hello Wolrd" right away
 
-<img src="_statics/idapro.png">
+![IDA Pro](img/idapro.png)
 
 ```python
 from qiling import *
