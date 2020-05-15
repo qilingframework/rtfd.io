@@ -2,7 +2,7 @@
 title: Hijack
 ---
 
-# stdio: stdin, stdout, stderr
+### stdio: stdin, stdout, stderr
 
 - Qiling is able to hijack stdin, stdout, stderr and and replace with custom functions.
 

@@ -2,7 +2,7 @@
 title: Installation
 ---
 
-### Installation
+### Overview
 
 Qiling Framework is written in Python programming language and it works with different operating system and not limiting to any CPU architecture.
 
