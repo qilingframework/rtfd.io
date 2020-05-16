@@ -93,7 +93,7 @@ if __name__ == "__main__":
 ### ql.set_syscall()
 
 - Custom syscall handler by syscall name or syscall number.
-- Notes: If the syscall func is not be implemented in qiling, qiling does not know which func should be replaced.
+- Notes: If the syscall function is not be implemented in qiling, qiling does not know which function should be replaced.
 - In that case, you must specify syscall by its number.
 - To reset, ql.set_syscall("write", None)
 
