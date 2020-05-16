@@ -22,7 +22,7 @@ This part should contain:
 ### Arch
 This part should contain all the functions or CPU features needed to be configured during OS initialization.
 
-- setup VFP
+- set up VFP
 - very specific arch functions, such as GS/FS and etc
 - init_tls settings
 
