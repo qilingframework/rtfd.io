@@ -2,7 +2,7 @@
 title: How to add syscall or operating system API into Qiling Framework
 ---
 
-Due to the nature of Qiling Framework design, operational system API and posix syscalls will always be lacking behind real OS. We covered around 40% of Windows API and Linux based syscall and unknown coverage on UEFI. This will be a continuous and never-ending job and help from community is highly appreciated. We hope for more contributors in helping on API or syscall implementation, either adding or maintaining them.
+Due to the nature of Qiling Framework design, operational system API and posix syscalls will always be lacking behind real kernel. We covered around 40% of Windows API and Linux based syscall and unknown coverage on UEFI. This will be a continuous and never-ending job and help from community is highly appreciated. We hope for more contributors in helping on API or syscall implementation, either adding or maintaining them.
 
 Our job is to make syscall or API as close to kernel as possible. But there are times, we just do not follow them 100%. For example, pid, uid, mprotect related syscall are just a quick feedback and write into a appropriate register.
 
