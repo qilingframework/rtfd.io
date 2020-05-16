@@ -71,7 +71,7 @@ Youtube video
 [![Catching Wannacry's killer swtich](https://i.ytimg.com/vi/gVtpcXBxwE8/0.jpg)](https://www.youtube.com/watch?v=gVtpcXBxwE8)
 
 
-### Dynamically patch a Windows crackme, make it always display "Congratulation" dialog.
+### Dynamically patch a Windows crackme, make it always displays "Congratulation" dialog.
 
 Using Qiling Framework to dynamically patch a Windows Crackme and making it always displays "Congratulation" dialog.
 
