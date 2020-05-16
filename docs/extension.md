@@ -2,7 +2,7 @@
 title: How to add Loader, Architecture or Operating System into Qiling Framework
 ---
 
-There are 3 major parts in Qiling Framework.
+There are 3 major components in Qiling Framework.
 
 ### Loader
 This part should contain:
@@ -30,7 +30,7 @@ This part should contain all the functions or CPU features needed to be configur
 > - qiling/arch/<arch>.py
 
 ### Operating System
-2 stages in this part, initialized and run. OS initialization should contain:
+There are 2 stages in this part, initialize and run. OS initialization should contain:
 
 - CPU setup
 - OS related components, such as 
