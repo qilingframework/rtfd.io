@@ -20,4 +20,4 @@ Before writing an API or syscall, user can always try ql.set_api or ql.set_sysca
 ### Contributing
 After adding syscall into core. Please make sure edit qiling/os/linux/<arch>.py to match the syscall function and syscall number.
 
-API mapping is being done in ql.hook_code(). 
+API mapping is being done in ql.hook_code()
