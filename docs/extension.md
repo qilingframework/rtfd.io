@@ -2,14 +2,14 @@
 title: How to add Loader, Architecture or Operating System into Qiling Framework
 ---
 
-There are 3 major pats in Qiling Framework.
+There are 3 major parts in Qiling Framework.
 
 ### Loader
-This parts should contain:
+This part should contain:
 
 - File identifier: which os, which arch
 - Loader itself
-- Mapping for shellcode. The the OS support shellcode
+- Mapping for shellcode. The OS supported shellcode
 - stack, memory and heap setup
 - ENV setup
 - ARGV setup
@@ -20,7 +20,7 @@ This parts should contain:
 > - qiling/loader/<loader>.py
 
 ### Arch
-This parts should contain all the function or CPU feature soon needs to be configure during OS initialization.
+This part should contain all the functions or CPU features needed to be configured during OS initialization.
 
 - setup VFP
 - very specific arch functions, such as GS/FS and etc
@@ -30,7 +30,7 @@ This parts should contain all the function or CPU feature soon needs to be confi
 > - qiling/arch/<arch>.py
 
 ### Operating System
-Only two parts, initialized and run. OS initialization should contain:
+2 stages in this part, initialized and run. OS initialization should contain:
 
 - CPU setup
 - OS related components, such as 
