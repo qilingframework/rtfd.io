@@ -6,22 +6,22 @@ title: Memory
 ### Stack related
 - Pop
 ```python
-ql.stack_pop(value)
+ql.stack_pop(offset)
 ```
 
 - push
 ```python
-ql.stack_push(value)
+ql.stack_push(offset)
 ```
 
 - Read
 ```python
-ql.stack_read(address)
+ql.stack_read(offset)
 ```
 
 - Write
 ```python
-ql.stack_write(value, address)
+ql.stack_write(offset, data)
 ```
 
 ### Read from a memory address
