@@ -27,7 +27,7 @@ ql.dprint(D_INFO , "this is a debug msg no. %s" % test)
 
 ### ql.filter
 
-Filter out functions or syscall is possible via ql.filter option. For log and stdio.
+Filter out others and only print certain functions or syscall. This is possible now via ql.filter option. It work for both log and stdio.
 
 ```
 #!/usr/bin/env python3
