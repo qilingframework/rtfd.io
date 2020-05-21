@@ -13,7 +13,7 @@ nav:
 - 'Demo': 'demo.md'
 - 'Getting Started': 'howto.md'
 - 'qltool': 'qltool.md'
-- 'Print': 'print.md'
+- 'Print and Filter': 'print.md'
 - 'Hijack': 'hijack.md'
 - 'Profile': 'profile.md'
 - 'Remote debugging': 'debugger.md'
