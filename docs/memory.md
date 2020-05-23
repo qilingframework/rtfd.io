@@ -1,8 +1,8 @@
 ---
 title: Memory
 ---
-### save and restore
-- save and restore curent state memory
+### Save and restore
+- Save and restore curent state memory
 ```python
 all_mem = ql.mem.save()
 ql.mem.restore(all_mem)
