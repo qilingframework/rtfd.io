@@ -1,13 +1,6 @@
 ---
 title: Memory
 ---
-### Save and restore
-- Save and restore curent memory state
-```python
-all_mem = ql.mem.save()
-ql.mem.restore(all_mem)
-```
-
 ### Stack related
 - Pop
 ```python
@@ -27,6 +20,23 @@ ql.stack_read(offset)
 - Write
 ```python
 ql.stack_write(offset, data)
+```
+
+### Save and restore
+- Save and restore curent memory state
+```python
+all_mem = ql.mem.save()
+ql.mem.restore(all_mem)
+```
+
+### Search bytes pattern from memory
+- Search for a pattern from entire memory
+```python
+address = ql.mem.search(b"\xFF\xFE\xFD\xFC\xFB\xFA")
+```
+- Search for a pattern from entire memory range
+```python
+address = ql.mem.search(b"\xFF\xFE\xFD\xFC\xFB\xFA", begin= 0x1000, end= 0x2000)
 ```
 
 ### Read from a memory address
