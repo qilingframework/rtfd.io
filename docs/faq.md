@@ -33,4 +33,4 @@ git checkout dev
 3. Required some missing files
 > - Missing conifig file or library can cause the targeted binary fail to run properly.
 
-It is adviseble to always turn on debugging or disassambly mode to pintpoint the issue and try to resolve it. Technically, this is not a bug but rather a feature/
+It is adviseble to always turn on debugging or disassambly mode to pintpoint the issue and try to resolve it. Technically, this is not a bug but rather a feature.
