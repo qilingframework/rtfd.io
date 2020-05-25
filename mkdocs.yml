@@ -17,6 +17,7 @@ nav:
 - 'Hijack': 'hijack.md'
 - 'Profile': 'profile.md'
 - 'Remote debugging': 'debugger.md'
+- 'CPU': 'cpu.md'
 - 'Register': 'register.md'
 - 'Memory': 'memory.md'
 - 'Pack and Unpack': 'struct.md'
