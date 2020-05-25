@@ -20,3 +20,17 @@ git checkout dev
 
 ### Windows API often comes with functionsA and functionW. Do I need to implement both?
 - Thanks to [jhumble](https://github.com/jhumble), he implemented wraps from functools to make A and W combile, please refer to [pull request 261](https://github.com/qilingframework/qiling/pull/261).
+
+### UC_ERR_FETCH_UNMAPPED, UC_ERR_WRITE_UNMAPPED and related issue
+- This is is not a "bug", there are few major cause of this error
+
+1. Windows API or syscall not being implemented
+> - Qiling Framework try to emulate various platform such as Linux, MacOS, Windows, FreeBSD and UEFI. All these platform comes with different archnitecture too. Its not possible for Qiling to be able to emulate all these syscall/API. Community help is needed.
+
+2. Some spefic requiremment needed.
+> - Firmware might need interface br0 and a users testing enviroment might not have it. In this case ql.patch will come in handy.
+
+3. Requred some missing file
+> - Conifig file or library is missing casuing the targeted binary cannot run properly.
+
+Always turn on debug or disassambly mode to make sure the issue and try to solve it. Like i said, technically is not a bug but rather a feature.
