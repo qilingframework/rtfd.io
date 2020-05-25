@@ -22,7 +22,7 @@ git checkout dev
 - Thanks to [jhumble](https://github.com/jhumble), he implemented wraps from functools to make A and W combile, please refer to [pull request 261](https://github.com/qilingframework/qiling/pull/261).
 
 ### UC_ERR_FETCH_UNMAPPED, UC_ERR_WRITE_UNMAPPED and related issues
-- This is not a "bug". There are possibily few major causes for this error
+This is not a "bug". There are possibily few major causes for this error
 
 1. Windows API or syscall not being implemented
 > - Qiling Framework tries to emulate various platforms such as Linux, MacOS, Windows, FreeBSD and UEFI. All these platforms come with different archnitecture. Its not possible for Qiling Framework to be able to emulate all these syscall/API. Community help is needed.
