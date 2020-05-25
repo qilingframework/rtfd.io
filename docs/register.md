@@ -65,19 +65,14 @@ ql.reg.arch_sp = 0xFF
 
 ### Save/Restore current arch register
 
-- 2 options to save all the current running state register
-- context_save and context_restore is interface to uc_context_save and uc_context_register. It save more register compare to ql.reg.save/restore
-
+- Save all the current running state register
 ```python
-all_registers = ql.reg.save
-all_registers_context = ql.reg.context_save
+all_registers = ql.reg.save()
 ```
 
-- 2 options to restore all the saved registers from "all_registers"
-
+- Restore all the saved registers from "all_registers"
 ```python
 ql.reg.restore(all_registers)
-ql.reg.context_restore(all_registers_context)
 ```
 
 
