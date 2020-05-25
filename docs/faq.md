@@ -30,7 +30,7 @@ git checkout dev
 2. Some specific requiremment needed.
 > - Firmware might need interface br0 and a users testing enviroment might not have it. In this case, ql.patch will come in handy.
 
-3. Required some missing files
+3. Required files are missing.
 > - Missing conifig file or library can cause the targeted binary fail to run properly.
 
 It is adviseble to always turn on debugging or disassambly mode to pintpoint the issue and try to resolve it. Technically, this is not a bug but rather a feature.
