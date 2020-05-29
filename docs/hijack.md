@@ -111,6 +111,7 @@ if __name__ == "__main__":
 
 - However, Windows and UEFI usage is different from posix.
 - All decorator's value need to be return accordingly 
+- Note: decorators are from qiling/os/windows/fncc.py and qiling/os/uefi/fncc.py
 ```python
 from qiling import *
 from qiling.const import *
