@@ -90,6 +90,64 @@ if __name__ == "__main__":
 
 ```
 
+### onEnter with ql.set_api()
+
+- Hijack parameter before OS APIs or syscall
+- Example below shows replace parameter of syscall 0x1 with onEnter_write
+```python
+from qiling import *
+from qiling.const import *
+
+def onEnter_write(ql, arg1, arg2, arg3, *args):
+    print("enter write syscall!")
+    ql.reg.rsi = arg2 + 1
+    ql.reg.rdx = arg3 - 1
+
+if __name__ == "__main__":
+    ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", output="debug")
+    ql.set_syscall(1, onEnter_write, QL_INTERCEPT.ENTER)
+    ql.run()
+```
+
+- However, Windows and UEFI usage is different from posix.
+- All decorator's value need to be return accordingly 
+```python
+from qiling import *
+from qiling.const import *
+
+def my_onenter(ql, param_num, params, func, args, kwargs):
+    ql.nprint("\n+++++++++\nmy OnEnter")
+    ql.nprint("params: %s" % params)
+    ql.nprint("+++++++++\n")
+    return  param_num, params, func, args, kwargs
+
+def my_sandbox(path, rootfs):
+    ql = Qiling(path, rootfs, output = "debug")
+    ql.set_api("_cexit", my_onenter, intercept = QL_INTERCEPT.ENTER)
+    ql.run()
+
+if __name__ == "__main__":
+    my_sandbox(["rootfs/x8664_windows/bin/x8664_hello.exe"], "rootfs/x8664_windows")
+```
+
+
+### onExit with ql.set_api()
+- Hijack return value after OS APIs or syscall execution
+- Example below shows replace output result of syscall 0x1 with onExit_write
+```python
+from qiling import *
+from qiling.const import *
+
+def onExit_write(ql, arg1, arg2, arg3, *args):
+    print("exit write syscall!")
+    ql.reg.rax = arg3 + 1
+
+if __name__ == "__main__":
+    ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", output="debug")
+    ql.set_syscall(1, onExit_write, QL_INTERCEPT.EXIT)
+    ql.run()
+```
+
 ### ql.set_syscall()
 
 - Custom syscall handler by syscall name or syscall number.
