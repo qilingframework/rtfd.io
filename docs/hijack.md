@@ -90,7 +90,7 @@ if __name__ == "__main__":
 
 ```
 
-### onEnter with ql.set_api()
+### On enter interceptor  with ql.set_api()
 
 - Hijack parameter before OS APIs or syscall
 - Example below shows replace parameter of syscall 0x1 with onEnter_write
@@ -131,7 +131,7 @@ if __name__ == "__main__":
 ```
 
 
-### onExit with ql.set_api()
+### On exit interceptor with ql.set_api()
 - Hijack return value after OS APIs or syscall execution
 - Example below shows replace output result of syscall 0x1 with onExit_write
 ```python
