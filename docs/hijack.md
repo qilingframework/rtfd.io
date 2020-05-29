@@ -157,7 +157,7 @@ from qiling.const import *
 
 def my_onexit(ql, address, params):
     ql.nprint("\n+++++++++\nmy OnExit")
-    print("lpSubKey: %s" % params)
+    print("params: %s" % params)
     ql.nprint("+++++++++\n")
 
 
