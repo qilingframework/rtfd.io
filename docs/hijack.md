@@ -110,8 +110,7 @@ if __name__ == "__main__":
 ```
 
 - However, Windows and UEFI usage is different from posix.
-- All decorator's value need to be return accordingly 
-- Note: decorators are from qiling/os/windows/fncc.py and qiling/os/uefi/fncc.py
+
 ```python
 from qiling import *
 from qiling.const import *
@@ -149,6 +148,26 @@ if __name__ == "__main__":
     ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", output="debug")
     ql.set_syscall(1, onExit_write, QL_INTERCEPT.EXIT)
     ql.run()
+```
+
+- However, Windows and UEFI usage is different from posix.
+```python
+from qiling import *
+from qiling.const import *
+
+def my_onexit(ql, address, params):
+    ql.nprint("\n+++++++++\nmy OnExit")
+    print("lpSubKey: %s" % params)
+    ql.nprint("+++++++++\n")
+
+
+def my_sandbox(path, rootfs):
+    ql = Qiling(path, rootfs, output = "debug")
+    ql.set_api("RegDeleteValueW", my_onexit, intercept = QL_INTERCEPT.EXIT)
+    ql.run()
+
+if __name__ == "__main__":
+    my_sandbox(["rootfs/x86_windows/bin/RegDemo.exe"], "rootfs/x86_windows")
 ```
 
 ### ql.set_syscall()
