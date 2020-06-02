@@ -22,7 +22,7 @@ The command-line interface for controlling code coverage is comprise of two new 
 
 ### Extending the framework to support additional coverage formats
 
-Currently the framework is only capable of omitting code coverage files which comform to the 'drcov' format used by the DynamoRIO [tool of the same name](https://dynamorio.org/dynamorio_docs/page_drcov.html).
+Currently, the framework is only capable of omitting code coverage files which comform to the 'drcov' format used by the DynamoRIO [tool of the same name](https://dynamorio.org/dynamorio_docs/page_drcov.html).
 If you wish to extend the framework by adding support for new coverage formats, please follow these steps:
 
 - Create a new source module under the `coverage\formats` directory.
@@ -32,4 +32,4 @@ If you wish to extend the framework by adding support for new coverage formats, 
   - `FORMAT_NAME`: a user-friendly name for the coverage format name. This name will be presented in the help message of `qltool` as one of the possible choices for a coverage format.
   - `def activate(self)`: Starts code coverage collection, for example by registering a new basic block callback.
   - `def deactivate(self)`: Stops code coverage collection, for example by de-registering the aforementioned basic block callback.
-  - `def dump_coverage(self, coverage_file)`: Should open the file specified in `coverage_file` and then write all the collected coverage information into it. Usually the coverage format will dictate some fixed-size header, followed by a variable-length list of the individual basic blocks which were encountered during emulation.
+  - `def dump_coverage(self, coverage_file)`: Should open the file specified in `coverage_file` and then write all the collected coverage information into it. Usually the coverage format will dictate some fixed-size headers, followed by a variable-length list of the individual basic blocks which were encountered during emulation.
