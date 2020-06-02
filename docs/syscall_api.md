@@ -2,9 +2,9 @@
 title: How to add syscall or operating system API into Qiling Framework
 ---
 
-Due to the nature of Qiling Framework design, operating system API and posix syscalls will always be "missing" compare to real kernel. We covered around 40% of Windows API and Linux based syscall. Unknown coverage on UEFI. This will be a continuous and never-ending job and help from community is highly appreciated. We hope for more contributors to help on API or syscall implementation, either adding or maintaining them.
+Due to the nature of Qiling Framework design, operating system API and posix syscalls will always be "missing" compare to real kernel. We covered around 40% of Windows API, Linux based syscall and unknown amount of coverage on UEFI. This will be a continuous and never-ending job and help from community is highly appreciated. We hope for more contributors to help on API or syscall implementation, either adding or maintaining them.
 
-Our job is to make syscall or API as close to kernel as possible. But there are times, not 100% emulating the kernel is just ok. For example, pid, uid, mprotect related syscall are just a quick return value and write into a appropriate register.
+Our job is to make syscall or API as close to kernel as possible. But there are times, not 100% emulating the kernel is just fine too. For example, pid, uid, mprotect related syscall are just a quick return value and write into a appropriate register.
 
 ### Posix syscall
 We split the posix/syscall.py file into multiple files in posix/syscall directory. Seperation of syscall should follow its header, which is defined in the syscall function. 
