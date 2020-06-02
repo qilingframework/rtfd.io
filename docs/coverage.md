@@ -4,8 +4,8 @@ title: Code Coverage
 
 ### Overview
 
-The code coverage framework is capable of collecting code coverage information from targets running under Qiling. Afterwards, the results can be serialized into a format suitable for further processing or manual viewing.
-By leveraging the code coverage framework, one can know exactly which parts of the emulated code were executed and which weren't. Needless to say, this is an invaluable ability and can greatly aid any security-oriented research in couple of domains such as general RE, vulnerability research, exploit development, etc.
+The code coverage plugin is capable of collecting code coverage information from targets running under Qiling. Afterwards, the results can be serialized into a format suitable for further processing or manual viewing.
+By leveraging the code coverage plugin, one can know exactly which parts of the emulated code were executed and which weren't. Needless to say, this is an invaluable ability and can greatly aid any security-oriented research in couple of domains such as general RE, vulnerability research, exploit development, etc.
 
 ### Command-line interface
 
@@ -18,10 +18,10 @@ The command-line interface for controlling code coverage is comprised out of two
 ./qltool run -f examples/rootfs/x8664_efi/bin/TcgPlatformSetupPolicy --rootfs examples/rootfs/x8664_efi --coverage-format drcov --coverage-file TcgPlatformSetupPolicy.cov
 ```
 
-### Extending the framework to support additional coverage formats
+### Extending the plugin to support additional coverage formats
 
-Currently the framework is only capable of omitting code coverage files which comply to the 'drcov' format used by the DynamoRIO [tool of the same name](https://dynamorio.org/dynamorio_docs/page_drcov.html).
-If you wish to extend the framework by adding support for new coverage formats, please follow these steps:
+Currently the plugin is only capable of omitting code coverage files which comply to the 'drcov' format used by the DynamoRIO [tool of the same name](https://dynamorio.org/dynamorio_docs/page_drcov.html).
+If you wish to extend the plugin by adding support for new coverage formats, please follow these steps:
 
 - Create a new source module under the `coverage\formats` directory.
 - Make the new format "discoverable" by adding its name to the `__all__` list in `coverage\__init__.py`
