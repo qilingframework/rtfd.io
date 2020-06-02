@@ -5,7 +5,8 @@ title: Code Coverage
 ### Overview
 
 ![Code Coverage](img/drcov.png)
-The code coverage framework is capable of collecting code coverage information from targets running under Qiling. Afterwards, the results can be serialized into a format suitable for further processing or manual viewing.
+
+The code coverage framework is capable of collecting code coverage information from targets running under Qiling Framework. Afterwards, the results can be serialized into a format suitable for further processing or manual viewing.
 By leveraging the code coverage framework, one can know exactly which parts of the emulated code were executed and which weren't. Needless to say, this is an invaluable ability and can greatly aid any security-oriented research in couple of domains such as general RE, vulnerability research, exploit development, etc.
 
 ### Command-line interface
@@ -21,7 +22,7 @@ The command-line interface for controlling code coverage is comprise of two new 
 
 ### Extending the framework to support additional coverage formats
 
-Currently the framework is only capable of omitting code coverage files which comply to the 'drcov' format used by the DynamoRIO [tool of the same name](https://dynamorio.org/dynamorio_docs/page_drcov.html).
+Currently the framework is only capable of omitting code coverage files which comform to the 'drcov' format used by the DynamoRIO [tool of the same name](https://dynamorio.org/dynamorio_docs/page_drcov.html).
 If you wish to extend the framework by adding support for new coverage formats, please follow these steps:
 
 - Create a new source module under the `coverage\formats` directory.
