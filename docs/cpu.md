@@ -4,7 +4,7 @@ title: CPU Related API
 
 ### Save/Restore current running state register
 
-- context_save and context_restore is interface to uc_context_save and uc_context_restore.
+- context_save and context_restore are interfaces to uc_context_save and uc_context_restore.
 
 > - Save all the current running CPU state
 ```python
