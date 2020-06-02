@@ -22,6 +22,7 @@ nav:
 - 'Memory': 'memory.md'
 - 'Pack and Unpack': 'struct.md'
 - 'Hook': 'hook.md'
+- 'Coverage' : coverage.md
 - 'Partial Execution': 'partial.md'
 - 'Adding Syscall and OS API': 'syscall_api.md'
 - 'Extending Arch, OS or Loader': 'extension.md'
