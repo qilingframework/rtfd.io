@@ -4,12 +4,13 @@ title: Code Coverage
 
 ### Overview
 
+![Code Coverage](img/drcov.png)
 The code coverage framework is capable of collecting code coverage information from targets running under Qiling. Afterwards, the results can be serialized into a format suitable for further processing or manual viewing.
 By leveraging the code coverage framework, one can know exactly which parts of the emulated code were executed and which weren't. Needless to say, this is an invaluable ability and can greatly aid any security-oriented research in couple of domains such as general RE, vulnerability research, exploit development, etc.
 
 ### Command-line interface
 
-The command-line interface for controlling code coverage is comprised out of two new switches in `qltool`:
+The command-line interface for controlling code coverage is comprise of two new switches in `qltool`:
 
 - `-c, --coverage-file`: Specifies the name of the output coverage file. This file can later be imported by coverage visualization tools such as [Lighthouse](https://github.com/gaasedelen/lighthouse) in order to visualize the trace:
 - `--coverage-format`: Specifies the format of the coverage file. Currently only the `drcov` format is supported. If you wish to add support for additional formats, please read the relevant section.
