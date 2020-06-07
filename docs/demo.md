@@ -83,11 +83,7 @@ def force_call_dialog_func(ql):
     # get DialogFunc address
     lpDialogFunc = ql.unpack32(ql.mem.read(ql.reg.esp - 0x8, 4))
     # setup stack memory for DialogFunc
-    
-    
-    Youtube video
-    [![]()](https://www.youtube.com/watch?v=gVtpcXBxwE8
-   ) 
+
     ql.stack_push(0)
     ql.stack_push(1001)
     ql.stack_push(273)
