@@ -83,16 +83,7 @@ ql.reg.restore(all_registers)
 - Getting the list of current arch register table
 
 ```python
-ql.reg.table
-```
-
-
-### Get current register name
-
-- This will return "eax"
-
-```python
-ql.reg.name(UC_X86_REG_EAX)
+ql.reg.register_mapping()
 ```
 
 
