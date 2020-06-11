@@ -104,6 +104,23 @@ if __name__ == "__main__":
 
 ```
 
+### On enter interceptor on Posix function - ql.set_api()
+- Hijack parameter before Posix function
+- Posix's Libc function replacement
+```python
+from qiling import *
+from qiling.const import *
+
+def my_puts(ql):
+    addr = ql.func_arg[0]
+    print("Hijack Libc puts(%s)" % ql.mem.string(addr))
+
+if __name__ == "__main__":
+    ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", output="debug")
+    ql.set_api('puts', my_puts, QL_INTERCEPT.ENTER)
+    ql.run()
+```
+
 ### On enter interceptor  with ql.set_api()
 
 - Hijack parameter before OS APIs or syscall
@@ -120,7 +137,7 @@ def write_onenter(ql, arg1, arg2, arg3, *args):
 
 if __name__ == "__main__":
     ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", output="debug")
-    ql.set_syscall(1, write_onenter)
+    ql.set_syscall(1, write_onenter, QL_INTERCEPT.ENTER)
     ql.run()
 ```
 
@@ -128,6 +145,7 @@ if __name__ == "__main__":
 
 ```python
 from qiling import *
+from qiling.const import *
 
 def my_onenter(ql, address, params):
     print("\n+++++++++\nmy OnEnter")
@@ -139,7 +157,7 @@ def my_onenter(ql, address, params):
 
 def my_sandbox(path, rootfs):
     ql = Qiling(path, rootfs, output = "debug")
-    ql.set_api("_cexit", my_onenter)
+    ql.set_api("_cexit", my_onenter, QL_INTERCEPT.ENTER)
     ql.run()
 
 if __name__ == "__main__":
@@ -153,6 +171,7 @@ if __name__ == "__main__":
 - Example below shows replace output result of syscall 0x1 with write_onExit
 ```python
 from qiling import *
+from qiling.const import *
 
 def write_onExit(ql, arg1, arg2, arg3, *args):
     print("exit write syscall!")
@@ -160,13 +179,14 @@ def write_onExit(ql, arg1, arg2, arg3, *args):
 
 if __name__ == "__main__":
     ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", output="debug")
-    ql.set_syscall(1, write_onExit)
+    ql.set_syscall(1, write_onExit, QL_INTERCEPT.EXIT)
     ql.run()
 ```
 
 - However, Windows and UEFI usage is different from posix.
 ```python
 from qiling import *
+from qiling.const import *
 
 def my_onexit(ql, address, params):
     ql.nprint("\n+++++++++\nmy OnExit")
@@ -176,7 +196,7 @@ def my_onexit(ql, address, params):
 
 def my_sandbox(path, rootfs):
     ql = Qiling(path, rootfs, output = "debug")
-    ql.set_api("RegDeleteValueW", my_onexit)
+    ql.set_api("RegDeleteValueW", my_onexit, QL_INTERCEPT.EXIT)
     ql.run()
 
 if __name__ == "__main__":
