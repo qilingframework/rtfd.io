@@ -112,7 +112,7 @@ from qiling import *
 from qiling.const import *
 
 def my_puts(ql):
-    addr = ql.func_arg[0]
+    addr = ql.os.function_arg[0]
     print("Hijack Libc puts(%s)" % ql.mem.string(addr))
 
 if __name__ == "__main__":
