@@ -341,7 +341,8 @@ Youtube video
 Qiling Framework hot-patches and emulates ARM router's httpd on a X86_64Bit Ubuntu
 
 Example code
-```pythonimport os, socket, sys, threading
+```python
+import os, socket, sys, threading
 sys.path.append("..")
 from qiling import *
 
