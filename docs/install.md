@@ -29,7 +29,7 @@ sudo pip3 install -r requirements.txt
 sudo python3 setup.py install 
 ```
 
-### For latest and greatest code, use the dev branch
+### Dev branch: latest and greatest
 ```
 git clone https://github.com/qilingframework/qiling.git
 git checkout dev
