@@ -29,17 +29,19 @@ sudo pip3 install -r requirements.txt
 sudo python3 setup.py install 
 ```
 
+### For latest and greatest code, use the dev branch
+```
+git clone https://github.com/qilingframework/qiling.git
+git checkout dev
+```
+
+### Pyenv Installation
+
 If you are using pyenv, run the command shown below.
 ```sh
 mv $(dirname $(which python))/python2.7 $(dirname $(which python))/python2.7.bak
 pip install -r requirements.txt
 python setup.py install
-```
-
-### For latest and greatest code, use the dev branch
-```
-git clone https://github.com/qilingframework/qiling.git
-git checkout dev
 ```
 
 #### Important note on Windows DLLs and registry
