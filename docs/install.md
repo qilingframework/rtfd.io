@@ -6,6 +6,14 @@ title: Installation
 
 Qiling Framework is written in Python programming language and it works with different operating system and not limiting to any CPU architecture.
 
+### One line installer
+
+Installation using pip
+```
+pip3 install qiling --pre
+```
+
+### Manual Installation
 For this installation guide, Ubuntu desktop 18.04.3 LTS 64bit is the base example (Qiling Framework works in other Linux distributions that run Python 3.5 and above). Grab a copy of official Ubuntu ISO images from [Ubuntu CD mirrors](https://launchpad.net/ubuntu/+cdmirrors). Update and the system and also install pip3, git and cmake
 ```sh
 sudo apt-get update
@@ -28,7 +36,11 @@ pip install -r requirements.txt
 python setup.py install
 ```
 
----
+### For latest and greatest code, use the dev branch
+```
+git clone https://github.com/qilingframework/qiling.git
+git checkout dev
+```
 
 #### Important note on Windows DLLs and registry
 
