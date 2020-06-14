@@ -59,6 +59,40 @@ if __name__ == "__main__":
 
 ```
 
+### ql.set_syscall()
+
+- Custom syscall handler by syscall name or syscall number.
+- Notes: If the syscall function is not be implemented in qiling, qiling does not know which function should be replaced.
+- In that case, you must specify syscall by its number.
+- To reset, ql.set_syscall("write", None)
+
+```python
+from qiling import *
+
+def my_syscall_write(ql, write_fd, write_buf, write_count, *args, **kw):
+    regreturn = 0
+
+    try:
+        buf = ql.mem.read(write_buf, write_count)
+        ql.nprint("\n+++++++++\nmy write(%d,%x,%i) = %d\n+++++++++" % (write_fd, write_buf, write_count, regreturn))
+        ql.os.file_des[write_fd].write(buf)
+        regreturn = write_count
+    except:
+        regreturn = -1
+        ql.nprint("\n+++++++++\nmy write(%d,%x,%i) = %d\n+++++++++" % (write_fd, write_buf, write_count, regreturn))
+        if ql.output in (QL_OUTPUT.DEBUG, QL_OUTPUT.DUMP):
+            raise
+
+    ql.os.definesyscall_return(regreturn)
+
+
+if __name__ == "__main__":
+    ql = Qiling(["rootfs/arm_linux/bin/arm_hello"], "rootfs/arm_linux", output = "debug")
+    ql.set_syscall(0x04, my_syscall_write)
+    ql.set_syscall("write", my_syscall_write)
+    ql.run()
+```
+
 ### Posix - ql.set_api()
 -  Posix's Libc function replacement
 ```python
@@ -104,7 +138,7 @@ if __name__ == "__main__":
 
 ```
 
-### On enter interceptor on Posix function - ql.set_api()
+### On enter interceptor on Posix function with ql.set_api()
 - Hijack parameter before Posix function
 - Posix's Libc function replacement
 ```python
@@ -118,26 +152,6 @@ def my_puts(ql):
 if __name__ == "__main__":
     ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", output="debug")
     ql.set_api('puts', my_puts, QL_INTERCEPT.ENTER)
-    ql.run()
-```
-
-### On enter interceptor  with ql.set_api()
-
-- Hijack parameter before OS APIs or syscall
-- if the replaced function contains "_onEnter" (not case sensitive), it will be a on enter function.
-- Example below shows replace parameter of syscall 0x1 with write_onenter
-```python
-from qiling import *
-from qiling.const import *
-
-def write_onenter(ql, arg1, arg2, arg3, *args):
-    print("enter write syscall!")
-    ql.reg.rsi = arg2 + 1
-    ql.reg.rdx = arg3 - 1
-
-if __name__ == "__main__":
-    ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", output="debug")
-    ql.set_syscall(1, write_onenter, QL_INTERCEPT.ENTER)
     ql.run()
 ```
 
@@ -164,10 +178,28 @@ if __name__ == "__main__":
     my_sandbox(["rootfs/x8664_windows/bin/x8664_hello.exe"], "rootfs/x8664_windows")
 ```
 
+### On enter interceptor with ql.set_syscall
 
-### On exit interceptor with ql.set_api()
+- Hijack parameter before OS APIs or syscall
+- Example below shows replace parameter of syscall 0x1 with write_onenter
+```python
+from qiling import *
+from qiling.const import *
+
+def write_onenter(ql, arg1, arg2, arg3, *args):
+    print("enter write syscall!")
+    ql.reg.rsi = arg2 + 1
+    ql.reg.rdx = arg3 - 1
+
+if __name__ == "__main__":
+    ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", output="debug")
+    ql.set_syscall(1, write_onenter, QL_INTERCEPT.ENTER)
+    ql.run()
+```
+
+### On exit interceptor with ql.set_syscall()
+
 - Hijack return value after OS APIs or syscall execution
-- if the replaced function contains "_onExit" (not case sensitive), it will be a on exit function.
 - Example below shows replace output result of syscall 0x1 with write_onExit
 ```python
 from qiling import *
@@ -182,6 +214,8 @@ if __name__ == "__main__":
     ql.set_syscall(1, write_onExit, QL_INTERCEPT.EXIT)
     ql.run()
 ```
+
+### On exit interceptor with ql.set_api()
 
 - However, Windows and UEFI usage is different from posix.
 ```python
@@ -201,40 +235,6 @@ def my_sandbox(path, rootfs):
 
 if __name__ == "__main__":
     my_sandbox(["rootfs/x86_windows/bin/RegDemo.exe"], "rootfs/x86_windows")
-```
-
-### ql.set_syscall()
-
-- Custom syscall handler by syscall name or syscall number.
-- Notes: If the syscall function is not be implemented in qiling, qiling does not know which function should be replaced.
-- In that case, you must specify syscall by its number.
-- To reset, ql.set_syscall("write", None)
-
-```python
-from qiling import *
-
-def my_syscall_write(ql, write_fd, write_buf, write_count, *args, **kw):
-    regreturn = 0
-
-    try:
-        buf = ql.mem.read(write_buf, write_count)
-        ql.nprint("\n+++++++++\nmy write(%d,%x,%i) = %d\n+++++++++" % (write_fd, write_buf, write_count, regreturn))
-        ql.os.file_des[write_fd].write(buf)
-        regreturn = write_count
-    except:
-        regreturn = -1
-        ql.nprint("\n+++++++++\nmy write(%d,%x,%i) = %d\n+++++++++" % (write_fd, write_buf, write_count, regreturn))
-        if ql.output in (QL_OUTPUT.DEBUG, QL_OUTPUT.DUMP):
-            raise
-
-    ql.os.definesyscall_return(regreturn)
-
-
-if __name__ == "__main__":
-    ql = Qiling(["rootfs/arm_linux/bin/arm_hello"], "rootfs/arm_linux", output = "debug")
-    ql.set_syscall(0x04, my_syscall_write)
-    ql.set_syscall("write", my_syscall_write)
-    ql.run()
 ```
 
 ### ql.patch()
