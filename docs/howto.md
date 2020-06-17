@@ -113,8 +113,8 @@ Available options:
 
 Available options:
 
-- ql.fs_mapper = [] 
-> - Map an host file or directory to qiling file or directory eg, ql.fs_mapper('/etc','/etc')
+- ql.fs_mapper ("tobe_mapped","actual_path")
+> - Map an host file or directory from qiling file or directory to a actual folder eg, ql.fs_mapper('/etc','/real_etc')
 
 - ql.debug_stop = False 
 > - Default is false. Stop after missing posix syscall or api
