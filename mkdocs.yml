@@ -27,3 +27,4 @@ nav:
 - 'Adding Syscall and OS API': 'syscall_api.md'
 - 'Extending Arch, OS or Loader': 'extension.md'
 - 'FAQ': 'faq.md'
+- 'References': 'references.md'
