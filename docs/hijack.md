@@ -59,6 +59,31 @@ if __name__ == "__main__":
 
 ```
 
+### hijack object in ql.fs_mapper
+
+- You can hijack any object in ql.fs_mapper with your own python class 
+- make `/dev/urandom` reuturn fixed value, fake nvram input/output operation, etc.
+
+```
+from qiling import *
+
+class Fake_urandom:
+
+    def read(self, size):
+        return b"\x01" # fixed value for reading /dev/urandom
+
+    def fstat(self): # syscall fstat will ignore it if return -1
+        return -1
+
+    def close(self):
+        return 0
+
+if __name__ == "__main__":
+    ql = Qiling(["rootfs/x86_linux/bin/x86_fetch_urandom"], "rootfs/x86_linux")
+    ql.add_fs_mapper("/dev/urandom", Fake_urandom())
+    ql.run()
+```
+
 ### ql.set_syscall()
 
 - Custom syscall handler by syscall name or syscall number.
@@ -253,4 +278,3 @@ ql.patch(0x0000000000000575, b'qiling\x00')
 ```python
 ql.compile(ASM, ql.archtype)
 ```
-
