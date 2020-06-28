@@ -34,15 +34,6 @@ This project is released and distributed under [free software license GPLv2](htt
 - YU tong (sp1ke) <spikeinhouse@gmail.com>
 - Earl Marcus (klks84) <klks84@gmail.com> 
 
-#### Travis-CI, Docker and Website
+#### Travis-CI, Docker, Website and Documentations
 
 - FOO Kevin (chfl4gs) <chbsd64@qiling.io>
-
-#### Key Contributors (in no particular order)
-
-- kabeor
-- 0ssigeno
-- liba2k
-- assaf_carlsba
-- ucgJhe
-- jhumble
