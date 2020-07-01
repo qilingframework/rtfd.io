@@ -62,7 +62,7 @@ if __name__ == "__main__":
 ### hijack object in ql.fs_mapper
 
 - You can hijack any object in ql.fs_mapper with your own python class 
-- make `/dev/urandom` reuturn fixed value, fake nvram input/output operation, etc.
+- make `/dev/urandom` return fixed value, fake nvram input/output operation, etc.
 
 ```
 from qiling import *
@@ -180,7 +180,7 @@ if __name__ == "__main__":
     ql.run()
 ```
 
-- However, Windows and UEFI usage is different from posix.
+- However, Windows and UEFI usages are different from posix.
 
 ```python
 from qiling import *
@@ -206,7 +206,7 @@ if __name__ == "__main__":
 ### On enter interceptor with ql.set_syscall
 
 - Hijack parameter before OS APIs or syscall
-- Example below shows replace parameter of syscall 0x1 with write_onenter
+- Example below shows replaced parameter of syscall 0x1 with write_onenter
 ```python
 from qiling import *
 from qiling.const import *
@@ -224,8 +224,8 @@ if __name__ == "__main__":
 
 ### On exit interceptor with ql.set_syscall()
 
-- Hijack return value after OS APIs or syscall execution
-- Example below shows replace output result of syscall 0x1 with write_onExit
+- Hijack returns value after OS APIs or syscall execution
+- Example below shows replaced output result of syscall 0x1 with write_onExit
 ```python
 from qiling import *
 from qiling.const import *
@@ -242,7 +242,7 @@ if __name__ == "__main__":
 
 ### On exit interceptor with ql.set_api()
 
-- However, Windows and UEFI usage is different from posix.
+- However, Windows and UEFI usages are different from posix.
 ```python
 from qiling import *
 from qiling.const import *
