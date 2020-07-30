@@ -15,6 +15,7 @@ nav:
 - 'qltool': 'qltool.md'
 - 'Print and Filter': 'print.md'
 - 'Hijack': 'hijack.md'
+- 'Snapshot': 'snapshot.md'
 - 'Profile': 'profile.md'
 - 'Remote debugging': 'debugger.md'
 - 'CPU': 'cpu.md'
