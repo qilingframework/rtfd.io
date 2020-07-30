@@ -63,21 +63,6 @@ ql.reg.arch_sp = 0xFF
 ```
 
 
-### Save/Restore current arch register
-
-- Save all the current running state register
-- replace eip with new value
-```python
-all_registers = ql.reg.save()
-all_registers["eip"] = 0xaabbccdd
-```
-
-- Restore all the saved registers from "all_registers"
-```python
-ql.reg.restore(all_registers)
-```
-
-
 ### Get register table
 
 - Getting the list of current arch register table

@@ -22,13 +22,6 @@ ql.stack_read(offset)
 ql.stack_write(offset, data)
 ```
 
-### Save and restore
-- Save and restore curent memory state
-```python
-all_mem = ql.mem.save()
-ql.mem.restore(all_mem)
-```
-
 ### Search bytes pattern from memory
 - Search for a pattern from entire memory
 ```python
