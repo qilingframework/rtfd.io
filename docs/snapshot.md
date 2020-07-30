@@ -5,7 +5,7 @@ title: Snapshot
 ### Qiling: save and restore
 - save and restore current Qiling state
 ```python
-ql_qll = ql.save()
+ql_all = ql.save()
 ql.restore(ql_all)
 ```
 
