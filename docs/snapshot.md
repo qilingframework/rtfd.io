@@ -5,6 +5,28 @@ title: Snapshot & Partial Execution
 ### Partial Execution
 
 - sleep_hello will sleep for 3600 seconds and "print helloworld"
+- This is the C code, it will sleep for 3600 seconds before print helloworld
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+
+void func_hello()
+{
+    printf("Hello, World!\n");
+    return;
+}
+
+int main(int argc, const char **argv)
+{
+    printf("sleep 3600 seconds...\n");
+    sleep(3600);
+    printf("wake up.\n");
+    func_hello();
+    return 0;
+}
+```
 - The example below will stop at 0x1094, right before sleep() and save the current emulation state
 - Rerun sleep_hello and start at 0x10bc which is right after the sleep 3600 seconds
 
