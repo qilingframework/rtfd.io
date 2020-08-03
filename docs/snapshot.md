@@ -55,7 +55,7 @@ ql_all = ql.save()
 ql.restore(ql_all)
 ```
 
-Addition save option will be:
+Additional save options are:
 ```
 ql.save(mem= True, reg= True, fd= True, cpu_ctx= False)
 ```
