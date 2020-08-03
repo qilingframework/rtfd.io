@@ -130,9 +130,9 @@ Youtube video
 [![Solving malformed ELF header + Anti-Debug crackme, with Qiling GDBserver + Qiling qltool](https://i.ytimg.com/vi/TYGZ-GVRIaA/0.jpg)](https://www.youtube.com/watch?v=TYGZ-GVRIaA)
 
 
-### Fuzzing with Qiling Unicornalf
+### Fuzzing with Qiling Unicornafl
 
-More information on fuzzing with Qiling Unicornalf can be found [here](https://github.com/qilingframework/qiling/tree/dev/examples/fuzzing/README.md).
+More information on fuzzing with Qiling Unicornafl can be found [here](https://github.com/qilingframework/qiling/tree/dev/examples/fuzzing/README.md).
 
 Example code
 ```python
@@ -283,7 +283,7 @@ if __name__ == "__main__":
 
 Screenshot
 
-[![qiling DEMO 2: Fuzzing with Qiling Unicornalf](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/qilingfzz-s.png)](https://raw.githubusercontent.com/qilingframework/qiling/dev/examples/fuzzing/qilingfzz.png "Demo #2 Fuzzing with Qiling Unicornalf")
+[![qiling DEMO 2: Fuzzing with Qiling Unicornafl](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/qilingfzz-s.png)](https://raw.githubusercontent.com/qilingframework/qiling/dev/examples/fuzzing/qilingfzz.png "Demo #2 Fuzzing with Qiling Unicornafl")
 
 
 ### Emulating Netgear R6220
