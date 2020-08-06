@@ -2,14 +2,15 @@
 title: Qiling Emulator Plugin For IDA Guide
 ---
 ### Install
-There are Two ways to install Qiling Emulator
-> 1. open plugin file, change `UseAsScript = False`. Put the plugin file in IDA Pro\plugins and open IDA, it will auto load.
-> 2. open plugin file, change `UseAsScript = True`. Open IDA, Click `File/Script file...`, choose plugin file, it will load.
+- There are Two ways to install Qiling's IDA Plugin
+
+>- 1. open plugin file, change `UseAsScript = False`. Put the plugin file in IDA Pro\plugins and open IDA, it will auto load.
+>- 2. open plugin file, change `UseAsScript = True`. Open IDA, Click `File/Script file...`, choose plugin file, it will load.
 
 This plugin support IDA7.x
 
 ### Usage
-After load the plugin, click on the right will show Qiling Emulator popmenu
+After load the plugin, click on the right will show Qiling Emulator pop-up menu
 
 ![](img/ida1.png)
 
@@ -49,7 +50,7 @@ It will show if this address can be access.
 
 Click `Step` or use `CTRL+SHIFT+F9` can let Qiling emulator step in and paint the path blue. 
 
-**You can see 'Register view' and 'Stack view' are real-time**
+**You can see 'Register View' and 'Stack View' are real-time**
 
 ![](img/ida10.png)
 
@@ -57,7 +58,7 @@ Now we are in 0x4018E3. If you want to continue from 0x4018E3, just click `Conti
 
 ![](img/ida11.png)
 
-### Save/Load
+### Save and Load Snapshot
 you can save current status(Register, Memory, CPU Context) and load it to your Qiling emulate script or new Qiling Emulator Plugin, just click `Save Snapshot`
 or `Load Snapshot`.
 
