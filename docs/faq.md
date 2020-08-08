@@ -21,6 +21,44 @@ git checkout dev
 ### Windows API often comes with functionsA and functionW. Do I need to implement both?
 - Thanks to [jhumble](https://github.com/jhumble), he implemented wraps from functools to make A and W combile, please refer to [pull request 261](https://github.com/qilingframework/qiling/pull/261).
 
+```python
+# HANDLE CreateMutexW(
+#   LPSECURITY_ATTRIBUTES lpMutexAttributes,
+#   BOOL                  bInitialOwner,
+#   LPCWSTR               lpName
+# );
+@winsdkapi(cc=STDCALL, dllname=dllname)
+def hook_CreateMutexW(ql, address, params):
+    try:
+        _type, name = params["lpName"].split("\\")
+    except ValueError:
+        name = params["lpName"]
+        _type = ""
+
+    owning = params["bInitialOwner"]
+    handle = ql.os.handle_manager.search(name)
+    if handle is not None:
+        # ql.os.last_error = ERROR_ALREADY_EXISTS
+        return 0
+    else:
+        mutex = Mutex(name, _type)
+        if owning:
+            mutex.lock()
+        handle = Handle(obj=mutex, name=name)
+        ql.os.handle_manager.append(handle)
+
+    return handle.id
+
+# HANDLE OpenMutexA(
+#   DWORD   dwDesiredAccess,
+#   BOOL    bInheritHandle,
+#   LPCSTR lpName
+# );
+@winsdkapi(cc=STDCALL, dllname=dllname)
+def hook_OpenMutexA(ql, address, params):
+    return hook_OpenMutexW.__wrapped__(ql, address, params)
+```
+
 ### UC_ERR_FETCH_UNMAPPED, UC_ERR_WRITE_UNMAPPED and related issues
 This is not a "bug". There are several possibilities why these errors occur.
 
