@@ -4,7 +4,7 @@ title: Qiling Emulator Plugin For IDA Guide
 ### Install
 - There are Two ways to install Qiling's IDA Plugin
 
->- Open plugin file, change `UseAsScript = False`. Put the plugin file in IDA Pro\plugins and open IDA, it will auto load.
+>- Put the plugin file in IDA Pro\plugins and open IDA, it will auto load.
 >- Open plugin file, change `UseAsScript = True`. Open IDA, Click `File/Script file...`, choose plugin file, it will load.
 
 This plugin support IDA7.x
