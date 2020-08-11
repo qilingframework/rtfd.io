@@ -2,12 +2,6 @@
 title: FAQ
 ---
 
-### Keystone Engine Installation Error
-- This is a known issue and we are working with Keystone Engine to fix this. You can safely ignore Keystone engine installation error as Qiling Framework will work without Keystone Engine, unless you call ql.compile().
-
-### Keystone Module Not Found
-- There is a workaround for this issue. But you can always swtich to dev branch.
-
 ### How to swtich to dev branch
 ```
 git clone https://github.com/qilingframework/qiling.git
