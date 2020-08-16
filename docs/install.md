@@ -25,14 +25,12 @@ Once completed, clone a copy of Qiling Framework source from github and run setu
 ```sh
 git clone https://github.com/qilingframework/qiling
 cd qiling
-sudo pip3 install -r requirements.txt
-sudo python3 setup.py install 
+sudo pip3 install . 
 ```
 
 ### Dev branch: latest and greatest
 ```
-git clone https://github.com/qilingframework/qiling.git
-git checkout dev
+git clone -b dev https://github.com/qilingframework/qiling.git
 ```
 
 ### Pyenv Installation
@@ -40,8 +38,7 @@ git checkout dev
 If you are using pyenv, run the command shown below.
 ```sh
 mv $(dirname $(which python))/python2.7 $(dirname $(which python))/python2.7.bak
-pip install -r requirements.txt
-python setup.py install
+pip install .
 ```
 
 #### Important note on Windows DLLs and registry
@@ -127,7 +124,7 @@ Required DLLs can be bind-mounted to Qiling Framework container. Presuming DLLs 
 docker run -dt --name qiling \
  -v /analysis/win/x86dlls:/qiling/examples/rootfs/x86_windows/dlls \
  -v /analysis/win/x8664dlls:/qiling/examples/rootfs/x8664_windows/dlls \
- qiling:1.0
+ qilingframework/qiling:latest
 ```
 
 ```sh
