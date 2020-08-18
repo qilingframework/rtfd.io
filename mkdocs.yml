@@ -23,6 +23,7 @@ nav:
 - 'Memory': 'memory.md'
 - 'Pack and Unpack': 'struct.md'
 - 'Hook': 'hook.md'
+- 'Qiling Debugger': 'qdb.md'
 - 'Coverage' : coverage.md
 - 'Adding Syscall and OS API': 'syscall_api.md'
 - 'Extending Arch, OS or Loader': 'extension.md'
