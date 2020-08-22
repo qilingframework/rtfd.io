@@ -3,6 +3,7 @@ title: FAQ
 ---
 ### If you would like to support Qiling Framework financially 
 - Opensource project is never an easy task. Any help from the community is appreciated!
+- Please drop me an email after your donation, i will mail you some swag as a token of appreciation
 
 ##### XMR: 
 - 46T1c5taWuP6G4XvAG5shC6a7eai4Qe4HPFj5qEGyJzzMVRa9M9MR4DbNbbSDKtbgNR6bvWyj32Wb3HySYZuDqUp2GCr52o
