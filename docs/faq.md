@@ -2,8 +2,8 @@
 title: FAQ
 ---
 ### If you would like to support Qiling Framework financially 
-- Opensource project is never an easy task. We valued any help from the community
-- Please drop me an email kj@qiling.io after the donation, i will mail you some swag as a token of appreciation
+- Opensource project is never an easy task. We value any help from the community
+- Please drop me an email kj@qiling.io after making the donation, I will mail you some swag as a token of appreciation
 
 ##### XMR: 
 - 46T1c5taWuP6G4XvAG5shC6a7eai4Qe4HPFj5qEGyJzzMVRa9M9MR4DbNbbSDKtbgNR6bvWyj32Wb3HySYZuDqUp2GCr52o
@@ -15,6 +15,7 @@ title: FAQ
 - 0xec095228411d4a232f4d221ad7defcde36eb981f
 ##### BTC: 
 - 1NmxDWWak8qtpmYGnXBK1osRNNYH2zxpZs
+
 
 
 
