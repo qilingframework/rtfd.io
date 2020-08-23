@@ -6,7 +6,9 @@ theme: readthedocs
 site_favicon: favicon.png
 markdown_extensions:
   - attr_list
- 
+extra_css:
+  - css/my.css
+
 nav:
 - 'Introduction': 'index.md'
 - 'Installation': 'install.md'
