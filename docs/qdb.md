@@ -36,4 +36,4 @@ This plugin is a modified version from [Qdb](https://github.com/ucgJhe/Qdb)
     - 1. the address you want to step backward on it must be step-over before 
     - 2. make sure run qdb with option `rr=True`
 
-![](img/qdb_step_backward)
+![](img/qdb_step_backward.png)
