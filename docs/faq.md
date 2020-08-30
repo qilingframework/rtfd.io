@@ -1,21 +1,22 @@
 ---
 title: FAQ
 ---
-### If you would like to support Qiling Framework 
-- Please notify us via email to kj@qiling.io after making the donation.
-- These are not ready made. So, you might need to wait abit for the goods to be delivered.
-- To makes things easier, we structure the "price" this way :-
+### This is a awesome project. How can i donate
 
+- To makes things easier, we structure the "price" this way :-
+```
   - Below 20 USD - Name on donation page<br>
   - 20 USD - Stickers<br>
   - 60 USD- Stickers + USB Drive<br>
   - 120 USD and above - Stickers + USB Dirve + T-Shirt
-
-- "USD" denotes the US dolar equivalent amount of coin value during the time of donation
+```  
+- "USD" denotes the US dolar equivalent amount of coin value during the time of donation  
+- Please notify us via email to kj@qiling.io after making the donation.
+- These are not ready made. So, you might need to wait abit for the goods to be delivered.
 - Paypal accepted at our web store
 
 <img src="https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/swag.jpg">
-
+```
 - Paypal via Web Store
   - https://www.hardwareninja.store/c/QilingFramework
 - XMR
@@ -28,7 +29,7 @@ title: FAQ
   - 0xec095228411d4a232f4d221ad7defcde36eb981f
 - BTC: 
   - 1NmxDWWak8qtpmYGnXBK1osRNNYH2zxpZs
-
+```
 
 
 
