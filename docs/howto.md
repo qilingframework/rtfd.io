@@ -4,7 +4,7 @@ title: Getting Started
 
 Few examples are exhibited in this document and we will illustrate how Qiling Framework works
 
-### Executing a fie
+### Executing a file
 ```python
 import sys
 from qiling import *
