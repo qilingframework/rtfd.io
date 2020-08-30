@@ -13,7 +13,7 @@ title: FAQ
 ```  
 
 - "USD" denotes the US dolar equivalent amount of coin value during the time of donation  
-- Please notify us via email to kj@qiling.io after making the donation.
+- Please notify us via email to [kj@qiling.io](mailto:kj@qiling.io) after making the donation.
 - These are not ready made. So, you might need to wait a while for the goods to be delivered.
 - Paypal is accepted at our web store
 
