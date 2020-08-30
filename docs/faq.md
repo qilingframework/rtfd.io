@@ -1,26 +1,26 @@
 ---
 title: FAQ
 ---
-### This is a awesome project! How can i donate?
+### This is an awesome project! How can I donate?
 
 - To makes things easier, we structure the "price" this way :-
 
 ```
-  - Below 20 USD - Name on donation page<br>
-  - 20 USD - Stickers<br>
-  - 60 USD- Stickers + USB Drive<br>
+  - Below 20 USD - Name on donation page
+  - 20 USD - Stickers
+  - 60 USD- Stickers + USB Drive
   - 120 USD and above - Stickers + USB Dirve + T-Shirt
 ```  
 
 - "USD" denotes the US dolar equivalent amount of coin value during the time of donation  
 - Please notify us via email to kj@qiling.io after making the donation.
-- These are not ready made. So, you might need to wait abit for the goods to be delivered.
-- Paypal accepted at our web store
+- These are not ready made. So, you might need to wait a while for the goods to be delivered.
+- Paypal is accepted at our web store
 
 <img src="https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/swag.jpg">
 
 
-- Paypal: https://www.hardwareninja.store/c/QilingFramework
+- Paypal: [https://www.hardwareninja.store/c/QilingFramework](https://www.hardwareninja.store/c/QilingFramework)
 - Crypto Currencies:
 ```  
 XMR
