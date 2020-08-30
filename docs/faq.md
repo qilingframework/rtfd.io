@@ -21,7 +21,7 @@ title: FAQ
 
 
 - Paypal: https://www.hardwareninja.store/c/QilingFramework
-- Crypto Currencies
+- Crypto Currencies:
 ```  
 XMR
   - 46T1c5taWuP6G4XvAG5shC6a7eai4Qe4HPFj5qEGyJzzMVRa9M9MR4DbNbbSDKtbgNR6bvWyj32Wb3HySYZuDqUp2GCr52o
