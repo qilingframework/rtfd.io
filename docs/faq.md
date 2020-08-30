@@ -20,17 +20,17 @@ title: FAQ
 <img src="https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/swag.jpg">
 
 ```
-- Paypal via Web Store
+Paypal via Web Store
   - https://www.hardwareninja.store/c/QilingFramework
-- XMR
+XMR
   - 46T1c5taWuP6G4XvAG5shC6a7eai4Qe4HPFj5qEGyJzzMVRa9M9MR4DbNbbSDKtbgNR6bvWyj32Wb3HySYZuDqUp2GCr52o
-- DASH
+DASH
   - XhTsLXTQEhN5F7hKtq8HV867um3HZuXvF9
-- ADA
+ADA
   - DdzFFzCqrht8MbmRQL8v86XG5vQHYNC6NQwFkhCW4rsNHMLfzWyxVTce5yFayg6QqJBdL7AapwvFL3fBAoBmPLR9gDbkzLGfVVEGHnNC
-- ETH: 
+ETH: 
   - 0xec095228411d4a232f4d221ad7defcde36eb981f
-- BTC: 
+BTC: 
   - 1NmxDWWak8qtpmYGnXBK1osRNNYH2zxpZs
 ```
 
