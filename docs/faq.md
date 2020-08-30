@@ -1,7 +1,7 @@
 ---
 title: FAQ
 ---
-### This is an awesome project! How can I donate?
+### This is an awesome project! Can I donate?
 Yes, details please refer to: - https://www.qiling.io/donation/
 
 ### How to swtich to dev branch
