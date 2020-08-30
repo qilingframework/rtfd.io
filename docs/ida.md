@@ -2,15 +2,15 @@
 title: Qiling Emulator Plugin For IDA Guide
 ---
 ### Install
-- There are Two ways to install Qiling's IDA Plugin
+- There are two ways to install Qiling's IDA Plugin
 
 >- Put the plugin file in IDA Pro\plugins and open IDA, it will auto load.
 >- Open plugin file, change `UseAsScript = True`. Open IDA, Click `File/Script file...`, choose plugin file, it will load.
 
-This plugin support IDA7.x
+This plugin supports IDA7.x
 
 ### Usage
-After load the plugin, click on the right will show Qiling Emulator pop-up menu.
+After loading the plugin, right-click will show Qiling Emulator under pop-up menu.
 
 ![](img/ida1.png)
 
@@ -18,46 +18,46 @@ After load the plugin, click on the right will show Qiling Emulator pop-up menu.
 
 **Must Click Setup First**
 
-Select rootfs path and click Start(input custom script path if you have).
+Select rootfs path and click Start (input custom script path if you have).
 
-If the custom script is loaded successfully, it will prompt 'User Script Load'.Otherwise, it will prompt 'There Is No User Scripts', please check the script path and syntax are correct.
+If the custom script is loaded successfully, it will prompt 'User Script Load'. Otherwise, it will prompt 'There Is No User Scripts', please check if the script path and syntax are correct.
 
 ![](img/ida2.png)
 ![](img/ida3.png)
 
-Now if you click `Continue`, Qiling will emulate the target from start(entry_point) to finish(exit_point) and paint the path green.
+Now if you click `Continue`, Qiling will emulate the target from start (entry_point) to finish (exit_point) and paint the path green.
 
 ![](img/ida4.png)
 
-if you want to start over, click `Restart`, it will clear the previous color and ask rootfs path again, then we back to the start.
+If you want to start over, click `Restart`, it will clear the previous color and ask rootfs path again, then we are back to the start.
 
 Now try something new, we want to let Qiling stop at 0x0804851E.
 
 ![](img/ida5.png)
 
-Just move the mouse pointer to position 0x0804851E and click right, select `Execute Till`, Qiling will emulate to 0x0804851E(if the path is reachable), and paint the address nude.
+Just move the mouse pointer to position 0x0804851E and right-click, select `Execute Till`, Qiling will emulate to 0x0804851E(if the path is reachable), and paint the address node.
 
 ![](img/ida6.png)
 
-we can watch Register and Stack by click `View Register`, `View Stack`.
+we can watch Register and Stack by clicking `View Register`, `View Stack`.
 
 ![](img/ida7.png)
 
-we can watch Memory by click `View Memory`.
+we can watch Memory by clicking `View Memory`.
 Input address and size of memory you want to access.
-It will show if this address can be access.
+It will show if this address can be accessed.
 
 ![](img/ida8.png)
 ![](img/ida9.png)
 
 
-Click `Step` or use `CTRL+SHIFT+F9` can let Qiling emulator step in and paint the path blue. 
+Click `Step` or use `CTRL+SHIFT+F9` to let Qiling emulator step in and paint the path blue. 
 
-**You can see 'Register View' and 'Stack View' are real-time**
+**You can see 'Register View' and 'Stack View' are in real-time**
 
 ![](img/ida10.png)
 
-Now we are in 0x0804852C. Let's enter the function sub_8048451 and click `F2` to setup a breakpoint at 0x08048454. 
+Now we are in 0x0804852C. Let's enter the function sub_8048451 and press `F2` to setup a breakpoint at 0x08048454. 
 
 ![](img/ida11.png)
 
@@ -135,11 +135,11 @@ Set breakpoint at 0x080484F6 and click `Continue`, custom_continue hook will sho
 
 ![](img/ida15.png)
 
-**Change the custom script and want to take effect immediately?**
-Just save the script and click `Reload User Scripts`. If reload success, it will show 'User Script Reload'.
+**Change the custom script to take effect immediately?**
+Just save the script and click `Reload User Scripts`. If reload is succeeded, it will show 'User Script Reload'.
 
 ### Save and Load Snapshot
-you can save current status(Register, Memory, CPU Context) and load it to your Qiling emulate script or new Qiling Emulator Plugin, just click `Save Snapshot`
+you can save current status (Register, Memory, CPU Context) and load it to your Qiling emulate script or new Qiling Emulator Plugin, just click `Save Snapshot`
 or `Load Snapshot`.
 
 For saving, you should select the path where you want to store and file name.
