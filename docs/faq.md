@@ -20,9 +20,7 @@ title: FAQ
 <img src="https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/swag.jpg">
 
 
-- Paypal via Web Store
-  - https://www.hardwareninja.store/c/QilingFramework
-
+- Paypal: https://www.hardwareninja.store/c/QilingFramework
 - Crypto Currencies
 ```  
 XMR
