@@ -1,7 +1,7 @@
 ---
 title: FAQ
 ---
-### This is a awesome project. How can i donate
+### This is a awesome project. How can i donate?
 
 - To makes things easier, we structure the "price" this way :-
 
