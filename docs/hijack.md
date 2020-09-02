@@ -59,7 +59,7 @@ if __name__ == "__main__":
 
 ```
 
-### hijack objects via fs mapper
+### Hijack objects via fs mapper
 
 Fs mapper works in two ways.
 
