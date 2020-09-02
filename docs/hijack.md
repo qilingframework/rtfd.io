@@ -59,15 +59,30 @@ if __name__ == "__main__":
 
 ```
 
-### hijack object in ql.fs_mapper
+### hijack objects via fs mapper
 
-- You can hijack any object in ql.fs_mapper with your own python class 
-- make `/dev/urandom` return fixed value, fake nvram input/output operation, etc.
+Fs mapper works in two ways.
+
+- Hijack the path in emulated environment to the paht on your host machine. e.g. Bind '/dev/urandom' to the real device.
 
 ```
 from qiling import *
 
-class Fake_urandom:
+if __name__ == "__main__":
+    ql = Qiling(["rootfs/x86_linux/bin/x86_fetch_urandom"], "rootfs/x86_linux")
+    ql.add_fs_mapper("/dev/urandom", "/dev/urandom")
+    ql.run()
+```
+
+- Redirect the read/write operations to a user-defined object.
+
+This is advanced usage for fs mapper. Below is an example which maps '/dev/urandom' to a user-defined implementation. Note all such objects should inherit from `QlFsMappedObject`.
+
+```
+from qiling import *
+from qiling.os.mapper import QlFsMappedObject
+
+class Fake_urandom(QlFsMappedObject):
 
     def read(self, size):
         return b"\x01" # fixed value for reading /dev/urandom
@@ -83,6 +98,28 @@ if __name__ == "__main__":
     ql.add_fs_mapper("/dev/urandom", Fake_urandom())
     ql.run()
 ```
+
+Another usage can be disk emulation. As is often the case, a program would like to access disks directly and you can utilize fs mapper to emulate a disk.
+
+```
+from qiling import *
+from qiling.os.disk import QlDisk
+
+if __name__ == "__main__":
+    ql = Qiling(["rootfs/8086_dos/petya/mbr.bin"], 
+                 "rootfs/8086_dos",
+                 console=False, 
+                 output="debug", 
+                 log_dir=".")
+    # Note:
+    # This image is only intended for PoC since the core petya code resides in the
+    # sepecific sectors of a harddisk. It doesn't contain any data, either encryted
+    # or unencrypted.
+    ql.add_fs_mapper(0x80, QlDisk("rootfs/8086_dos/petya/out_1M.raw", 0x80))
+    ql.run()
+```
+
+The `QlDisk` in practice inherits from `QlFsMappedObejct` and implements disk operation logic like cylinder, head, sectors and logic block address. `out_1M.raw` is a raw disk image and `0x80` is the disk drive index in BIOS and DOS. For Linux and Windows, the drive index could be '/dev/sda' or '\\.\PHYSICALDRIVE0'.
 
 ### ql.set_syscall()
 
