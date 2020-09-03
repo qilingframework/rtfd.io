@@ -1,6 +1,11 @@
 ---
 title: Qiling Emulator Plugin For IDA Guide
 ---
+
+Youtube video
+
+[![Qiling's IDAPro Plugin: Instrument and Decrypt Mirai's Secret](https://i.ytimg.com/vi/ZWMWTq2WTXk/0.jpg)](https://www.youtube.com/watch?v=ZWMWTq2WTXk)
+
 ### Install
 - There are two ways to install Qiling's IDA Plugin
 
