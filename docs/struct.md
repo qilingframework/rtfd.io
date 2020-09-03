@@ -24,6 +24,13 @@ ql.pack32()
 > - C Type: unsigned int 
 > - Size: 4 bytes
 
+```python
+ql.pack16()
+```
+- pack for 16bit data
+> - Pack with option "H", with endian check:
+> - C Type: unsigned short 
+> - Size: 2 bytes
 
 ### ql.unpack()
 ```python
@@ -46,14 +53,6 @@ ql.unpack32()
 > - Unpack with option "I", with endian check:
 > - C Type: unsigned int 
 > - Size: 4 bytes
-
-```python
-ql.pack16()
-```
-- pack for 16bit data
-> - Pack with option "H", with endian check:
-> - C Type: unsigned short 
-> - Size: 2 bytes
 
 ```python
 ql.unpack16()
