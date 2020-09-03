@@ -5,7 +5,7 @@ title: Pack and Unpack
 ```python
 ql.pack()
 ```
-- If ql.archbit == 64 then ql.pack64 else ql.pack32
+- depends on ql.archbit, ql.pack64 for 64-bit and so on
 
 ```python
 ql.pack64()
@@ -15,7 +15,6 @@ ql.pack64()
 > - C Type: unsigned long long 
 > - Size: 8 bytes
 
-
 ```python
 ql.pack32()
 ```
@@ -24,12 +23,19 @@ ql.pack32()
 > - C Type: unsigned int 
 > - Size: 4 bytes
 
+```python
+ql.pack16()
+```
+- pack for 16bit data
+> - Pack with option "H", with endian check:
+> - C Type: unsigned short 
+> - Size: 2 bytes
 
 ### ql.unpack()
 ```python
 ql.unpack()
 ```
-- If ql.archbit == 64 then ql.unpack64 else ql.unpack32
+- depends on ql.archbit, ql.unpack64 for 64-bit and so on 
 
 ```python
 ql.upack64()
@@ -48,14 +54,6 @@ ql.unpack32()
 > - Size: 4 bytes
 
 ```python
-ql.pack16()
-```
-- pack for 16bit data
-> - Pack with option "H", with endian check:
-> - C Type: unsigned short 
-> - Size: 2 bytes
-
-```python
 ql.unpack16()
 ```
 - unpack for 16bit data
@@ -67,7 +65,8 @@ ql.unpack16()
 ```python
 ql.packs()
 ```
-- If ql.archbit == 64 then ql.pack64s else ql.pack32s
+- signed packing
+- depends on ql.archbit, ql.pack64s for 64-bit and so on 
 
 ```python
 ql.pack64s()
@@ -78,19 +77,27 @@ ql.pack64s()
 > - Size: 8 bytes
 
 ```python
-ql.pack32s
+ql.pack32s()
 ```
 - packs for 32bit data
 > - Pack with option "i", with endian check:
 > - C Type: int 
 > - Size: 4 bytes
 
+```python
+ql.pack16s()
+```
+- packs for 16bit data
+> - Unpack with option "h", with endian check:
+> - C Type: short
+> - Size: 2 bytes
 
 ### ql.unpacks()
 ```python
 ql.unpacks()
 ```
-- If archbit == 64 then ql.unpack64s else ql.unpack32s
+- signed unpacking
+- depends on ql.archbit, ql.unpack64s for 64-bit and so on 
 
 ```python
 ql.unpack64s()
@@ -108,11 +115,10 @@ ql.unpack32s()
 > - C Type: int 
 > - Size: 4 bytes
 
-
-### ql.unpack32_ne()
 ```python
-ql.unpack32_ne()
+ql.unpack16s()
 ```
-> - Unpack with option "i":
-> - C Type: int 
-> - Size: 4 bytes
+- packs for 16bit data
+> - Unpack with option "h", with endian check:
+> - C Type: short
+> - Size: 2 bytes
