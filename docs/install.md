@@ -122,8 +122,8 @@ Required DLLs can be bind-mounted to Qiling Framework container. Presuming DLLs 
 
 ```sh
 docker run -dt --name qiling \
- -v /analysis/win/x86dlls:/qiling/examples/rootfs/x86_windows/dlls \
- -v /analysis/win/x8664dlls:/qiling/examples/rootfs/x8664_windows/dlls \
+ -v /analysis/win/x86dlls:/qiling/examples/rootfs/x86_windows/Windows/SysWOW64 \
+ -v /analysis/win/x8664dlls:/qiling/examples/rootfs/x8664_windows/Windows/System32 \
  qilingframework/qiling:latest
 ```
 
