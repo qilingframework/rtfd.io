@@ -118,14 +118,16 @@ docker pull qilingframework/qiling:1.0
 
 ii. Running Qiling Framework docker with a bind mount
 
-Required DLLs can be bind-mounted to Qiling Framework container. Presuming DLLs are located in /analysis/win.
+Required DLLs can be bind-mounted to Qiling Framework container. Presuming DLLs and HIVE files are located in sub-directories of /analysis/win/rootfs.
 
 ```sh
 docker run -dt --name qiling \
- -v /analysis/win/x86dlls:/qiling/examples/rootfs/x86_windows/Windows/SysWOW64 \
- -v /analysis/win/x8664dlls:/qiling/examples/rootfs/x8664_windows/Windows/System32 \
+ -v /analysis/win/rootfs/x86_windows:/qiling/examples/rootfs/x86_windows \
+ -v /analysis/win/rootfs/x8664_windows:/qiling/examples/rootfs/x8664_windows \
  qilingframework/qiling:latest
 ```
+
+Attaching to the running docker container.
 
 ```sh
 docker exec -it qiling bash
