@@ -2,24 +2,58 @@
 title: Qiling Emulator Plugin For IDA Guide
 ---
 
-Youtube video
+Qiling Emulator is a Plugin for IDA Pro. It provides a way to enable IDA and [Qiling](https://github.com/qilingframework/qiling) to interact. By this way, IDA can debug binaries for multiple platforms and architectures. 
+
+With customized script, 
+it takes the plugin to a new higher. Imagine you can add hooks at various levels anywhere, dynamic hotpatch on-the-fly running code, even the loaded library, working with IDA Pro's powerful disassembly and discompile ability. How a fantastic thing! 
+
+All of these can be achieved on one computer, no remote debug server, no virtual machine. 
+
+### How it works?
+Qiling Emulator deeply integrates the API of Qiling with the API of IDApython, and provides users with friendly gui interface to view registers, stack and memory in real time. In addition, customized script allow users to use all built-in functions of qiling.
+
+### Support platform && architecture
+
+| |8086|x86|x86-64|ARM|ARM64|MIPS|
+|---|---|---|---|---|---|---|
+| Windows (PE)    | -       | &#9745; | &#9745; | &#9744; | &#9744; | -       |
+| Linux (ELF)     | &#9744; | &#9745; | &#9745; | &#9745; | &#9745; | &#9745; |
+| MacOS (MachO)   | -       | &#9744; | &#9745; | -       | -       | -       |
+| BSD (ELF)       | &#9744; | &#9744; | &#9745; | &#9744; | &#9744; | &#9744; |
+| UEFI            | -       | &#9745; | &#9745; | -       | -       | -       |
+| DOS (COM)       | &#9745; | -       | -       | -       | -       | -       |
+
+
+|Architecture independent||
+|---|---|
+|MBR|&#9745;|
+
+
+### Demo video
+
+Qiling's IDAPro Plugin: Instrument and Decrypt Mirai's Secret
 
 [![Qiling's IDAPro Plugin: Instrument and Decrypt Mirai's Secret](https://i.ytimg.com/vi/ZWMWTq2WTXk/0.jpg)](https://www.youtube.com/watch?v=ZWMWTq2WTXk)
 
 ### Install
+- Install Qiling: `python3 -m pip install qiling`
 - There are two ways to install Qiling's IDA Plugin
 
 >- Put the plugin file in IDA Pro\plugins and open IDA, it will auto load.
 >- Open plugin file, change `UseAsScript = True`. Open IDA, Click `File/Script file...`, choose plugin file, it will load.
 
-This plugin supports IDA7.x
+Once installed, the plugin is available under "Edit->Plugins->Qiling Emulator" and popup menu.
+
+This plugin supports IDA7.x with Python3.6+.
+
+Recommand platform: Linux
 
 ### Usage
 After loading the plugin, right-click will show Qiling Emulator under pop-up menu.
 
 ![](img/ida1.png)
 
-### Emulate
+#### Emulate
 
 **Must Click Setup First**
 
@@ -28,6 +62,7 @@ Select rootfs path and click Start (input custom script path if you have).
 If the custom script is loaded successfully, it will prompt 'User Script Load'. Otherwise, it will prompt 'There Is No User Scripts', please check if the script path and syntax are correct.
 
 ![](img/ida2.png)
+
 ![](img/ida3.png)
 
 Now if you click `Continue`, Qiling will emulate the target from start (entry_point) to finish (exit_point) and paint the path green.
@@ -53,6 +88,7 @@ Input address and size of memory you want to access.
 It will show if this address can be accessed.
 
 ![](img/ida8.png)
+
 ![](img/ida9.png)
 
 
@@ -74,7 +110,7 @@ Want to change some register values? Right click on Disassemble View or Register
 
 ![](img/ida13.png)
 
-### Write custom scripts
+#### Write custom scripts
 
 custom scripts is a python script, the code frame like this:
 
@@ -83,6 +119,9 @@ from qiling import *
 
 class QILING_IDA():
     def __init__(self):
+        pass
+
+    def custom_prepare(self, ql):
         pass
 
     def custom_continue(self, ql:Qiling):
@@ -106,6 +145,9 @@ from qiling import *
 class QILING_IDA():
     def __init__(self):
         pass
+
+    def custom_prepare(self, ql):
+        print('set something before ql.run')
 
     def custom_continue(self, ql:Qiling):
         def continue_hook(ql, addr, size):
@@ -143,7 +185,7 @@ Set breakpoint at 0x080484F6 and click `Continue`, custom_continue hook will sho
 **Change the custom script to take effect immediately?**
 Just save the script and click `Reload User Scripts`. If reload is succeeded, it will show 'User Script Reload'.
 
-### Save and Load Snapshot
+#### Save and Load Snapshot
 you can save current status (Register, Memory, CPU Context) and load it to your Qiling emulate script or new Qiling Emulator Plugin, just click `Save Snapshot`
 or `Load Snapshot`.
 
