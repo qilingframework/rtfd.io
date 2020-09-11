@@ -4,12 +4,12 @@ title: Qiling Emulator Plugin For IDA Guide
 
 Qiling Emulator is a Plugin for IDA Pro. It provides a way to enable IDA and [Qiling](https://github.com/qilingframework/qiling) to interact. By this way, IDA can debug binaries for multiple platforms and architectures. 
 
-With customized script, 
-it takes the plugin to a new higher. Imagine you can add hooks at various levels anywhere, dynamic hotpatch on-the-fly running code, even the loaded library, working with IDA Pro's powerful disassembly and discompile ability. How a fantastic thing! 
+With customized script, it takes the plugin to a new higher. Imagine you can add hooks at various levels anywhere, dynamic hotpatch on-the-fly running code, even the loaded library, working with IDA Pro's powerful disassembly and discompile ability. How a fantastic thing! 
 
 All of these can be achieved on one computer, no remote debug server, no virtual machine. 
 
 ### How it works?
+
 Qiling Emulator deeply integrates the API of Qiling with the API of IDApython, and provides users with friendly gui interface to view registers, stack and memory in real time. In addition, customized script allow users to use all built-in functions of qiling.
 
 ### Support platform && architecture
@@ -36,19 +36,43 @@ Qiling's IDAPro Plugin: Instrument and Decrypt Mirai's Secret
 [![Qiling's IDAPro Plugin: Instrument and Decrypt Mirai's Secret](https://i.ytimg.com/vi/ZWMWTq2WTXk/0.jpg)](https://www.youtube.com/watch?v=ZWMWTq2WTXk)
 
 ### Install
-- Install Qiling: `python3 -m pip install qiling`
-- There are two ways to install Qiling's IDA Plugin
 
->- Put the plugin file in IDA Pro\plugins and open IDA, it will auto load.
->- Open plugin file, change `UseAsScript = True`. Open IDA, Click `File/Script file...`, choose plugin file, it will load.
+#### Install Qiling
 
-Once installed, the plugin is available under "Edit->Plugins->Qiling Emulator" and popup menu.
+Firstly, you need to install Qiling. See [Installation](/install/) for details.
+
+#### Install IDA plugin
+
+We provide two ways to install Qiling IDA plugin.
+
+##### Use as a IDA plugin
+
+- Edit the `qiling/extensions/idaplugin/qilingida.py` and switch `UseAsScript = True` to `UseAsScript = False`.
+- Make a symbol link to your IDA plugins directory.
+
+```bash
+# Macos
+ln -s /absolute/path/to/qiling/extensions/idaplugin/qilingida.py /Applications/<Your IDA>/ida.app/Contents/MacOS/plugins
+
+# Windows
+mklink C:\absolute\path\to\IDA\plugins\qilingida.py D:\absolute\path\to\qiling\extensions\idaplugin\qilingida.py
+```
+
+The advantage of symbol link is that you can always update the plugin by `git pull`. If you would not like a symbol link, you can also copy `qilingida.py` to your IDA plugin folder.
+
+##### Use as a script file
+
+- Edit the `qiling/extensions/idaplugin/qilingida.py` and switch `UseAsScript = False` to `UseAsScript = True`.
+- Start IDA, Click `File/Script file...`, choose the `qilingida.py` and the plugin will be loaed.
+
+Once loaded, the plugin is available under "Edit->Plugins->Qiling Emulator" and popup menu.
 
 This plugin supports IDA7.x with Python3.6+.
 
-Recommand platform: Linux
+Recommand platform: macOS && Linux
 
 ### Usage
+
 After loading the plugin, right-click will show Qiling Emulator under pop-up menu.
 
 ![](img/ida1.png)
@@ -196,3 +220,42 @@ For saving, you should select the path where you want to store and file name.
 For restoring, you should select where the status saving file is.
 
 ![](img/ida_load.png)
+
+#### Ollvm De-flatten
+
+[ollvm](https://github.com/obfuscator-llvm/obfuscator) is an obfuscator based on LLVM. One of its obfuscation is [Control Flow Flattening](https://github.com/obfuscator-llvm/obfuscator/wiki/Control-Flow-Flattening). With Qiling IDA plugin, you can de-flatten obfuscated binary easily.
+
+Contro Flow Flattening will generate four types of blocks: real blocks, fake blocks, dispatcher blocks and return blocks.
+
+- Real blocks: The real logic in your original program.
+- Fake blocks: The fake logic in obfuscated code.
+- Dispatcher blocks: Something like `switch...case...case...` implementation, decide the following control flows.
+- Return blocks: The blocks which exit the function.
+
+To deflat the function, our first task is to identity such blocks. Qiling IDA plugin will help you do some auto analysis by clicking `Auto Analysis For Deflat`. **Note that you should have set rootfs and custom script.**
+
+![](img/deflat.png)
+
+After that, the blocks of the function will be rendered with different colors:
+
+- Green: Real blocks.
+- Blue: Dispatcher blocks.
+- Gray: Fake blocks.
+- Pink: Return blocks.
+- Yellow: The first block.
+
+![](img/deflat2.png)
+
+In this stage, you can adjust the analysis result by marking the block as real, fake or return blocks.
+
+If you attempt to decompile the code at this time, you will find it impossible to understand.
+
+![](img/deflat3.png)
+
+Then click `Deflat`, Qiling IDA plugin will start to perform symbolic execution to find the real control flow between real blocks and remove all fake blocks and dispatcher blocks. Below is the result:
+
+![](img/deflat4.png)
+
+Pressing F5 now presents you with clear logic without any obfuscation.
+
+![](img/deflat5.png)
