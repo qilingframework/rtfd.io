@@ -2,15 +2,15 @@
 title: Qiling Emulator Plugin For IDA Guide
 ---
 
-Qiling Emulator is a Plugin for IDA Pro. It provides a way to enable IDA and [Qiling](https://github.com/qilingframework/qiling) to interact. By this way, IDA can debug binaries for multiple platforms and architectures. 
+Qiling Emulator is a Plugin for IDA Pro. It provides a way to enable IDA and [Qiling](https://github.com/qilingframework/qiling) to interact. In this way, IDA can debug binaries for multiple platforms and architectures. 
 
-With customized script, it takes the plugin to a new higher. Imagine you can add hooks at various levels anywhere, dynamic hotpatch on-the-fly running code, even the loaded library, working with IDA Pro's powerful disassembly and discompile ability. How a fantastic thing! 
+With the customized script, it takes the plugin to a new higher. Imagine you can add hooks at various levels anywhere, dynamic hotpatch on-the-fly running code, even the loaded library, working with IDA Pro's powerful disassembly and decompile ability. How a fantastic thing! 
 
 All of these can be achieved on one computer, no remote debug server, no virtual machine. 
 
 ### How it works?
 
-Qiling Emulator deeply integrates the API of Qiling with the API of IDApython, and provides users with friendly gui interface to view registers, stack and memory in real time. In addition, customized script allow users to use all built-in functions of qiling.
+Qiling Emulator deeply integrates the API of Qiling with the API of IDApython, and provides users with a friendly GUI interface to view registers, stack, and memory in real-time. Besides, customized script allows users to use all built-in functions of qiling.
 
 ### Support platform && architecture
 
@@ -65,11 +65,11 @@ Once loaded, the plugin is available under "Edit->Plugins->Qiling Emulator" and 
 
 This plugin supports IDA7.x with Python3.6+.
 
-Recommand platform: macOS && Linux
+Recommend platform: macOS && Linux
 
 ### Usage
 
-After loading the plugin, right-click will show Qiling Emulator under pop-up menu.
+After loading the plugin, right-click will show Qiling Emulator under the pop-up menu.
 
 ![](img/ida1.png)
 
@@ -114,19 +114,19 @@ It will show if this address can be accessed.
 
 Click `Step` or use `CTRL+SHIFT+F9` to let Qiling emulator step in and paint the path blue. 
 
-**You can see 'Register View' and 'Stack View' are in real-time**
+**You can see 'Register View' and 'Stack View' is in real-time**
 
 ![](img/ida10.png)
 
-Now we are in 0x0804852C. Let's enter the function sub_8048451 and press `F2` to setup a breakpoint at 0x08048454. 
+Now we are in 0x0804852C. Let's enter the function sub_8048451 and press `F2` to set up a breakpoint at 0x08048454. 
 
 ![](img/ida11.png)
 
-click `Continue`, it will emulate until program exit or stop when a breakpoint is triggered and paint the path green.
+Click `Continue`, it will emulate until the program exit or stop when a breakpoint is triggered and paint the path green.
 
 ![](img/ida12.png)
 
-Want to change some register values? Right click on Disassemble View or Register View and select `Edit Register`, right click on which register you want to change, then select `Edit Value` to change it.
+Want to change some register values? Right-click on Disassemble View or Register View and select `Edit Register`, right-click on which register you want to change, then select `Edit Value` to change it.
 
 ![](img/ida13.png)
 
@@ -153,11 +153,11 @@ class QILING_IDA():
         return hook
 ```
 
-As the functions name means, you can code in function and it will run when you click `Continue` or `Step`. So the cool thing is you can add you own hook.(if you code need't use hook, keep `hook = []`)
+As the functions name means, you can code in a function and it will run when you click `Continue` or `Step`. So the cool thing is you can add your own hook. (if you code needn't use hook, keep `hook = []`)
 
 To load custom script, please click Setup and input rootfs path and custom script path.
 
-This is a example at qiling/extensions/idaplugin/examples/custom_script.py
+This is an example at qiling/extensions/idaplugin/examples/custom_script.py
 ```python
 from qiling import *
 
