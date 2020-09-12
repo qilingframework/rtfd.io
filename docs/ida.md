@@ -25,11 +25,6 @@ Qiling Emulator deeply integrates the API of Qiling with the API of IDApython, a
 | MBR             | &#9745; | -       | -       | -       | -       | -       |
 
 
-|Architecture independent||
-|---|---|
-|MBR|&#9745;|
-
-
 ### Demo video
 
 Qiling's IDAPro Plugin: Instrument and Decrypt Mirai's Secret
