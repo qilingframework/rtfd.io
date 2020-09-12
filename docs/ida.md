@@ -235,17 +235,15 @@ or `Load Snapshot`.
 ---
 ### Additional Notes: Install Qiling
 
-Firstly, you need to install Qiling. See [Installation](https://docs.qiling.io/en/latest/install/) for details.
+To install Qiling Framework. See The [Installation](https://docs.qiling.io/en/latest/install/) guide
 
 ---
 
 ###  Additional Notes: Install IDA plugin
 
-We provide two ways to install Qiling IDA plugin.
+There are  two ways to install Qiling + IDA Pro plugin
 
----
-
-#### Use as a IDA plugin
+#### i. Use as a IDA plugin
 
 - Make a symbol link to your IDA plugins directory.
 
@@ -261,7 +259,7 @@ The advantage of symbol link is user can always get the updated the plugin by ju
 
 ---
 
-#### Use as a script file
+#### ii. Use as a script file
 
 - Start IDA, Click `File/Script file...`, choose the `qilingida.py` and the plugin will be loaed.
 
