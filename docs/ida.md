@@ -10,6 +10,7 @@ With the customized script, it takes the plugin to a new higher. Imagine you can
 
 All of these can be achieved on one computer, no remote debug server, no virtual machine. 
 
+---
 
 ### Support platform && architecture
 
@@ -23,6 +24,7 @@ All of these can be achieved on one computer, no remote debug server, no virtual
 | DOS (COM)       | &#9745; | -       | -       | -       | -       | -       |
 | MBR             | &#9745; | -       | -       | -       | -       | -       |
 
+---
 
 ### Demo video
 
@@ -30,6 +32,7 @@ Qiling's IDAPro Plugin: Instrument and Decrypt Mirai's Secret
 
 [![Qiling's IDAPro Plugin: Instrument and Decrypt Mirai's Secret](https://i.ytimg.com/vi/ZWMWTq2WTXk/0.jpg)](https://www.youtube.com/watch?v=ZWMWTq2WTXk)
 
+---
 
 ### Usage
 
@@ -94,6 +97,8 @@ It will show if this address can be accessed.
 - Want to change some register values? Right-click on Disassemble View or Register View and select `Edit Register`, right-click on which register you want to change, then select `Edit Value` to change it.
 
 ![](img/ida13.png)
+
+---
 
 #### Advanced 
 ##### Customized scripts
@@ -215,7 +220,7 @@ or `Load Snapshot`.
 
 ![](img/deflat3.png)
 
-- Then click `Deflat`, Qiling IDA plugin will start to perform symbolic execution to find the real control flow between real blocks and remove all fake blocks and dispatcher blocks. Below is the result:
+- Then click `Deflat`, Qiling IDA plugin will start to find the real control flow between real blocks and remove all fake blocks and dispatcher blocks. Below is the result:
 
 ![](img/deflat4.png)
 
@@ -223,12 +228,13 @@ or `Load Snapshot`.
 
 ![](img/deflat5.png)
 
+---
 
 ### Install
 
 #### Install Qiling
 
-Firstly, you need to install Qiling. See [Installation](/install/) for details.
+Firstly, you need to install Qiling. See [Installation](https://docs.qiling.io/en/latest/install/) for details.
 
 #### Install IDA plugin
 
@@ -236,7 +242,6 @@ We provide two ways to install Qiling IDA plugin.
 
 ##### Use as a IDA plugin
 
-- Edit the `qiling/extensions/idaplugin/qilingida.py` and switch `UseAsScript = True` to `UseAsScript = False`.
 - Make a symbol link to your IDA plugins directory.
 
 ```bash
@@ -251,7 +256,6 @@ The advantage of symbol link is that you can always update the plugin by `git pu
 
 ##### Use as a script file
 
-- Edit the `qiling/extensions/idaplugin/qilingida.py` and switch `UseAsScript = False` to `UseAsScript = True`.
 - Start IDA, Click `File/Script file...`, choose the `qilingida.py` and the plugin will be loaed.
 
 Once loaded, the plugin is available under "Edit->Plugins->Qiling Emulator" and popup menu.
@@ -260,6 +264,7 @@ This plugin supports IDA7.x with Python3.6+.
 
 Recommend platform: macOS && Linux
 
+---
 
 ### How it works?
 
