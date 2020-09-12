@@ -189,7 +189,7 @@ or `Load Snapshot`.
 
 ![](img/ida_load.png)
 
-##### Ollvm De-flatten
+### Ollvm De-flatten
 
 [ollvm](https://github.com/obfuscator-llvm/obfuscator) is an obfuscator based on LLVM. One of its obfuscation is [Control Flow Flattening](https://github.com/obfuscator-llvm/obfuscator/wiki/Control-Flow-Flattening). With Qiling IDA plugin, you can de-flatten obfuscated binary easily.
 
