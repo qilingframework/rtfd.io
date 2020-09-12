@@ -40,8 +40,7 @@ After loading the plugin, right-click will show Qiling Emulator under the pop-up
 
 ![](img/ida1.png)
 
-#### Basic
-##### Emulate
+### Load and Run
 
 - **Click Setup First**
 
@@ -100,8 +99,7 @@ It will show if this address can be accessed.
 
 ---
 
-#### Advanced 
-##### Customized scripts
+### With Customized scripts
 
 - Customized scripts is a python script, the code frame like this:
 
@@ -177,7 +175,7 @@ class QILING_IDA():
 **Change the custom script to take effect immediately?**
 - Just save the script and click `Reload User Scripts`. If reload is succeeded, it will show 'User Script Reload'.
 
-##### Save and Load Snapshot
+### Save and Load Snapshot
 - You can save current status (Register, Memory, CPU Context) and load it to your Qiling emulate script or new Qiling Emulator Plugin, just click `Save Snapshot`
 or `Load Snapshot`.
 
