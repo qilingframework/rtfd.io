@@ -237,9 +237,13 @@ or `Load Snapshot`.
 
 Firstly, you need to install Qiling. See [Installation](https://docs.qiling.io/en/latest/install/) for details.
 
+---
+
 ### Install IDA plugin
 
 We provide two ways to install Qiling IDA plugin.
+
+---
 
 #### Use as a IDA plugin
 
@@ -254,6 +258,8 @@ mklink C:\absolute\path\to\IDA\plugins\qilingida.py D:\absolute\path\to\qiling\e
 ```
 
 The advantage of symbol link is that you can always update the plugin by `git pull`. If you would not like a symbol link, you can also copy `qilingida.py` to your IDA plugin folder.
+
+---
 
 ### Use as a script file
 
