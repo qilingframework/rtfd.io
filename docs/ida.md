@@ -16,12 +16,13 @@ Qiling Emulator deeply integrates the API of Qiling with the API of IDApython, a
 
 | |8086|x86|x86-64|ARM|ARM64|MIPS|
 |---|---|---|---|---|---|---|
-| Windows (PE)    | -       | &#9745; | &#9745; | &#9744; | &#9744; | -       |
+| Windows (PE)    | -       | &#9745; | &#9745; | -       | &#9744; | -       |
 | Linux (ELF)     | &#9744; | &#9745; | &#9745; | &#9745; | &#9745; | &#9745; |
 | MacOS (MachO)   | -       | &#9744; | &#9745; | -       | -       | -       |
 | BSD (ELF)       | &#9744; | &#9744; | &#9745; | &#9744; | &#9744; | &#9744; |
 | UEFI            | -       | &#9745; | &#9745; | -       | -       | -       |
 | DOS (COM)       | &#9745; | -       | -       | -       | -       | -       |
+| MBR             | &#9745; | -       | -       | -       | -       | -       |
 
 
 |Architecture independent||
