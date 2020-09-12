@@ -5,6 +5,7 @@ Qiling is an advanced binary emulation framework, with the following features:
 - Cross platform: Windows, MacOS, Linux, BSD, UEFI, DOS
 - Cross architecture: X86, X86_64, Arm, Arm64, MIPS, 8086
 - Multiple file formats: PE, MachO, ELF, COM
+- Support Linux Kernel Module(.ko) , Windows Driver(.sys) and MacOS Kernel(.kext) via [Demigod](https://groundx.io/demigod/)
 - Emulates & sandbox machine code in an isolated environment
 - Supports cross architecture and platform debugging capabalities
 - Provides high level API to setup & configure the sandbox
