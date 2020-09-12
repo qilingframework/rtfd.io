@@ -40,6 +40,8 @@ After loading the plugin, right-click will show Qiling Emulator under the pop-up
 
 ![](img/ida1.png)
 
+---
+
 ### Load and Run
 
 - **Click Setup First**
@@ -175,6 +177,8 @@ class QILING_IDA():
 **Change the custom script to take effect immediately?**
 - Just save the script and click `Reload User Scripts`. If reload is succeeded, it will show 'User Script Reload'.
 
+---
+
 ### Save and Load Snapshot
 - You can save current status (Register, Memory, CPU Context) and load it to your Qiling emulate script or new Qiling Emulator Plugin, just click `Save Snapshot`
 or `Load Snapshot`.
@@ -186,6 +190,8 @@ or `Load Snapshot`.
 - For restoring, you should select where the status saving file is.
 
 ![](img/ida_load.png)
+
+---
 
 ### Ollvm De-flatten
 
@@ -227,18 +233,15 @@ or `Load Snapshot`.
 ![](img/deflat5.png)
 
 ---
-
-### Install
-
-#### Install Qiling
+### Install Qiling
 
 Firstly, you need to install Qiling. See [Installation](https://docs.qiling.io/en/latest/install/) for details.
 
-#### Install IDA plugin
+### Install IDA plugin
 
 We provide two ways to install Qiling IDA plugin.
 
-##### Use as a IDA plugin
+#### Use as a IDA plugin
 
 - Make a symbol link to your IDA plugins directory.
 
@@ -252,7 +255,7 @@ mklink C:\absolute\path\to\IDA\plugins\qilingida.py D:\absolute\path\to\qiling\e
 
 The advantage of symbol link is that you can always update the plugin by `git pull`. If you would not like a symbol link, you can also copy `qilingida.py` to your IDA plugin folder.
 
-##### Use as a script file
+### Use as a script file
 
 - Start IDA, Click `File/Script file...`, choose the `qilingida.py` and the plugin will be loaed.
 
