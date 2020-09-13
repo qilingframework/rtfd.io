@@ -9,11 +9,11 @@ title: Guide to integrate Qiling Framework with IDA Pro
 The main features of the plugin are:
 
 - [Cross systems, platforms and architectures without any virtualization technology.](#cross-systems-platforms-and-architectures)
-- Load, run and debug the binary.
-- View register, stack and memory in standalone windows.
-- Custom user scripts.
-- Program snapshots.
-- Ollvm de-obfuscation support.
+- [Load, run and debug the binary.](#load-run-and-debug)
+- [View register, stack and memory in standalone windows.](#debug)
+- [Custom user scripts.](#custom-user-scripts)
+- [Program snapshots.](#save-and-load-snapshot)
+- [Ollvm de-obfuscation support.](#ollvm-de-obfuscation)
 
 A demo video about decrypting Mirai's secret with Qiling IDA plugin is available below:
 
@@ -72,6 +72,8 @@ Most emulation is supported natively by Qiling Framework, Below is a table for d
 
 ### Load, run and debug
 
+#### Setup
+
 To run the current binary in IDA with Qiling, two things are supposed to be provided: rootfs and user custom script.
 
 `rootfs` is the root directory of emulated environment. Usually, the `/path/to/qiling/examples/rootfs/<arch>` directory should work for most cases. `user custom script` provides custom callbacks before running the binary, continuing or single stepping and a good example can be found [here](https://github.com/qilingframework/qiling/blob/dev/qiling/extensions/idaplugin/examples/custom_script.py).
@@ -88,6 +90,8 @@ A successful load will prompts "User Script Load" in the output window below. Ot
 
 ![](img/ida3.png){: style="width: 60%"}
 
+#### Load and run
+
 At this time, Qiling has finished parsing the binary, loading it into the memory, setting the PC to the entry point and preparing everthing ready for the following execution. Thus, user only needs to click `Continue` in the menu and Qiling will run the target binary from the entry point to the end. At the same time, Qiling IDA plugin will render the executed path to green for later analysis.
 
 ![](img/ida4.png){: style="height: 400px"}
@@ -99,6 +103,8 @@ Except simply loading and running the binary, the Qiling IDA plugin is also capa
 For example, to execute until current position, simply right-click at any address (e.g. 0x804851E for the screenshot below) and select `Execute Till`. Qiling will stop at your cursor as well as color its path with a different color.
 
 ![](img/ida6.png){: style="height: 400px"}
+
+#### Debug
 
 To view registers and stack, select `View Register` and `View Stack`.
 
@@ -187,7 +193,7 @@ class QILING_IDA():
         return hook
 ```
 
-Note taht the hook list is returned since the plugin will delete user's hooks after each action.
+Note that the hook list is returned since the plugin will delete user's hooks after each action.
 
 Below are the screenshots when user tries to step an instruction
 
@@ -224,7 +230,7 @@ Control Flow Flattening will generate four types of blocks: real blocks, fake bl
 - Dispatcher blocks: Something like `switch...case...case...` implementation, decide the following control flows
 - Return blocks: The blocks which exit the function
 
-To deflat the function, the first task is to identity such blocks. Qiling IDA plugin will perform some auto analysis by clicking `Auto Analysis For Deflat`. Note that [the basic setup]() should be done before analysis.
+To deflat the function, the first task is to identity such blocks. Qiling IDA plugin will perform some auto analysis by clicking `Auto Analysis For Deflat`. Note that [the basic setup](#Setup) should be done before analysis.
 
 ![](img/deflat.png){: style="height: 400px"}
 
