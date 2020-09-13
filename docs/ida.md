@@ -50,7 +50,7 @@ Once loaded, the plugin is available under "Edit->Plugins->Qiling Emulator" and 
 
 The plugin supports IDA Pro 7.x with Python3.6+.
 
-Recommended platforms: MacOS & Linux
+Recommend platforms: macOS & Linux
 
 ### Cross systems, platforms and architectures
 
