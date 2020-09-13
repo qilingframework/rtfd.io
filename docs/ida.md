@@ -75,7 +75,7 @@ There are two methods to use the plug-in
 
 ![](img/ida7.png)
 
-- To watch Memory, click `View Memory` and input address and size of memory
+- To watch Memory, click `View Memory` and input address and size of memory.
 
 ![](img/ida8.png)
 
@@ -103,7 +103,7 @@ There are two methods to use the plug-in
 
 ### With Customized scripts
 
-- Debugging with instrumentation always requires a user defined script, for example
+- Debugging with instrumentation always requires a user defined script. For example
 
 ```python
 from qiling import *
@@ -124,7 +124,7 @@ class QILING_IDA():
         return hook
 ```
 
-- custom_continue or custom_step simply means own implementation of `Continue` or `Step`. With this user able to add all the instrumentation API mentions in [Qiling Framework documents](https://docs.qiling.io) such as file system hijack, update memory or CPU register and all other advanced API from Qiling Framework.
+- custom_continue or custom_step simply means own implementation of `Continue` or `Step`. With this, user is able to add all the instrumentation APIs mentioned in [Qiling Framework documents](https://docs.qiling.io) such as file system hijack, update memory or CPU register and all other advanced APIs from Qiling Framework.
 
 - In order to load user customized script, please click Setup and input rootfs path and custom script path.
 
@@ -183,11 +183,11 @@ class QILING_IDA():
 - User can save current excution state (That includes Register, Memory, CPU Context), by just clicking `Save Snapshot`
 or `Load Snapshot`.
 
-- For saving current state, should select the path to save the file is requred
+- For saving current state, user should select the path to save the file.
 
 ![](img/ida_save.png)
 
-- Screen shot below shows how to load the saved state and continue execution
+- Screen shot below shows how to load the saved state and continue execution.
 
 ![](img/ida_load.png)
 
@@ -218,9 +218,9 @@ or `Load Snapshot`.
 
 ![](img/deflat2.png)
 
-- In this stage, user is able to adjust the analysis result by marking the block as real, fake or return blocks
+- In this stage, user is able to adjust the analysis result by marking the block as real, fake or return blocks.
 
-- During this stage, decompile the binary with human readble code is still not possible
+- During this stage, decompile the binary with human readble code is still not possible.
 
 ![](img/deflat3.png)
 
@@ -228,22 +228,22 @@ or `Load Snapshot`.
 
 ![](img/deflat4.png)
 
-- Now by pressing F5 now show the deobfuscation decompiled code
+- Now by pressing F5 now show the deobfuscation decompiled code.
 
 ![](img/deflat5.png)
 
 ---
 ### Additional Notes: Install Qiling
 
-To install Qiling Framework. See The [Installation](https://docs.qiling.io/en/latest/install/) guide
+To install Qiling Framework. See The [Installation](https://docs.qiling.io/en/latest/install/) guide.
 
 ---
 
 ### Additional Notes: Install IDA plugin
 
-There are two ways to install Qiling + IDA Pro plugin
+There are two ways to install Qiling + IDA Pro plugin.
 
-#### i. Use as a IDA plugin
+#### i. Use as an IDA plugin
 
 - Make a symbol link to your IDA plugins directory.
 
@@ -267,4 +267,4 @@ Once loaded, the plugin is available under "Edit->Plugins->Qiling Emulator" and 
 
 This plugin supports IDA7.x with Python3.6+.
 
-Recommend platform: macOS && Linux
+Recommended platforms: MacOS & Linux
