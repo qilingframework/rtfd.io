@@ -21,7 +21,7 @@ A demo video about decrypting Mirai's secret with Qiling IDA plugin is available
 
 ### Installation
 
-Before installing the plugin, Qiling should installed properly, either a stable version or a dev version. See [installation](install.md) for details.
+Before installing the plugin, Qiling should be installed properly, either a stable version or a dev version. See [installation](install.md) for details.
 
 There are two ways to install the plugin.
 
