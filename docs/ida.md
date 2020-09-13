@@ -4,7 +4,7 @@ title: Guide to Qiling Emulator + IDA Pro
 
 ### Introduction
 
-This a plugin for [IDA Pro](https://www.hex-rays.com/products/ida/) which enables IDA Pro and [Qiling](https://github.com/qilingframework/qiling) to interact. In this way, IDA can debug, emulate and instrument binaries for multiple platforms and architectures from one single operation system.
+This a plugin for [IDA Pro](https://www.hex-rays.com/products/ida/) which enables IDA Pro and [Qiling](https://github.com/qilingframework/qiling) to interact. In this way, IDA Pro can debug, emulate and instrument binaries for multiple platforms and architectures from one single operation system.
 
 With the customizable scripting capability, it takes the plugin to higher level. Hooking codes and addresses, dynamic hotpatch on-the-fly, hijack loaded library, hijack syscall and other advanced API from Qiling Frame are able to perform within IDA Pro's powerful disassembly and decompile interface.
 
@@ -30,7 +30,7 @@ All of these can be achieved on one computer, no remote debug server or no virtu
 
 Let’s look at the quick Qiling + IDA Pro Plugin Demo: Instrument and Decrypt Mirai's Secret
 
-[![Qiling's IDAPro Plugin: Instrument and Decrypt Mirai's Secret](https://i.ytimg.com/vi/ZWMWTq2WTXk/0.jpg)](https://www.youtube.com/watch?v=ZWMWTq2WTXk)
+[![Qiling's IDA Pro Plugin: Instrument and Decrypt Mirai's Secret](https://i.ytimg.com/vi/ZWMWTq2WTXk/0.jpg)](https://www.youtube.com/watch?v=ZWMWTq2WTXk)
 
 ---
 
@@ -239,13 +239,13 @@ To install Qiling Framework. See The [Installation](https://docs.qiling.io/en/la
 
 ---
 
-### Additional Notes: Install IDA plugin
+### Additional Notes: Install IDA Pro plugin
 
 There are two ways to install Qiling + IDA Pro plugin.
 
-#### i. Use as an IDA plugin
+#### i. Use as an IDA Pro plugin
 
-- Make a symbol link to your IDA plugins directory.
+- Make a symbol link to your IDA Pro plugins directory.
 
 ```bash
 # Macos
@@ -261,10 +261,10 @@ The advantage of symbol link is that user can always get the updated the plugin 
 
 #### ii. Use as a script file
 
-- Start IDA, Click `File/Script file...`, choose the `qilingida.py` and the plugin will be loaded
+- Start IDA Pro, Click `File/Script file...`, choose the `qilingida.py` and the plugin will be loaded
 
 Once loaded, the plugin is available under "Edit->Plugins->Qiling Emulator" and popup menu.
 
-This plugin supports IDA7.x with Python3.6+.
+This plugin supports IDA Pro 7.x with Python3.6+.
 
 Recommended platforms: MacOS & Linux
