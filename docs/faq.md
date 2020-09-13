@@ -11,7 +11,7 @@ git checkout dev
 ```
 
 ### My program crashes. It says Syscall/API not implemented
-- Most likely the syscall or OS api required by the binary is not implemented. You might want to write the syscall or OS api and contribute to the project. But in some cases, the syscall (maybe only syscall) is not being mapped to the arch. Map the syscall to the arch will always work.
+- Most likely the syscall or OS API required by the binary is not implemented. You might want to write the syscall or OS api and contribute to the project. But in some cases, the syscall (maybe only syscall) is not being mapped to the arch. Map the syscall to the arch will always work.
 - Some cases like [issue 281](https://github.com/qilingframework/qiling/issues/281) we can reuse similar syscall. For example, vfork and fork can be shared most of the time. Always remember, Qiling is a emulator, some of the syscall do not have to be 100% identical to a real kernel.
 
 ### Windows API often comes with functionsA and functionW. Do I need to implement both?
@@ -61,7 +61,7 @@ This is not a "bug". There are several possibilities why these errors occur.
 1. Windows API or syscall not being implemented
 > - Qiling Framework tries to emulate various platforms such as Linux, MacOS, Windows, FreeBSD and UEFI. All these platforms come with different archnitecture. Its not possible for Qiling Framework to be able to emulate all these syscall/API. Community help is needed.
 
-2. Some specific requiremment needed.
+2. Some specific requiremments are needed.
 > - Firmware might need interface br0 and a users testing enviroment might not have it. In this case, ql.patch will come in handy.
 
 3. Required files are missing.
@@ -69,12 +69,12 @@ This is not a "bug". There are several possibilities why these errors occur.
 
 It is adviseble to always turn on debugging or disassambly mode to pintpoint the issue and try to resolve it. Technically, this is not a bug but rather a feature.
 
-### I try to connect qiling useing gdb, but gdb say: Remote replied unexpectedly to 'vMustReplyEmpty": timeout
+### I tried to connect qiling using gdb, but gdb say: Remote replied unexpectedly to 'vMustReplyEmpty": timeout
 This is not a "bug", just some scripts running too slow so gdb is waiting timeout. 
 
 - Input `set remotetimeout 100` in gdb and try to connect again will fix this usually. 
 
-- if not, input `set debug remote 1` and connect again, then send to us the debug info as an issue please.
+- if not, input `set debug remote 1` and connect again, then send us the debug info as an issue please.
 
 ### Syscall not implemented or AttributeError: 'NoneType' object has no attribute 'cur_thread' error
-This is not a "bug". By default ql.multithread = False in order to turn on multithread. You need to add ql.multithread = True or with --multithread if you are using qltool
+This is not a "bug". By default ql.multithread = False in order to turn on multithread. You need to add ql.multithread = True or with --multithread if you are using qltool.
