@@ -4,15 +4,15 @@ title: Guide to Qiling Emulator + IDA Pro
 
 ### Introduction
 
-This a plugin for [IDA Pro](https://www.hex-rays.com/products/ida/). It enable IDA Pro and [Qiling](https://github.com/qilingframework/qiling) to interact with each other. In this way, IDA can debug, emulate and instrument binaries for multiple platforms and architectures from one single operation system.
+This a plugin for [IDA Pro](https://www.hex-rays.com/products/ida/) which enables IDA Pro and [Qiling](https://github.com/qilingframework/qiling) to interact. In this way, IDA can debug, emulate and instrument binaries for multiple platforms and architectures from one single operation system.
 
-With the customizable scripting ablity, it takes the plugin to higher level. Hooking codes and addresses, dynamic hotpatch on-the-fly, hijack loaded library, hijack syscall and other advanced API from Qiling Frame are able to perform within IDA Pro's powerful disassembly and decompile interface.
+With the customizable scripting capability, it takes the plugin to higher level. Hooking codes and addresses, dynamic hotpatch on-the-fly, hijack loaded library, hijack syscall and other advanced API from Qiling Frame are able to perform within IDA Pro's powerful disassembly and decompile interface.
 
 All of these can be achieved on one computer, no remote debug server or no virtual machine ever needed.
 
 ---
 
-### Support platform && architecture
+### Support platform & architecture
 
 | |8086|x86|x86-64|ARM|ARM64|MIPS|
 |---|---|---|---|---|---|---|
@@ -28,7 +28,7 @@ All of these can be achieved on one computer, no remote debug server or no virtu
 
 ### Demo video
 
-Lets look at the quick Qiling + IDA Pro Plugin Demo: Instrument and Decrypt Mirai's Secret
+Let’s look at the quick Qiling + IDA Pro Plugin Demo: Instrument and Decrypt Mirai's Secret
 
 [![Qiling's IDAPro Plugin: Instrument and Decrypt Mirai's Secret](https://i.ytimg.com/vi/ZWMWTq2WTXk/0.jpg)](https://www.youtube.com/watch?v=ZWMWTq2WTXk)
 
@@ -36,14 +36,14 @@ Lets look at the quick Qiling + IDA Pro Plugin Demo: Instrument and Decrypt Mira
 
 ### Usage
 
-There are two method to use the plug-in
+There are two methods to use the plug-in
     - Load and Run
     - With Instrumentation Script
     
 ---
 
 ### Load and Run
-- After loading the plugin, right-click will show Qiling Emulator under the pop-up menu.
+- After loading the plugin, right-click will show “Qiling Emulator” under the pop-up menu.
 
 ![](img/ida1.png)
 
@@ -95,7 +95,7 @@ There are two method to use the plug-in
 
 ![](img/ida12.png)
 
-- How about update CPU register. Right-click on Disassemble View or Register View and select `Edit Register`, right-click on the register, then select `Edit Value` to change it.
+- How about updating CPU register. Right-click on Disassemble View or Register View and select `Edit Register`, right-click on the register, then select `Edit Value` to change it.
 
 ![](img/ida13.png)
 
@@ -103,7 +103,7 @@ There are two method to use the plug-in
 
 ### With Customized scripts
 
-- Debug with instrumentation always required a user defined script, for example
+- Debugging with instrumentation always requires a user defined script, for example
 
 ```python
 from qiling import *
@@ -218,9 +218,9 @@ or `Load Snapshot`.
 
 ![](img/deflat2.png)
 
-- In this stage, user able to adjust the analysis result by marking the block as real, fake or return blocks
+- In this stage, user is able to adjust the analysis result by marking the block as real, fake or return blocks
 
-- During this stage, decompile the binbary with human readble code is still not possible
+- During this stage, decompile the binary with human readble code is still not possible
 
 ![](img/deflat3.png)
 
@@ -239,9 +239,9 @@ To install Qiling Framework. See The [Installation](https://docs.qiling.io/en/la
 
 ---
 
-###  Additional Notes: Install IDA plugin
+### Additional Notes: Install IDA plugin
 
-There are  two ways to install Qiling + IDA Pro plugin
+There are two ways to install Qiling + IDA Pro plugin
 
 #### i. Use as a IDA plugin
 
@@ -255,13 +255,13 @@ ln -s /absolute/path/to/qiling/extensions/idaplugin/qilingida.py /Applications/<
 mklink C:\absolute\path\to\IDA\plugins\qilingida.py D:\absolute\path\to\qiling\extensions\idaplugin\qilingida.py
 ```
 
-The advantage of symbol link is user can always get the updated the plugin by just `git pull`. Copy `qilingida.py` to IDA Pro plugin folder will work too.
+The advantage of symbol link is that user can always get the updated the plugin by just `git pull`. Copy `qilingida.py` to IDA Pro plugin folder will work too.
 
 ---
 
 #### ii. Use as a script file
 
-- Start IDA, Click `File/Script file...`, choose the `qilingida.py` and the plugin will be loaed.
+- Start IDA, Click `File/Script file...`, choose the `qilingida.py` and the plugin will be loaded.
 
 Once loaded, the plugin is available under "Edit->Plugins->Qiling Emulator" and popup menu.
 
