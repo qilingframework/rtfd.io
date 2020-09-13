@@ -98,13 +98,13 @@ At this time, Qiling has finished parsing the binary, loading it into the memory
 
 To restart the emulation, select `Restart` in the menu and fill in the `rootfs` and `custom user script` again.
 
+#### Debug
+
 Except simply loading and running the binary, the Qiling IDA plugin is also capable of debugging the binary.
 
 For example, to execute until current position, simply right-click at any address (e.g. 0x804851E for the screenshot below) and select `Execute Till`. Qiling will stop at your cursor as well as color its path with a different color.
 
 ![](img/ida6.png){: style="height: 400px"}
-
-#### Debug
 
 To view registers and stack, select `View Register` and `View Stack`.
 
