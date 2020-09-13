@@ -54,7 +54,7 @@ Recommended platforms: MacOS & Linux
 
 ### Cross systems, platforms and architectures
 
-Most emulation is supported natively by Qiling Framework, Below is a table for details.
+Most emulation is supported natively by Qiling Framework. Below is a table for details.
 
 | |8086|x86|x86-64|ARM|ARM64|MIPS|
 |---|---|---|---|---|---|---|
