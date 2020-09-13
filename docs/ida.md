@@ -43,59 +43,59 @@ There are two methods to use the plug-in
 ---
 
 ### Load and Run
-- After loading the plugin, right-click will show “Qiling Emulator” under the pop-up menu.
+- After loading the plugin, right-click will show “Qiling Emulator” under the pop-up menu
 
 ![](img/ida1.png)
 
 - **Click Setup First**
 
-- Select rootfs path and click Start (input custom script path if you have).
+- Select rootfs path and click Start (input custom script path if you have)
 
-- If the custom script is loaded successfully, it will prompt 'User Script Load'. Otherwise, it will prompt 'There Is No User Scripts', please check if the script path and syntax are correct.
+- If the custom script is loaded successfully, it will prompt 'User Script Load'. Otherwise, it will prompt 'There Is No User Scripts', please check if the script path and syntax are correct
 
 ![](img/ida2.png)
 
 ![](img/ida3.png)
 
-- Now click `Continue`, Qiling will emulate the target from start (entry_point) to finish (exit_point) and paint the path green.
+- Now click `Continue`, Qiling will emulate the target from start (entry_point) to finish (exit_point) and paint the path green
 
 ![](img/ida4.png)
 
-- To start all over, click `Restart`, it will clear the previous color and ask rootfs path again, then we are back to the start.
+- To start all over, click `Restart`, it will clear the previous color and ask rootfs path again, then we are back to the start
 
-- Now try something new, we want to let Qiling stop at 0x0804851E.
+- Now try something new, we want to let Qiling stop at 0x0804851E
 
 ![](img/ida5.png)
 
-- Just move the mouse pointer to position 0x0804851E and right-click, select `Execute Till`, Qiling will emulate to 0x0804851E(if the path is reachable), and paint the address node.
+- Just move the mouse pointer to position 0x0804851E and right-click, select `Execute Till`, Qiling will emulate to 0x0804851E(if the path is reachable), and paint the address node
 
 ![](img/ida6.png)
 
-- To watch Register and Stack, just by clicking `View Register`, `View Stack`.
+- To watch Register and Stack, just by clicking `View Register`, `View Stack`
 
 ![](img/ida7.png)
 
-- To watch Memory, click `View Memory` and input address and size of memory.
+- To watch Memory, click `View Memory` and input address and size of memory
 
 ![](img/ida8.png)
 
 ![](img/ida9.png)
 
-- Click `Step` or use `CTRL+SHIFT+F9` to let Qiling step in and paint the path blue. 
+- Click `Step` or use `CTRL+SHIFT+F9` to let Qiling step in and paint the path blue
 
 - **You can see 'Register View' and 'Stack View' in real-time**
 
 ![](img/ida10.png)
 
-- In 0x0804852C. Let's enter the function sub_8048451 and press `F2` to set up a breakpoint at 0x08048454. 
+- In 0x0804852C. Let's enter the function sub_8048451 and press `F2` to set up a breakpoint at 0x08048454
 
 ![](img/ida11.png)
 
-- Click `Continue`, it will emulate until the program exit or stop when a breakpoint is triggered and paint the path green.
+- Click `Continue`, it will emulate until the program exit or stop when a breakpoint is triggered and paint the path green
 
 ![](img/ida12.png)
 
-- How about updating CPU register. Right-click on Disassemble View or Register View and select `Edit Register`, right-click on the register, then select `Edit Value` to change it.
+- How about updating CPU register. Right-click on Disassemble View or Register View and select `Edit Register`, right-click on the register, then select `Edit Value` to change it
 
 ![](img/ida13.png)
 
@@ -124,9 +124,9 @@ class QILING_IDA():
         return hook
 ```
 
-- custom_continue or custom_step simply means own implementation of `Continue` or `Step`. With this, user is able to add all the instrumentation APIs mentioned in [Qiling Framework documents](https://docs.qiling.io) such as file system hijack, update memory or CPU register and all other advanced APIs from Qiling Framework.
+- custom_continue or custom_step simply means own implementation of `Continue` or `Step`. With this, user is able to add all the instrumentation APIs mentioned in [Qiling Framework documents](https://docs.qiling.io) such as file system hijack, update memory or CPU register and all other advanced APIs from Qiling Framework
 
-- In order to load user customized script, please click Setup and input rootfs path and custom script path.
+- In order to load user customized script, please click Setup and input rootfs path and custom script path
 
 - This is an example at qiling/extensions/idaplugin/examples/custom_script.py
 
@@ -166,28 +166,28 @@ class QILING_IDA():
         return hook
 ```
 
-- Execute Till 0x08048452 and try to Step, custom_step hook will show.
+- Execute Till 0x08048452 and try to Step, custom_step hook will show
 
 ![](img/ida14.png)
 
-- Set breakpoint at 0x080484F6 and click `Continue`, custom_continue hook will show.
+- Set breakpoint at 0x080484F6 and click `Continue`, custom_continue hook will show
 
 ![](img/ida15.png)
 
 **Change the custom script to take effect immediately?**
-- Just save the script and click `Reload User Scripts`. If reload is succeeded, it will show 'User Script Reload'.
+- Just save the script and click `Reload User Scripts`. If reload is succeeded, it will show 'User Script Reload'
 
 ---
 
 ### Save and Load Snapshot
 - User can save current excution state (That includes Register, Memory, CPU Context), by just clicking `Save Snapshot`
-or `Load Snapshot`.
+or `Load Snapshot`
 
-- For saving current state, user should select the path to save the file.
+- For saving current state, user should select the path to save the file
 
 ![](img/ida_save.png)
 
-- Screen shot below shows how to load the saved state and continue execution.
+- Screen shot below shows how to load the saved state and continue execution
 
 ![](img/ida_load.png)
 
@@ -197,7 +197,7 @@ or `Load Snapshot`.
 
 [ollvm](https://github.com/obfuscator-llvm/obfuscator) is an obfuscator based on LLVM. One of its obfuscation is [Control Flow Flattening](https://github.com/obfuscator-llvm/obfuscator/wiki/Control-Flow-Flattening). With Qiling IDA plugin, Qiling and IDA Pro can de-flatten obfuscated binary easily.
 
-- Contro Flow Flattening will generate four types of blocks: real blocks, fake blocks, dispatcher blocks and return blocks.
+- Contro Flow Flattening will generate four types of blocks: real blocks, fake blocks, dispatcher blocks and return blocks
 
     - Real blocks: The real logic in original binary
     - Fake blocks: The fake logic in obfuscated code
@@ -218,9 +218,9 @@ or `Load Snapshot`.
 
 ![](img/deflat2.png)
 
-- In this stage, user is able to adjust the analysis result by marking the block as real, fake or return blocks.
+- In this stage, user is able to adjust the analysis result by marking the block as real, fake or return blocks
 
-- During this stage, decompile the binary with human readble code is still not possible.
+- During this stage, decompile the binary with human readble code is still not possible
 
 ![](img/deflat3.png)
 
@@ -228,7 +228,7 @@ or `Load Snapshot`.
 
 ![](img/deflat4.png)
 
-- Now by pressing F5 now show the deobfuscation decompiled code.
+- Now by pressing F5 now show the deobfuscation decompiled code
 
 ![](img/deflat5.png)
 
@@ -261,7 +261,7 @@ The advantage of symbol link is that user can always get the updated the plugin 
 
 #### ii. Use as a script file
 
-- Start IDA, Click `File/Script file...`, choose the `qilingida.py` and the plugin will be loaded.
+- Start IDA, Click `File/Script file...`, choose the `qilingida.py` and the plugin will be loaded
 
 Once loaded, the plugin is available under "Edit->Plugins->Qiling Emulator" and popup menu.
 
