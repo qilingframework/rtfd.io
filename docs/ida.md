@@ -27,7 +27,7 @@ There are two ways to install the plugin.
 
 #### Use as an IDA Pro plugin
 
-- Make a symbol link to IDA Pro plugins directory.
+- Make a symbol link to IDA Pro `plugins` directory.
 
 ```bash
 # Linux
