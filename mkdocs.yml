@@ -6,6 +6,7 @@ theme: readthedocs
 site_favicon: favicon.png
 markdown_extensions:
   - attr_list
+  - admonition
 extra_css:
   - css/my.css
 
