@@ -81,11 +81,11 @@ To run the current binary in IDA Pro with Qiling, two things are supposed to be 
 
 `rootfs` is the root directory of the emulated environment. Usually, the `/path/to/qiling/examples/rootfs/<arch>` directory should work for most cases. `user custom script` provides custom callbacks before running the binary, continuing, or single-stepping and a good example can be found [here](https://github.com/qilingframework/qiling/blob/dev/qiling/extensions/idaplugin/examples/custom_script.py).
 
-To setup the plugin, right-click anywhere and choose the submenu `Qiling Emulator` from the popup menu.
+To setup the plugin, right-click anywhere and choose the submenu `Qiling Emulator` from the pop-up menu.
 
 [![](img/ida1.png){: style="height:auto;width:500px;display:block;margin:left"}](img/ida1.png)
 
-Select `Setup` from the menu and a window is pop up for the `rootfs` and `custom user script`.
+Select `Setup` from the menu, pop-up window will appear and ask for `rootfs` and `custom user script`
 
 [![](img/ida2.png){: style="height:auto;width:500px;display:block;margin:left"}](img/ida2.png)
 
