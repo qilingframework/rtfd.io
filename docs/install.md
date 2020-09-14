@@ -12,6 +12,10 @@ Installation using pip
 ```
 pip3 install qiling --pre
 ```
+To install the latest dev version from pip
+```
+pip3 install git+https://github.com/qilingframework/qiling@dev
+```
 
 ### Manual Installation
 For this installation guide, Ubuntu desktop 18.04.3 LTS 64bit is the base example (Qiling Framework works in other Linux distributions that run Python 3.5 and above). Grab a copy of official Ubuntu ISO images from [Ubuntu CD mirrors](https://launchpad.net/ubuntu/+cdmirrors). Update and the system and also install pip3, git and cmake
