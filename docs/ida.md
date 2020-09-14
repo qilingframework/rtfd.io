@@ -8,12 +8,12 @@ title: Guide to integrate Qiling Framework with IDA Pro
 
 The main features of the plugin are:
 
-- [Cross systems, platforms and architectures without any virtualization technology.](#cross-systems-platforms-and-architectures)
-- [Load, run and debug the binary.](#load-run-and-debug)
-- [View register, stack and memory in standalone windows.](#debug)
-- [Custom user scripts.](#custom-user-scripts)
-- [Program snapshots.](#save-and-load-snapshot)
-- [Ollvm de-obfuscation support.](#ollvm-de-obfuscation)
+- [Support most architectures & system emulation and work without any virtualization technology.](#emulation-support)
+- [Emulate current binary in IDA.](#load-emulate-debug)
+- [View real-time emulation context in standalone windows.](#debug)
+- [Custom user scripts to control the emulation.](#custom-user-scripts)
+- [Save and load snapshot of emulation context.](#save-and-load-snapshot)
+- [Deobfuscate code.](#de-obfuscation)
 
 A demo video about decrypting Mirai's secret with Qiling IDA plugin is available below:
 
@@ -40,11 +40,11 @@ ln -s /absolute/path/to/qiling/extensions/idaplugin/qilingida.py /Applications/<
 mklink C:\absolute\path\to\IDA\plugins\qilingida.py D:\absolute\path\to\qiling\extensions\idaplugin\qilingida.py
 ```
 
-Copying `qilingida.py` to IDA Pro plugin folder directly will also work, but considering the development of Qiling is always on the fast ring, a symbol link can save lots of tedious copy-and-paste work.
+Copying `qilingida.py` from [dev branch](https://raw.githubusercontent.com/qilingframework/qiling/dev/qiling/extensions/idaplugin/qilingida.py) to IDA Pro plugin folder directly will also work, but considering the development of Qiling is always on the fast ring, a symbol link can save lots of tedious copy-and-paste work.
 
 #### Use as a script file
 
-- Start IDA Pro, click `File/Script file...`, choose the `qilingida.py` and the plugin will be loaded automatically.
+- Start IDA Pro, click `File/Script file...` from the menu, choose the location of `qilingida.py` and the plugin will be loaded automatically.
 
 Once loaded, the plugin is available under "Edit->Plugins->Qiling Emulator" and popup menu.
 
@@ -52,7 +52,7 @@ The plugin supports IDA Pro 7.x with Python3.6+.
 
 Recommend platforms: macOS & Linux
 
-### Cross systems, platforms and architectures
+### Emulation support
 
 Most emulation is supported natively by Qiling Framework. Below is a table for details.
 
@@ -70,7 +70,7 @@ Most emulation is supported natively by Qiling Framework. Below is a table for d
 - &#9744;: Not supported.
 - &#9745;: Support.
 
-### Load, run and debug
+### Load, emulate & debug
 
 #### Setup
 
@@ -78,11 +78,11 @@ To run the current binary in IDA with Qiling, two things are supposed to be prov
 
 `rootfs` is the root directory of emulated environment. Usually, the `/path/to/qiling/examples/rootfs/<arch>` directory should work for most cases. `user custom script` provides custom callbacks before running the binary, continuing or single stepping and a good example can be found [here](https://github.com/qilingframework/qiling/blob/dev/qiling/extensions/idaplugin/examples/custom_script.py).
 
-To setup the plugin, right click at anywhere and find "Qiling Emulator".
+To setup the plugin, right click at anywhere and choose submenu `Qiling Emulator` from popup menu.
 
 ![](img/ida1.png){: style="height: 400px"}
 
-Select "setup first" and a window is pop up for the `rootfs` and `custom user script`.
+Select `Setup` from thee menu and a window is pop up for the `rootfs` and `custom user script`.
 
 ![](img/ida2.png){: style="width: 60%"}
 
@@ -90,9 +90,9 @@ A successful load will prompts "User Script Load" in the output window below. Ot
 
 ![](img/ida3.png){: style="width: 60%"}
 
-#### Load and run
+#### Load and emulate
 
-At this time, Qiling has finished parsing the binary, loading it into the memory, setting the PC to the entry point and preparing everthing ready for the following execution. Thus, user only needs to click `Continue` in the menu and Qiling will run the target binary from the entry point to the end. At the same time, Qiling IDA plugin will render the executed path to green for later analysis.
+At this time, Qiling has finished parsing the binary, loading it into the memory, setting the PC to the entry point and preparing everything ready for the following execution. Thus, user only needs to click `Continue` in the menu and Qiling will run the target binary from the entry point to the end. At the same time, Qiling IDA plugin will render the executed path to green for later analysis.
 
 ![](img/ida4.png){: style="height: 400px"}
 
@@ -102,29 +102,29 @@ To restart the emulation, select `Restart` in the menu and fill in the `rootfs` 
 
 Except simply loading and running the binary, the Qiling IDA plugin is also capable of debugging the binary.
 
-For example, to execute until current position, simply right-click at any address (e.g. 0x804851E for the screenshot below) and select `Execute Till`. Qiling will stop at your cursor as well as color its path with a different color.
+For example, to execute until current position, simply right-click at any address (e.g. 0x804851E for the screenshot below) and select menu `Execute Till`. Qiling will stop at your cursor as well as color its path with a different color.
 
 ![](img/ida6.png){: style="height: 400px"}
 
-To view registers and stack, select `View Register` and `View Stack`.
+To view registers and stack, select `View Register` and `View Stack` in the menu.
 
 ![](img/ida7.png){: style="height: 500px"}
 
-To view Memory, click `View Memory` and fill in the address and size of memory.
+To view Memory, click menu `View Memory` and fill in the address and size of memory.
 
 ![](img/ida8.png){: style="width: 60%"}
 
 ![](img/ida9.png){: style="width: 60%"}
 
-Click `Step` or press `CTRL+SHIFT+F9` to let Qiling step a single instruction. Note the register view and stack view mentioned just now will be updated synchronically.
+Click menu `Step` or press `CTRL+SHIFT+F9` to let Qiling step a single instruction. Note the register view and stack view mentioned just now will be updated synchronically.
 
 ![](img/ida10.png){: style="height: 500px"}
 
-IDA breakpoints are also supported. Press `F2` to set a breakpoint, select `Continue` and Qiling will stop at the breakpoint.
+IDA breakpoints are also supported. Press `F2` to set a breakpoint, select menu `Continue` and Qiling will stop at the breakpoint.
 
 ![](img/ida12.png){: style="height: 400px"}
 
-CPU registers can also be edited in the register view window. Right-click on the register, select `Edit Register` and input new value.
+CPU registers can also be edited in the register view window. Right-click on the register, select menu `Edit Register` and input new value.
 
 ![](img/ida13.png){: style="width: 60%"}
 
@@ -203,19 +203,19 @@ and when user tries to continue.
 
 ![](img/ida15.png){: style="height: 300px"}
 
-The plugin can also reload user scripts dynamically. Edit and save your script, select `Reload User Scripts` and all modifications will take effect.
+The plugin can also reload user scripts dynamically. Edit and save your script, select `Reload User Scripts` from the menu and all modifications will take effect.
 
 ### Save and load snapshot
 
-A snapshot is a save of current context, which can be restored anytime in a second. To save a snapshot, select `Save Snapshot` from menu and fill in the path.
+A snapshot is a save of current context, which can be restored anytime in a second. To save a snapshot, select `Save Snapshot` from the menu and fill in the path.
 
 ![](img/ida_save.png)
 
-To restore a snapshot, select `Load Snapshot`.
+To restore a snapshot, select `Load Snapshot` in the menu.
 
 ![](img/ida_load.png)
 
-### Ollvm de-obfuscation
+### De-obfuscation
 
 #### De-flatten
 
