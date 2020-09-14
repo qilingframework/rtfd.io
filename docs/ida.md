@@ -100,7 +100,7 @@ To restart the emulation, select `Restart` in the menu and fill in the `rootfs` 
 
 #### Debug
 
-Except simply loading and running the binary, the Qiling IDA plugin is also capable of debugging the binary.
+Besides emulating the binary, the Qiling IDA plugin is also capable of debugging the binary.
 
 For example, to execute until current position, simply right-click at any address (e.g. 0x804851E for the screenshot below) and select menu `Execute Till`. Qiling will stop at your cursor as well as color its path with a different color.
 
@@ -129,6 +129,8 @@ CPU registers can also be edited in the register view window. Right-click on the
 [![](img/ida13.png){: style="height:auto;width:500px;display:block;margin:left"}](img/ida13.png)
 
 ### Custom user scripts
+
+`Custom user scripts` is intended for users to implement their own logic when the Qiling IDA plugin runs, continues or steps.
 
 Below is a minimum custom user scripts without any special functions.
 
@@ -217,7 +219,13 @@ To restore a snapshot, select `Load Snapshot` in the menu.
 
 ### De-obfuscation
 
-#### De-flatten
+Obfuscation is one of most common software protection techniques. Usually, the goal of obfuscation is to deliberately make the source or machine code hard to understand. Thanks to the IDA powerful CFG API, Qiling IDA plugin can implement multiple de-obfuscation techniques with a mixture of static and dynamic analysis.
+
+Currently, the deobfuscation that the plugin supports includes:
+
+- [ollvm de-flatten](#ollvm-de-flatten).
+
+#### Ollvm de-flatten
 
 [ollvm](https://github.com/obfuscator-llvm/obfuscator) is an obfuscator based on LLVM. One of its obfuscation technique is [Control Flow Flattening](https://github.com/obfuscator-llvm/obfuscator/wiki/Control-Flow-Flattening). With Qiling IDA plugin, such flattened control flows can be restored easily.
 
