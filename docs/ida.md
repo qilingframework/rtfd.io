@@ -219,7 +219,7 @@ To restore a snapshot, select `Load Snapshot`.
 
 #### De-flatten
 
-[ollvm](https://github.com/obfuscator-llvm/obfuscator) is an obfuscator based on LLVM. One of its obfuscation technique is [Control Flow Flattening](https://github.com/obfuscator-llvm/obfuscator/wiki/Control-Flow-Flattening). With Qiling IDA Pro plugin, such flattened control flows can be restored easily.
+[ollvm](https://github.com/obfuscator-llvm/obfuscator) is an obfuscator based on LLVM. One of its obfuscation technique is [Control Flow Flattening](https://github.com/obfuscator-llvm/obfuscator/wiki/Control-Flow-Flattening). With Qiling IDA plugin, such flattened control flows can be restored easily.
 
 Note we use **Delaft** as an abbreviation of `De-flatten` in docs and plugin.
 
