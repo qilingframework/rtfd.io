@@ -46,7 +46,7 @@ Copying `qilingida.py` from [dev branch](https://raw.githubusercontent.com/qilin
 
 - Start IDA Pro, click `File/Script file...` from the menu, choose the location of `qilingida.py` and the plugin will be loaded automatically.
 
-Once loaded, the plugin is available under "Edit->Plugins->Qiling Emulator" and popup menu.
+Once loaded, the plugin is available under "Edit->Plugins->Qiling Emulator" and pop-up menu.
 
 The plugin supports IDA Pro 7.x with Python3.6+.
 
