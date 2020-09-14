@@ -17,7 +17,7 @@ The main features of the plugin are:
 
 A demo video about decrypting Mirai's secret with Qiling IDA plugin is available below:
 
-[![Qiling's IDA Pro Plugin: Instrument and Decrypt Mirai's Secret](https://i.ytimg.com/vi/ZWMWTq2WTXk/0.jpg)](https://www.youtube.com/watch?v=ZWMWTq2WTXk)
+[![Qiling's IDA Plugin: Instrument and Decrypt Mirai's Secret](https://i.ytimg.com/vi/ZWMWTq2WTXk/0.jpg)](https://www.youtube.com/watch?v=ZWMWTq2WTXk)
 
 ### Installation
 
@@ -50,7 +50,7 @@ Once loaded, the plugin is available under "Edit->Plugins->Qiling Emulator" and 
 
 The plugin supports IDA Pro 7.x with Python3.6+.
 
-Recommend platforms: macOS & Linux
+Recommend platforms: MacOS & Linux
 
 ### Cross systems, platforms and architectures
 
@@ -80,7 +80,7 @@ To run the current binary in IDA Pro with Qiling, two things are supposed to be 
 
 To setup the plugin, right click at anywhere and find "Qiling Emulator".
 
-![](img/ida1.png){: style="height:auto;width:500px;display:block;margin:left"}
+[![](img/ida1.png){: style="height:auto;width:500px;display:block;margin:left"}](img/ida1.png)
 
 Select "setup first" and a window is pop up for the `rootfs` and `custom user script`.
 
@@ -100,7 +100,7 @@ To restart the emulation, select `Restart` in the menu and fill in the `rootfs` 
 
 #### Debug
 
-Except simply loading and running the binary, the Qiling IDA Pro plugin is also capable of debugging the binary.
+Except simply loading and running the binary, the Qiling IDA plugin is also capable of debugging the binary.
 
 For example, to execute until current position, simply right-click at any address (e.g. 0x804851E for the screenshot below) and select `Execute Till`. Qiling will stop at your cursor as well as color its path with a different color.
 
@@ -230,7 +230,7 @@ Control Flow Flattening will generate four types of blocks: real blocks, fake bl
 - Dispatcher blocks: Something like `switch...case...case...` implementation, decide the following control flows
 - Return blocks: The blocks which exit the function
 
-To deflat the function, the first task is to identity such blocks. Qiling IDA Pro plugin will perform some auto analysis by clicking `Auto Analysis For Deflat`. Note that [the basic setup](#Setup) should be done before analysis.
+To deflat the function, the first task is to identity such blocks. Qiling IDA plugin will perform some auto analysis by clicking `Auto Analysis For Deflat`. Note that [the basic setup](#Setup) should be done before analysis.
 
 ![](img/deflat.png){: style="height:auto;width:500px;display:block;margin:left"}
 
