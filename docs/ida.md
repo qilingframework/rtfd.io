@@ -1,18 +1,60 @@
 ---
-title: Guide to Qiling Emulator + IDA Pro
+title: Guide to integrate Qiling Framework with IDA Pro
 ---
 
 ### Introduction
 
-This a plugin for [IDA Pro](https://www.hex-rays.com/products/ida/) which enables IDA Pro and [Qiling](https://github.com/qilingframework/qiling) to interact. In this way, IDA Pro can debug, emulate and instrument binaries for multiple platforms and architectures from one single operation system.
+[IDA Pro](https://www.hex-rays.com/products/ida/) is one of the most powerful static analysis tools while Qiling is a modern, advanced dynamic instrumentation analysis framework. To combine the advantages of both products, we present the Qiling IDA plugin, which enhances the experience of reverse engineering to a much higher level.
 
-With the customizable scripting capability, it takes the plugin to higher level. Hooking codes and addresses, dynamic hotpatch on-the-fly, hijack loaded library, hijack syscall and other advanced API from Qiling Frame are able to perform within IDA Pro's powerful disassembly and decompile interface.
+The main features of the plugin are:
 
-All of these can be achieved on one computer, no remote debug server or no virtual machine ever needed.
+- [Cross systems, platforms and architectures without any virtualization technology.](#cross-systems-platforms-and-architectures)
+- [Load, run and debug the binary.](#load-run-and-debug)
+- [View register, stack and memory in standalone windows.](#debug)
+- [Custom user scripts.](#custom-user-scripts)
+- [Program snapshots.](#save-and-load-snapshot)
+- [Ollvm de-obfuscation support.](#ollvm-de-obfuscation)
 
----
+A demo video about decrypting Mirai's secret with Qiling IDA plugin is available below:
 
-### Support platform & architecture
+[![Qiling's IDA Pro Plugin: Instrument and Decrypt Mirai's Secret](https://i.ytimg.com/vi/ZWMWTq2WTXk/0.jpg)](https://www.youtube.com/watch?v=ZWMWTq2WTXk)
+
+### Installation
+
+Before installing the plugin, Qiling should be installed properly, either a stable version or a dev version. See [installation](install.md) for details.
+
+There are two ways to install the plugin.
+
+#### Use as an IDA Pro plugin
+
+- Make a symbol link to IDA Pro `plugins` directory.
+
+```bash
+# Linux
+ln -s /absolute/path/to/qiling/extensions/idaplugin/qilingida.py /path/to/your/ida/plugins/
+
+# Macos
+ln -s /absolute/path/to/qiling/extensions/idaplugin/qilingida.py /Applications/<Your IDA>/ida.app/Contents/MacOS/plugins/
+
+# Windows
+mklink C:\absolute\path\to\IDA\plugins\qilingida.py D:\absolute\path\to\qiling\extensions\idaplugin\qilingida.py
+```
+
+Copying `qilingida.py` to IDA Pro plugin folder directly will also work, but considering the development of Qiling is always on the fast ring, a symbol link can save lots of tedious copy-and-paste work.
+
+#### Use as a script file
+
+- Start IDA Pro, click `File/Script file...`, choose the `qilingida.py` and the plugin will be loaded automatically.
+
+Once loaded, the plugin is available under "Edit->Plugins->Qiling Emulator" and popup menu.
+
+The plugin supports IDA Pro 7.x with Python3.6+.
+
+Recommend platforms: macOS & Linux
+
+### Cross systems, platforms and architectures
+
+Most emulation is supported natively by Qiling Framework. Below is a table for details.
 
 | |8086|x86|x86-64|ARM|ARM64|MIPS|
 |---|---|---|---|---|---|---|
@@ -24,86 +66,71 @@ All of these can be achieved on one computer, no remote debug server or no virtu
 | DOS (COM)       | &#9745; | -       | -       | -       | -       | -       |
 | MBR             | &#9745; | -       | -       | -       | -       | -       |
 
----
+- \- : Not apply.
+- &#9744;: Not supported.
+- &#9745;: Support.
 
-### Demo video
+### Load, run and debug
 
-Let’s look at the quick Qiling + IDA Pro Plugin Demo: Instrument and Decrypt Mirai's Secret
+#### Setup
 
-[![Qiling's IDA Pro Plugin: Instrument and Decrypt Mirai's Secret](https://i.ytimg.com/vi/ZWMWTq2WTXk/0.jpg)](https://www.youtube.com/watch?v=ZWMWTq2WTXk)
+To run the current binary in IDA with Qiling, two things are supposed to be provided: rootfs and user custom script.
 
----
+`rootfs` is the root directory of emulated environment. Usually, the `/path/to/qiling/examples/rootfs/<arch>` directory should work for most cases. `user custom script` provides custom callbacks before running the binary, continuing or single stepping and a good example can be found [here](https://github.com/qilingframework/qiling/blob/dev/qiling/extensions/idaplugin/examples/custom_script.py).
 
-### Usage
+To setup the plugin, right click at anywhere and find "Qiling Emulator".
 
-There are two methods to use the plug-in
-    - Load and Run
-    - With Instrumentation Script
-    
----
+![](img/ida1.png){: style="height: 400px"}
 
-### Load and Run
-- After loading the plugin, right-click will show “Qiling Emulator” under the pop-up menu
+Select "setup first" and a window is pop up for the `rootfs` and `custom user script`.
 
-![](img/ida1.png)
+![](img/ida2.png){: style="width: 60%"}
 
-- **Click Setup First**
+A successful load will prompts "User Script Load" in the output window below. Otherwise, "There Is No User Scripts" will show up in the output window instead.
 
-- Select rootfs path and click Start (input custom script path if you have)
+![](img/ida3.png){: style="width: 60%"}
 
-- If the custom script is loaded successfully, it will prompt 'User Script Load'. Otherwise, it will prompt 'There Is No User Scripts', please check if the script path and syntax are correct
+#### Load and run
 
-![](img/ida2.png)
+At this time, Qiling has finished parsing the binary, loading it into the memory, setting the PC to the entry point and preparing everthing ready for the following execution. Thus, user only needs to click `Continue` in the menu and Qiling will run the target binary from the entry point to the end. At the same time, Qiling IDA plugin will render the executed path to green for later analysis.
 
-![](img/ida3.png)
+![](img/ida4.png){: style="height: 400px"}
 
-- Now click `Continue`, Qiling will emulate the target from start (entry_point) to finish (exit_point) and paint the path green
+To restart the emulation, select `Restart` in the menu and fill in the `rootfs` and `custom user script` again.
 
-![](img/ida4.png)
+#### Debug
 
-- To start all over, click `Restart`, it will clear the previous color and ask rootfs path again, then we are back to the start
+Except simply loading and running the binary, the Qiling IDA plugin is also capable of debugging the binary.
 
-- Now try something new, we want to let Qiling stop at 0x0804851E
+For example, to execute until current position, simply right-click at any address (e.g. 0x804851E for the screenshot below) and select `Execute Till`. Qiling will stop at your cursor as well as color its path with a different color.
 
-![](img/ida5.png)
+![](img/ida6.png){: style="height: 400px"}
 
-- Just move the mouse pointer to position 0x0804851E and right-click, select `Execute Till`, Qiling will emulate to 0x0804851E(if the path is reachable), and paint the address node
+To view registers and stack, select `View Register` and `View Stack`.
 
-![](img/ida6.png)
+![](img/ida7.png){: style="height: 500px"}
 
-- To watch Register and Stack, just by clicking `View Register`, `View Stack`
+To view Memory, click `View Memory` and fill in the address and size of memory.
 
-![](img/ida7.png)
+![](img/ida8.png){: style="width: 60%"}
 
-- To watch Memory, click `View Memory` and input address and size of memory
+![](img/ida9.png){: style="width: 60%"}
 
-![](img/ida8.png)
+Click `Step` or press `CTRL+SHIFT+F9` to let Qiling step a single instruction. Note the register view and stack view mentioned just now will be updated synchronically.
 
-![](img/ida9.png)
+![](img/ida10.png){: style="height: 500px"}
 
-- Click `Step` or use `CTRL+SHIFT+F9` to let Qiling step in and paint the path blue
+IDA breakpoints are also supported. Press `F2` to set a breakpoint, select `Continue` and Qiling will stop at the breakpoint.
 
-- **You can see 'Register View' and 'Stack View' in real-time**
+![](img/ida12.png){: style="height: 400px"}
 
-![](img/ida10.png)
+CPU registers can also be edited in the register view window. Right-click on the register, select `Edit Register` and input new value.
 
-- In 0x0804852C. Let's enter the function sub_8048451 and press `F2` to set up a breakpoint at 0x08048454
+![](img/ida13.png){: style="width: 60%"}
 
-![](img/ida11.png)
+### Custom user scripts
 
-- Click `Continue`, it will emulate until the program exit or stop when a breakpoint is triggered and paint the path green
-
-![](img/ida12.png)
-
-- How about updating CPU register. Right-click on Disassemble View or Register View and select `Edit Register`, right-click on the register, then select `Edit Value` to change it
-
-![](img/ida13.png)
-
----
-
-### With Customized scripts
-
-- Debugging with instrumentation always requires a user defined script. For example
+Below is a minimum custom user scripts without any special functions.
 
 ```python
 from qiling import *
@@ -124,11 +151,13 @@ class QILING_IDA():
         return hook
 ```
 
-- custom_continue or custom_step simply means own implementation of `Continue` or `Step`. With this, user is able to add all the instrumentation APIs mentioned in [Qiling Framework documents](https://docs.qiling.io) such as file system hijack, update memory or CPU register and all other advanced APIs from Qiling Framework
+Except for `__init__`, the three other functions will be called in specific time to allow users to have a better control of the execution.
 
-- In order to load user customized script, please click Setup and input rootfs path and custom script path
+- `custom_prepare` will be called before the plugin calls `ql.run`.
+- `custom_continue` will be called when user would like to continue execution.
+- `custom_step` will be called when user steps an instruction.
 
-- This is an example at qiling/extensions/idaplugin/examples/custom_script.py
+Below is a slightly complicated example.
 
 ```python
 from qiling import *
@@ -150,121 +179,81 @@ class QILING_IDA():
         hook.append(ql.hook_code(continue_hook))
         return hook
 
-    def custom_step(self, ql:Qiling, stepflag):
-        def step_hook1(ql, addr, size, stepflag):
-            if stepflag:
-                stepflag = not stepflag
-                print(hex(addr))
+    def custom_step(self, ql:Qiling):
+        def step_hook1(ql, addr, size):
+            print(hex(addr))
 
         def step_hook2(ql):
             print('arrive to 0x0804845B')
 
         print('user step hook')
         hook = []
-        hook.append(ql.hook_code(step_hook1, user_data=stepflag))
+        hook.append(ql.hook_code(step_hook1))
         hook.append(ql.hook_address(step_hook2, 0x0804845B))
         return hook
 ```
 
-- Execute Till 0x08048452 and try to Step, custom_step hook will show
+Note that the hook list is returned since the plugin will delete user's hooks after each action.
 
-![](img/ida14.png)
+Below are the screenshots when user tries to step an instruction
 
-- Set breakpoint at 0x080484F6 and click `Continue`, custom_continue hook will show
+![](img/ida14.png){: style="height: 400px"}
 
-![](img/ida15.png)
+and when user tries to continue.
 
-**Change the custom script to take effect immediately?**
-- Just save the script and click `Reload User Scripts`. If reload is succeeded, it will show 'User Script Reload'
+![](img/ida15.png){: style="height: 300px"}
 
----
+The plugin can also reload user scripts dynamically. Edit and save your script, select `Reload User Scripts` and all modifications will take effect.
 
-### Save and Load Snapshot
-- User can save current excution state (That includes Register, Memory, CPU Context), by just clicking `Save Snapshot`
-or `Load Snapshot`
+### Save and load snapshot
 
-- For saving current state, user should select the path to save the file
+A snapshot is a save of current context, which can be restored anytime in a second. To save a snapshot, select `Save Snapshot` from menu and fill in the path.
 
 ![](img/ida_save.png)
 
-- Screen shot below shows how to load the saved state and continue execution
+To restore a snapshot, select `Load Snapshot`.
 
 ![](img/ida_load.png)
 
----
+### Ollvm de-obfuscation
 
-### Ollvm De-flatten
+#### De-flatten
 
-[ollvm](https://github.com/obfuscator-llvm/obfuscator) is an obfuscator based on LLVM. One of its obfuscation is [Control Flow Flattening](https://github.com/obfuscator-llvm/obfuscator/wiki/Control-Flow-Flattening). With Qiling IDA plugin, Qiling and IDA Pro can de-flatten obfuscated binary easily.
+[ollvm](https://github.com/obfuscator-llvm/obfuscator) is an obfuscator based on LLVM. One of its obfuscation technique is [Control Flow Flattening](https://github.com/obfuscator-llvm/obfuscator/wiki/Control-Flow-Flattening). With Qiling IDA plugin, such flattened control flows can be restored easily.
 
-- Contro Flow Flattening will generate four types of blocks: real blocks, fake blocks, dispatcher blocks and return blocks
+Note we use **Delaft** as an abbreviation of `De-flatten` in docs and plugin.
 
-    - Real blocks: The real logic in original binary
-    - Fake blocks: The fake logic in obfuscated code
-    - Dispatcher blocks: Something like `switch...case...case...` implementation, decide the following control flows
-    - Return blocks: The blocks which exit the function
+Control Flow Flattening will generate four types of blocks: real blocks, fake blocks, dispatcher blocks and return blocks
 
-- To deflat the function, first task is to identity such blocks. Qiling + IDA Pro plugin perform some level of auto analysis by clicking `Auto Analysis For Deflat`. **Note: by settings up the enviroment properly**
+- Real blocks: The real logic in original binary
+- Fake blocks: The fake logic in obfuscated code
+- Dispatcher blocks: Something like `switch...case...case...` implementation, decide the following control flows
+- Return blocks: The blocks which exit the function
 
-![](img/deflat.png)
+To deflat the function, the first task is to identity such blocks. Qiling IDA plugin will perform some auto analysis by clicking `Auto Analysis For Deflat`. Note that [the basic setup](#Setup) should be done before analysis.
 
-- After that, the blocks of the function will be rendered with different colors:
+![](img/deflat.png){: style="height: 400px"}
 
-    - Green: Real blocks.
-    - Blue: Dispatcher blocks.
-    - Gray: Fake blocks.
-    - Pink: Return blocks.
-    - Yellow: The first block.
+After that, the blocks of the function will be rendered with different colors:
 
-![](img/deflat2.png)
+Green: Real blocks.
+Blue: Dispatcher blocks.
+Gray: Fake blocks.
+Pink: Return blocks.
+Yellow: The first block.
 
-- In this stage, user is able to adjust the analysis result by marking the block as real, fake or return blocks
+![](img/deflat2.png){: style="height: 500px"}
 
-- During this stage, decompile the binary with human readble code is still not possible
+In this stage, user is able to adjust the analysis result by marking the block as real, fake or return blocks.
 
-![](img/deflat3.png)
+During this stage, the result of IDA decompiler is almost impossible to read.
 
-- In order make the obfucated binary easier to understand, click `Deflat`, Qiling + IDA Pro plugin will start to find the real control flow between real blocks and remove all fake blocks and dispatcher blocks. Below is the result:
+![](img/deflat3.png){: style="width: 60%"}
 
-![](img/deflat4.png)
+After each block is marked properly, select `Deflat` and the plugin will start to find real control flows between real blocks and remove all fake blocks and dispatcher blocks. Below is the result:
 
-- Now by pressing F5 now show the deobfuscation decompiled code
+![](img/deflat4.png){: style="height: 500px"}
 
-![](img/deflat5.png)
+Pressing F5 now shows the decompiled code without any obfuscation.
 
----
-### Additional Notes: Install Qiling
-
-To install Qiling Framework. See The [Installation](https://docs.qiling.io/en/latest/install/) guide.
-
----
-
-### Additional Notes: Install IDA Pro plugin
-
-There are two ways to install Qiling + IDA Pro plugin.
-
-#### i. Use as an IDA Pro plugin
-
-- Make a symbol link to your IDA Pro plugins directory.
-
-```bash
-# Macos
-ln -s /absolute/path/to/qiling/extensions/idaplugin/qilingida.py /Applications/<Your IDA>/ida.app/Contents/MacOS/plugins
-
-# Windows
-mklink C:\absolute\path\to\IDA\plugins\qilingida.py D:\absolute\path\to\qiling\extensions\idaplugin\qilingida.py
-```
-
-The advantage of symbol link is that user can always get the updated the plugin by just `git pull`. Copy `qilingida.py` to IDA Pro plugin folder will work too.
-
----
-
-#### ii. Use as a script file
-
-- Start IDA Pro, Click `File/Script file...`, choose the `qilingida.py` and the plugin will be loaded
-
-Once loaded, the plugin is available under "Edit->Plugins->Qiling Emulator" and popup menu.
-
-This plugin supports IDA Pro 7.x with Python3.6+.
-
-Recommended platforms: MacOS & Linux
+![](img/deflat5.png){: style="height: 400px"}
