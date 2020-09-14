@@ -80,21 +80,21 @@ To run the current binary in IDA with Qiling, two things are supposed to be prov
 
 To setup the plugin, right click at anywhere and find "Qiling Emulator".
 
-![](img/ida1.png){: style="height: 400px"}
+![](img/ida1.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 Select "setup first" and a window is pop up for the `rootfs` and `custom user script`.
 
-![](img/ida2.png){: style="width: 60%"}
+![](img/ida2.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 A successful load will prompts "User Script Load" in the output window below. Otherwise, "There Is No User Scripts" will show up in the output window instead.
 
-![](img/ida3.png){: style="width: 60%"}
+![](img/ida3.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 #### Load and run
 
 At this time, Qiling has finished parsing the binary, loading it into the memory, setting the PC to the entry point and preparing everthing ready for the following execution. Thus, user only needs to click `Continue` in the menu and Qiling will run the target binary from the entry point to the end. At the same time, Qiling IDA plugin will render the executed path to green for later analysis.
 
-![](img/ida4.png){: style="height: 400px"}
+![](img/ida4.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 To restart the emulation, select `Restart` in the menu and fill in the `rootfs` and `custom user script` again.
 
@@ -104,29 +104,29 @@ Except simply loading and running the binary, the Qiling IDA plugin is also capa
 
 For example, to execute until current position, simply right-click at any address (e.g. 0x804851E for the screenshot below) and select `Execute Till`. Qiling will stop at your cursor as well as color its path with a different color.
 
-![](img/ida6.png){: style="height: 400px"}
+![](img/ida6.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 To view registers and stack, select `View Register` and `View Stack`.
 
-![](img/ida7.png){: style="height: 500px"}
+![](img/ida7.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 To view Memory, click `View Memory` and fill in the address and size of memory.
 
-![](img/ida8.png){: style="width: 60%"}
+![](img/ida8.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
-![](img/ida9.png){: style="width: 60%"}
+![](img/ida9.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 Click `Step` or press `CTRL+SHIFT+F9` to let Qiling step a single instruction. Note the register view and stack view mentioned just now will be updated synchronically.
 
-![](img/ida10.png){: style="height: 500px"}
+![](img/ida10.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 IDA breakpoints are also supported. Press `F2` to set a breakpoint, select `Continue` and Qiling will stop at the breakpoint.
 
-![](img/ida12.png){: style="height: 400px"}
+![](img/ida12.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 CPU registers can also be edited in the register view window. Right-click on the register, select `Edit Register` and input new value.
 
-![](img/ida13.png){: style="width: 60%"}
+![](img/ida13.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 ### Custom user scripts
 
@@ -197,11 +197,11 @@ Note that the hook list is returned since the plugin will delete user's hooks af
 
 Below are the screenshots when user tries to step an instruction
 
-![](img/ida14.png){: style="height: 400px"}
+![](img/ida14.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 and when user tries to continue.
 
-![](img/ida15.png){: style="height: 300px"}
+![](img/ida15.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 The plugin can also reload user scripts dynamically. Edit and save your script, select `Reload User Scripts` and all modifications will take effect.
 
@@ -209,11 +209,11 @@ The plugin can also reload user scripts dynamically. Edit and save your script, 
 
 A snapshot is a save of current context, which can be restored anytime in a second. To save a snapshot, select `Save Snapshot` from menu and fill in the path.
 
-![](img/ida_save.png)
+![](img/ida_save.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 To restore a snapshot, select `Load Snapshot`.
 
-![](img/ida_load.png)
+![](img/ida_load.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 ### Ollvm de-obfuscation
 
@@ -232,7 +232,7 @@ Control Flow Flattening will generate four types of blocks: real blocks, fake bl
 
 To deflat the function, the first task is to identity such blocks. Qiling IDA plugin will perform some auto analysis by clicking `Auto Analysis For Deflat`. Note that [the basic setup](#Setup) should be done before analysis.
 
-![](img/deflat.png){: style="height: 400px"}
+![](img/deflat.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 After that, the blocks of the function will be rendered with different colors:
 
@@ -242,18 +242,18 @@ Gray: Fake blocks.
 Pink: Return blocks.
 Yellow: The first block.
 
-![](img/deflat2.png){: style="height: 500px"}
+![](img/deflat2.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 In this stage, user is able to adjust the analysis result by marking the block as real, fake or return blocks.
 
 During this stage, the result of IDA decompiler is almost impossible to read.
 
-![](img/deflat3.png){: style="width: 60%"}
+![](img/deflat3.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 After each block is marked properly, select `Deflat` and the plugin will start to find real control flows between real blocks and remove all fake blocks and dispatcher blocks. Below is the result:
 
-![](img/deflat4.png){: style="height: 500px"}
+![](img/deflat4.png){: style="height:auto;width:400px;display:block;margin:auto"}
 
 Pressing F5 now shows the decompiled code without any obfuscation.
 
-![](img/deflat5.png){: style="height: 400px"}
+![](img/deflat5.png){: style="height:auto;width:400px;display:block;margin:auto"}
