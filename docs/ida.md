@@ -209,11 +209,11 @@ The plugin can also reload user scripts dynamically. Edit and save your script, 
 
 A snapshot is a save of current context, which can be restored anytime in a second. To save a snapshot, select `Save Snapshot` from menu and fill in the path.
 
-[![](img/ida_save.png){: style="height:auto;width:500px;display:block;margin:left"}](img/ida_save.png)
+![](img/ida_save.png){: style="height:auto;width:500px;display:block;margin:left"}
 
 To restore a snapshot, select `Load Snapshot`.
 
-[![](img/ida_load.png){: style="height:auto;width:500px;display:block;margin:left"}](img/ida_load.png)
+![](img/ida_load.png){: style="height:auto;width:500px;display:block;margin:left"}
 
 ### Ollvm de-obfuscation
 
