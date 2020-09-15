@@ -27,7 +27,7 @@ Before installing the plugin, Qiling should be installed properly. For now, inst
 pip3 install --user https://github.com/qilingframework/qiling/archive/dev.zip
 ```
 
-#### There are two ways to install the plugin
+There are two ways to install the plugin
 
 ##### i. Use as an IDA Pro plugin
 
@@ -47,7 +47,7 @@ ln -s /usr/local/lib/<python version>/site-packages/qiling/extensions/idaplugin/
 mklink C:\absolute\path\to\IDA\plugins\qilingida.py C:\Users\<username>\AppData\Roaming\Python\<python version>\site-packages\qiling\extensions\idaplugin\qilingida.py
 ```
 
-Copying `qilingida.py` from [dev branch](https://raw.githubusercontent.com/qilingframework/qiling/dev/qiling/extensions/idaplugin/qilingida.py) to IDA Pro's plugin folder will work too. Considering the development of Qiling is always on the fast ring, symbol link can save lots of tedious copy-and-paste work.
+Copying `qilingida.py` from [dev branch](https://raw.githubusercontent.com/qilingframework/qiling/dev/qiling/extensions/idaplugin/qilingida.py) to IDA Pro's plugin folder will work, too. Considering the development of Qiling is always on the fast ring, symbol link can save lots of tedious copy-and-paste work.
 
 ##### ii. Use as a script file
 
