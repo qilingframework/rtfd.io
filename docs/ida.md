@@ -31,7 +31,7 @@ There are two ways to install the plugin.
 
 #### Use as an IDA Pro plugin
 
-- Make a symbol link to IDA Pro `plugins` directory.
+Make a symbol link to IDA Pro `plugins` directory.
 
 ```bash
 # Linux
@@ -48,7 +48,7 @@ Copying `qilingida.py` from [dev branch](https://raw.githubusercontent.com/qilin
 
 #### Use as a script file
 
-- Start IDA Pro, click `File/Script file...` from the menu, choose the location of `qilingida.py` and the plugin will be loaded automatically.
+Start IDA Pro, click `File/Script file...` from the menu, choose the location of `qilingida.py` and the plugin will be loaded automatically.
 
 Once loaded, the plugin is available under "Edit->Plugins->Qiling Emulator" and pop-up menu.
 
