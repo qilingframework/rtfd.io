@@ -94,7 +94,7 @@ Select `Setup` from the menu, pop-up window will appear and ask for `rootfs` and
 
 [![](img/ida2.png){: style="height:auto;width:500px;display:block;margin:left"}](img/ida2.png)
 
-A successful load will print "Qiling is initialized successfully" in the output window below. Otherwise, "ERROR: Qiling should be setup firstly." will show up in the output window instead.
+A successful load will print "Qiling is initialized successfully" in the output window below. Otherwise, "[ERROR]: Qiling should be setup firstly." will show up in the output window instead.
 
 [![](img/ida20.png){: style="height:auto;width:500px;display:block;margin:left"}](img/ida20.png)
 
@@ -239,11 +239,11 @@ To restore a snapshot, select `Load Snapshot` in the menu.
 
 Obfuscation is a most common software protection technique to deliberately make the source or machine code hard to understand. Thanks to the IDA powerful CFG API, Qiling IDA plugin can implement multiple de-obfuscation techniques with a mixture of static and dynamic analysis.
 
-Currently, Qiling IDA plugin supports [ollvm de-flatten](#ollvm-de-flatten) technique, and can restore original pseudo codes with the help of IDA decompiler.
+Currently, Qiling IDA plugin supports [ollvm de-flatten](#ollvm-de-flatten) technique.
 
 #### Ollvm de-flatten
 
-[ollvm](https://github.com/obfuscator-llvm/obfuscator) is an obfuscator based on LLVM. One of its obfuscation technique is [Control Flow Flattening](https://github.com/obfuscator-llvm/obfuscator/wiki/Control-Flow-Flattening). With Qiling IDA plugin, such flattened control flows can be restored easily.
+[ollvm](https://github.com/obfuscator-llvm/obfuscator) is a well-known obfuscator. One of its obfuscation technique is [Control Flow Flattening](https://github.com/obfuscator-llvm/obfuscator/wiki/Control-Flow-Flattening). With Qiling IDA plugin, such flattened control flows can be restored easily.
 
 !!! note
     We use **Deflat** as an abbreviation of `De-flatten` in docs and plugin.
