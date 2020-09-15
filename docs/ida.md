@@ -60,7 +60,7 @@ The plugin supports IDA Pro 7.x with Python3.6+.
 Recommend platforms: macOS & Linux.
 
 !!! warning
-    Currently, due to [a Unicorn bug](https://github.com/unicorn-engine/unicorn/issues/1316), it makes Qiling not too workable native Windows, except WSL2.
+    Currently, due to [a Unicorn bug](https://github.com/unicorn-engine/unicorn/issues/1316), it makes Qiling crash on native Windows.
 
 ### Emulation Support
 
