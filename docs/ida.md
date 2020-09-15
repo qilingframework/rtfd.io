@@ -251,11 +251,11 @@ To deflat the function, the first task is to identify such blocks. Qiling IDA pl
 
 After that, the blocks of the function will be rendered with different colors:
 
-Green: Real blocks.
-Blue: Dispatcher blocks.
-Gray: Fake blocks.
-Pink: Return blocks.
-Yellow: The first block.
+- Green: Real blocks.
+- Blue: Dispatcher blocks.
+- Gray: Fake blocks.
+- Pink: Return blocks.
+- Yellow: The first block.
 
 [![](img/deflat2.png){: style="height:auto;width:500px;display:block;margin:left"}](img/deflat2.png)
 
