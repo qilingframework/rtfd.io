@@ -44,7 +44,7 @@ ln -s ～/.local/lib/<python version>/site-packages/qiling/extensions/idaplugin/
 ln -s /usr/local/lib/<python version>/site-packages/qiling/extensions/idaplugin/qilingida.py /Applications/<Your IDA>/ida.app/Contents/MacOS/plugins/
 
 # Windows
-mklink C:\absolute\path\to\IDA\plugins\qilingida.py C:\Users\<username>\AppData\Roaming\Python\<python version>\site-packages\qiling\extensions\idaplugin
+mklink C:\absolute\path\to\IDA\plugins\qilingida.py C:\Users\<username>\AppData\Roaming\Python\<python version>\site-packages\qiling\extensions\idaplugin\qilingida.py
 ```
 
 Copying `qilingida.py` from [dev branch](https://raw.githubusercontent.com/qilingframework/qiling/dev/qiling/extensions/idaplugin/qilingida.py) to IDA Pro plugin folder directly will also work, but considering the development of Qiling is always on the fast ring, a symbol link can save lots of tedious copy-and-paste work.
