@@ -236,7 +236,7 @@ Currently, the deobfuscation that the plugin supports includes:
 
 [ollvm](https://github.com/obfuscator-llvm/obfuscator) is an obfuscator based on LLVM. One of its obfuscation technique is [Control Flow Flattening](https://github.com/obfuscator-llvm/obfuscator/wiki/Control-Flow-Flattening). With Qiling IDA plugin, such flattened control flows can be restored easily.
 
-Note we use **Delaft** as an abbreviation of `De-flatten` in docs and plugin.
+Note we use **Deflat** as an abbreviation of `De-flatten` in docs and plugin.
 
 Control Flow Flattening will generate four types of blocks: real blocks, fake blocks, dispatcher blocks and return blocks
 
