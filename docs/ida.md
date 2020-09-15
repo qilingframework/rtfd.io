@@ -4,7 +4,7 @@ title: Guide to integrate Qiling Framework with IDA Pro
 
 ### Introduction
 
-[IDA Pro](https://www.hex-rays.com/products/ida/) is one of the most powerful static analysis tools while Qiling is a modern, advanced dynamic instrumentation analysis framework. To combine the advantages of both products, we present the Qiling IDA plugin, which enhances the experience of reverse engineering to a much higher level.
+[IDA Pro](https://www.hex-rays.com/products/ida/)  is one of the most powerful static analysis tools, while Qiling is a modern, advanced dynamic. To combine the advantages of both products, we present the Qiling IDA plugin, which enhances the experience of reverse engineering to a much higher level.
 
 The main features of the plugin are:
 
@@ -21,7 +21,7 @@ A demo video about decrypting Mirai's secret with Qiling IDA plugin is available
 
 ### Installation
 
-Before installing the plugin, Qiling should be installed properly. Installing dev version from pip is highly recommended.
+Before installing the plugin, Qiling should be installed properly. For now, installing from the "dev" branch of Qiling's repo is highly recommended.
 
 ```
 pip3 install git+https://github.com/qilingframework/qiling@dev
@@ -33,15 +33,16 @@ There are two ways to install the plugin.
 
 Make a symbol link to IDA Pro `plugins` directory.
 
+**In case your system is different, replace these paths to the proper paths**
 ```bash
 # Linux
-ln -s /absolute/path/to/qiling/extensions/idaplugin/qilingida.py /path/to/your/ida/plugins/
+ln -s ～/.local/lib/pyhon3.7/site-packages/qiling/extensions/idaplugin/qilingida.py /path/to/your/ida/plugins/
 
 # Macos
-ln -s /absolute/path/to/qiling/extensions/idaplugin/qilingida.py /Applications/<Your IDA>/ida.app/Contents/MacOS/plugins/
+ln -s /usr/local/lib/python3.7/site-packages/qiling/extensions/idaplugin/qilingida.py /Applications/<Your IDA>/ida.app/Contents/MacOS/plugins/
 
 # Windows
-mklink C:\absolute\path\to\IDA\plugins\qilingida.py D:\absolute\path\to\qiling\extensions\idaplugin\qilingida.py
+mklink C:\absolute\path\to\IDA\plugins\qilingida.py C:\Programs Files(x86)\Python37\Lib\site-packages\qiling\extensions\idaplugin\qilingida.py
 ```
 
 Copying `qilingida.py` from [dev branch](https://raw.githubusercontent.com/qilingframework/qiling/dev/qiling/extensions/idaplugin/qilingida.py) to IDA Pro plugin folder directly will also work, but considering the development of Qiling is always on the fast ring, a symbol link can save lots of tedious copy-and-paste work.
@@ -93,7 +94,7 @@ Select `Setup` from the menu, pop-up window will appear and ask for `rootfs` and
 
 [![](img/ida2.png){: style="height:auto;width:500px;display:block;margin:left"}](img/ida2.png)
 
-A successful load will print "Qiling is initialized successfully" in the output window below. Otherwise, "Qiling should be setup firstly." will show up in the output window instead.
+A successful load will print "Qiling is initialized successfully" in the output window below. Otherwise, "ERROR: Qiling should be setup firstly." will show up in the output window instead.
 
 [![](img/ida20.png){: style="height:auto;width:500px;display:block;margin:left"}](img/ida20.png)
 
@@ -137,7 +138,7 @@ CPU registers can also be edited in the register view window. Right-click on the
 
 ### Custom user scripts
 
-`Custom user scripts` is intended for users to implement their own logic when the Qiling IDA plugin runs, continues or steps.
+`Custom user scripts` is for users to implement their own logic when the Qiling IDA plugin emulates, continues or steps.
 
 Below is a minimum custom user scripts without any special functions.
 
@@ -214,11 +215,11 @@ Below is a screenshot when the plugin loads `rootfs` and `custom user script`.
 
 [![](img/ida17.png){: style="height:auto;width:600px;display:block;margin:left"}](img/ida17.png)
 
-When user tries to continue, the current context will be logged.
+When user choose "Continue", the current CPU context will be logged.
 
 [![](img/ida18.png){: style="height:auto;width:600px;display:block;margin:left"}](img/ida18.png)
 
-And every time user steps an instruction, the output window is updated with the latest context.
+Every time you step an instruction, the output window is updated with the latest CPU context.
 
 [![](img/ida19.png){: style="height:auto;width:600px;display:block;margin:left"}](img/ida19.png)
 
@@ -236,7 +237,7 @@ To restore a snapshot, select `Load Snapshot` in the menu.
 
 ### De-obfuscation
 
-Obfuscation is one of the most common software protection techniques. Usually, the goal of obfuscation is to deliberately make the source or machine code hard to understand. Thanks to the IDA powerful CFG API, Qiling IDA plugin can implement multiple de-obfuscation techniques with a mixture of static and dynamic analysis.
+Obfuscation is a most common software protection technique to deliberately make the source or machine code hard to understand. Thanks to the IDA powerful CFG API, Qiling IDA plugin can implement multiple de-obfuscation techniques with a mixture of static and dynamic analysis.
 
 Currently, Qiling IDA plugin supports [ollvm de-flatten](#ollvm-de-flatten) technique, and can restore original pseudo codes with the help of IDA decompiler.
 
@@ -272,11 +273,11 @@ In this stage, user may adjust the analysis result by marking the block as real,
 
 [![](img/deflat6.png){: style="height:auto;width:500px;display:block;margin:left"}](img/deflat6.png)
 
-During this stage, the result of IDA decompiler is almost impossible to read.
+At this stage, the output of IDA decompiler is hard to understand.
 
 [![](img/deflat3.png){: style="height:auto;width:500px;display:block;margin:left"}](img/deflat3.png)
 
-After each block is marked properly, select `Deflat` and the plugin will start to find real control flows between real blocks and remove all fake blocks and dispatcher blocks. Below is the result:
+After each block is marked properly, select "Deflat" menu. The plugin will start discovering real control flows between real blocks, then remove all fake blocks and dispatcher blocks. Below is the result:
 
 [![](img/deflat4.png){: style="height:auto;width:500px;display:block;margin:left"}](img/deflat4.png)
 
@@ -284,7 +285,7 @@ Pressing F5 now shows the decompiled code without any obfuscation.
 
 [![](img/deflat5.png){: style="height:auto;width:500px;display:block;margin:left"}](img/deflat5.png)
 
-Some references:
+References:
 
 - [https://blog.quarkslab.com/deobfuscation-recovering-an-ollvm-protected-program.html](https://blog.quarkslab.com/deobfuscation-recovering-an-ollvm-protected-program.html)
 - [http://ac.inf.elte.hu/Vol_030_2009/003.pdf](http://ac.inf.elte.hu/Vol_030_2009/003.pdf)
