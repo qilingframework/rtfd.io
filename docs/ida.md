@@ -258,7 +258,7 @@ After that, the blocks of the function will be rendered with different colors:
 
 [![](img/deflat2.png){: style="height:auto;width:500px;display:block;margin:left"}](img/deflat2.png)
 
-In this stage, user may adjust the analysis result by marking the block as real, fake or return blocks. For example, to mark a block as a real block, click "Mark as Real Block" in pop-up menu.
+In this stage, user may adjust the analysis result by marking the block as real, fake or return blocks. For example, to mark a block as a real block, click "Mark as Real Block" in the pop-up menu.
 
 [![](img/deflat6.png){: style="height:auto;width:500px;display:block;margin:left"}](img/deflat3.png)
 
