@@ -228,24 +228,23 @@ To restore a snapshot, select `Load Snapshot` in the menu.
 
 Obfuscation is one of the most common software protection techniques. Usually, the goal of obfuscation is to deliberately make the source or machine code hard to understand. Thanks to the IDA powerful CFG API, Qiling IDA plugin can implement multiple de-obfuscation techniques with a mixture of static and dynamic analysis.
 
-Currently, the deobfuscation that the plugin supports includes:
-
-- [ollvm de-flatten](#ollvm-de-flatten).
+Currently, Qiling IDA plugin supports [ollvm de-flatten](#ollvm-de-flatten) technique, and can restore original pseudo codes with the help of IDA decompiler.
 
 #### Ollvm de-flatten
 
 [ollvm](https://github.com/obfuscator-llvm/obfuscator) is an obfuscator based on LLVM. One of its obfuscation technique is [Control Flow Flattening](https://github.com/obfuscator-llvm/obfuscator/wiki/Control-Flow-Flattening). With Qiling IDA plugin, such flattened control flows can be restored easily.
 
-Note we use **Deflat** as an abbreviation of `De-flatten` in docs and plugin.
+!!! note
+    We use **Deflat** as an abbreviation of `De-flatten` in docs and plugin.
 
 Control Flow Flattening will generate four types of blocks: real blocks, fake blocks, dispatcher blocks and return blocks
 
-- Real blocks: The real logic in original code
-- Fake blocks: The fake logic in obfuscated code
-- Dispatcher blocks: Something like `switch...case...case...` implementation, decide the following control flows
-- Return blocks: The blocks which exit the function
+- Real blocks: Blocks that contain the real logic in original code.
+- Fake blocks: Blocks that contain the fake logic in obfuscated code.
+- Dispatcher blocks: Blocks that contain `switch...case...case...` implementation, decide the following control flows. The original control flow is transformed by the dispatcher blocks.
+- Return blocks: The blocks which exit the function.
 
-To deflat the function, the first task is to identify such blocks. Qiling IDA plugin will perform some auto analysis by clicking `Auto Analysis For Deflat`. Note that [the basic setup](#Setup) should be done before analysis.
+To deflat the function, the first task is to identify such blocks. Qiling IDA plugin will perform some auto analysis by clicking `Auto Analysis For Deflat`. Note that [the basic setup](#setup) should be done before analysis.
 
 [![](img/deflat.png){: style="height:auto;width:500px;display:block;margin:left"}](img/deflat.png)
 
@@ -259,7 +258,9 @@ After that, the blocks of the function will be rendered with different colors:
 
 [![](img/deflat2.png){: style="height:auto;width:500px;display:block;margin:left"}](img/deflat2.png)
 
-In this stage, user may adjust the analysis result by marking the block as real, fake or return blocks.
+In this stage, user may adjust the analysis result by marking the block as real, fake or return blocks. For example, to mark a block as a real block, click "Mark as Real Block" in pop-up menu.
+
+[![](img/deflat6.png){: style="height:auto;width:500px;display:block;margin:left"}](img/deflat3.png)
 
 During this stage, the result of IDA decompiler is almost impossible to read.
 
