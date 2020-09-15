@@ -93,9 +93,9 @@ Select `Setup` from the menu, pop-up window will appear and ask for `rootfs` and
 
 [![](img/ida2.png){: style="height:auto;width:500px;display:block;margin:left"}](img/ida2.png)
 
-A successful load will print "User Script Load" in the output window below. Otherwise, "There Is No User Scripts" will show up in the output window instead.
+A successful load will print "Qiling is initialized successfully" in the output window below. Otherwise, "Qiling should be setup firstly." will show up in the output window instead.
 
-[![](img/ida3.png){: style="height:auto;width:500px;display:block;margin:left"}](img/ida3.png)
+[![](img/ida20.png){: style="height:auto;width:500px;display:block;margin:left"}](img/ida20.png)
 
 #### Load and emulate
 
