@@ -84,7 +84,7 @@ Most emulation is supported natively by Qiling Framework. Below is a table for d
 
 To emulate current binary in IDA Pro with Qiling, two things are supposed to be provided: `rootfs` and `custom user script`.
 
-`rootfs` is the root directory of the emulated environment. Usually, the `/path/to/qiling/examples/rootfs/<arch>` directory should work for most cases. `custom user script` provides some custom callbacks before emulating the binary, continuing, or single-stepping. A good example can be found [here](https://github.com/qilingframework/qiling/blob/dev/qiling/examples/extensions/idaplugin/custom_script.py).
+`rootfs` is the root directory of the emulated environment. Usually, the `/path/to/qiling/examples/rootfs/<arch>` directory should work for most cases. `custom user script` provides some custom callbacks before emulating the binary, continuing, or single-stepping. A good example can be found [here](https://github.com/qilingframework/qiling/blob/dev/examples/extensions/idaplugin/custom_script.py).
 
 To setup the plugin, right-click anywhere and choose the submenu `Qiling Emulator` from the pop-up menu.
 
