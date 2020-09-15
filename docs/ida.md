@@ -4,7 +4,7 @@ title: Guide to integrate Qiling Framework with IDA Pro
 
 ### Introduction
 
-[IDA Pro](https://www.hex-rays.com/products/ida/)  is one of the most powerful static analysis tools, while Qiling is a modern and advanced dynamic analysis tool. To combine the advantages of both tools, we hereby present the Qiling IDA plugin, which enhances the experience of reverse engineering to a another level.
+[IDA Pro](https://www.hex-rays.com/products/ida/)  is one of the most powerful static analysis tools, while Qiling is a modern and advanced dynamic analysis tool. To combine the advantages of both tools, we hereby present the Qiling IDA plugin, which enhances the experience of reverse engineering to another level.
 
 The main features of the plugin are:
 
