@@ -252,7 +252,7 @@ Control Flow Flattening will generate four types of blocks: real blocks, fake bl
 - Real blocks: Blocks that contain the real logic in original code.
 - Fake blocks: Blocks that contain the fake logic in obfuscated code. They are intended to cooperate with dispatcher blocks to obfuscate original control flows and don't contain any real logic in original code.
 - Dispatcher blocks: Blocks that contain `switch...case...case...` implementation, decide the following control flows.
-- Return blocks: The blocks which exit the function.
+- Return blocks: Blocks which exit the function.
 
 To deflat the function, the first task is to identify such blocks. Qiling IDA plugin will perform some auto analysis by clicking `Auto Analysis For Deflat`. Note that [the basic setup](#setup) should be done before analysis.
 
@@ -264,7 +264,7 @@ After that, the blocks of the function will be rendered with different colors:
 - Blue: Dispatcher blocks.
 - Gray: Fake blocks.
 - Pink: Return blocks.
-- Yellow: The first block.
+- Yellow: First block.
 
 [![](img/deflat2.png){: style="height:auto;width:500px;display:block;margin:left"}](img/deflat2.png)
 
@@ -286,5 +286,5 @@ Pressing F5 now shows the decompiled code without any obfuscation.
 
 Some references:
 
-- https://blog.quarkslab.com/deobfuscation-recovering-an-ollvm-protected-program.html
-- http://ac.inf.elte.hu/Vol_030_2009/003.pdf
+- [https://blog.quarkslab.com/deobfuscation-recovering-an-ollvm-protected-program.html](https://blog.quarkslab.com/deobfuscation-recovering-an-ollvm-protected-program.html)
+- [http://ac.inf.elte.hu/Vol_030_2009/003.pdf](http://ac.inf.elte.hu/Vol_030_2009/003.pdf)
