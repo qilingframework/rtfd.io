@@ -15,7 +15,7 @@ The main features of the plugin are:
 - [Save and load snapshots of emulation context](#save-and-load-snapshot)
 - [Deobfuscate code](#de-obfuscation)
 
-A demo video about decrypting Mirai's secret with Qiling IDA plugin is available below:
+Quick overview, a video demo on how to use Qiling IDA plugin to decrypting Mirai's secret:
 
 [![Qiling's IDA Plugin: Instrument and Decrypt Mirai's Secret](https://i.ytimg.com/vi/ZWMWTq2WTXk/0.jpg)](https://www.youtube.com/watch?v=ZWMWTq2WTXk)
 
@@ -27,9 +27,9 @@ Before installing the plugin, Qiling should be installed properly. For now, inst
 pip3 install --user https://github.com/qilingframework/qiling/archive/dev.zip
 ```
 
-There are two ways to install the plugin.
+#### There are two ways to install the plugin.
 
-#### Use as an IDA Pro plugin
+##### i. Use as an IDA Pro plugin
 
 Make a symbol link to IDA Pro `plugins` directory.
 
@@ -47,9 +47,9 @@ ln -s /usr/local/lib/<python version>/site-packages/qiling/extensions/idaplugin/
 mklink C:\absolute\path\to\IDA\plugins\qilingida.py C:\Users\<username>\AppData\Roaming\Python\<python version>\site-packages\qiling\extensions\idaplugin\qilingida.py
 ```
 
-Copying `qilingida.py` from [dev branch](https://raw.githubusercontent.com/qilingframework/qiling/dev/qiling/extensions/idaplugin/qilingida.py) to IDA Pro plugin folder directly will also work, but considering the development of Qiling is always on the fast ring, a symbol link can save lots of tedious copy-and-paste work.
+Copying `qilingida.py` from [dev branch](https://raw.githubusercontent.com/qilingframework/qiling/dev/qiling/extensions/idaplugin/qilingida.py) to IDA Pro's plugin folder will work too. Considering the development of Qiling is always on the fast ring, symbol link can save lots of tedious copy-and-paste work.
 
-#### Use as a script file
+##### ii. Use as a script file
 
 Start IDA Pro, click `File/Script file...` from the menu, choose the location of `qilingida.py` and the plugin will be loaded automatically.
 
@@ -57,12 +57,12 @@ Once loaded, the plugin is available under "Edit->Plugins->Qiling Emulator" and 
 
 The plugin supports IDA Pro 7.x with Python3.6+.
 
-Recommend platforms: macOS & Linux(including WSL2).
+Recommend platforms: macOS & Linux.
 
 !!! warning
-    Currently, due to [a Unicorn bug](https://github.com/unicorn-engine/unicorn/issues/1316), Qiling is very unstable on native Windows, but WSL2 should always work.
+    Currently, due to [a Unicorn bug](https://github.com/unicorn-engine/unicorn/issues/1316), it makes Qiling not too workable native Windows, except WSL2.
 
-### Emulation support
+### Emulation Support
 
 Most emulation is supported natively by Qiling Framework. Below is a table for details.
 
@@ -80,7 +80,7 @@ Most emulation is supported natively by Qiling Framework. Below is a table for d
 - &#9744;: Not supported.
 - &#9745;: Support.
 
-### Load, emulate & debug
+### Setup, Load, Emulate & Debug
 
 #### Setup
 
@@ -138,7 +138,7 @@ CPU registers can also be edited in the register view window. Right-click on the
 
 [![](img/ida13.png){: style="height:auto;width:500px;display:block;margin:left"}](img/ida13.png)
 
-### Custom user scripts
+### Custom User Scripts
 
 `Custom user scripts` is for users to implement their own logic when the Qiling IDA plugin emulates, continues or steps.
 
@@ -227,7 +227,7 @@ Every time you step an instruction, the output window is updated with the latest
 
 The plugin can also reload user scripts dynamically. Edit and save your script, select `Reload User Scripts` from the menu and all modifications will take effect immediately.
 
-### Save and load snapshot
+### Save and Restore Snapshot
 
 A snapshot is a save of current context, which can be restored anytime in a second. To save a snapshot, select `Save Snapshot` from the menu and fill in the path.
 
@@ -287,7 +287,7 @@ Pressing F5 now shows the decompiled code without any obfuscation.
 
 [![](img/deflat5.png){: style="height:auto;width:500px;display:block;margin:left"}](img/deflat5.png)
 
-References:
+References
 
 - [https://blog.quarkslab.com/deobfuscation-recovering-an-ollvm-protected-program.html](https://blog.quarkslab.com/deobfuscation-recovering-an-ollvm-protected-program.html)
 - [http://ac.inf.elte.hu/Vol_030_2009/003.pdf](http://ac.inf.elte.hu/Vol_030_2009/003.pdf)
