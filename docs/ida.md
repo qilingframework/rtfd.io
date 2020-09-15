@@ -4,16 +4,16 @@ title: Guide to integrate Qiling Framework with IDA Pro
 
 ### Introduction
 
-[IDA Pro](https://www.hex-rays.com/products/ida/)  is one of the most powerful static analysis tools, while Qiling is a modern, advanced dynamic. To combine the advantages of both products, we present the Qiling IDA plugin, which enhances the experience of reverse engineering to a much higher level.
+[IDA Pro](https://www.hex-rays.com/products/ida/)  is one of the most powerful static analysis tools, while Qiling is a modern and advanced dynamic analysis tool. To combine the advantages of both tools, we hereby present the Qiling IDA plugin, which enhances the experience of reverse engineering to a another level.
 
 The main features of the plugin are:
 
-- [Support most architectures & system emulation and work without any virtualization technology.](#emulation-support)
-- [Emulate current binary in IDA.](#load-emulate-debug)
-- [View real-time emulation context in standalone windows.](#debug)
-- [Custom user scripts to control the emulation.](#custom-user-scripts)
-- [Save and load snapshots of emulation context.](#save-and-load-snapshot)
-- [Deobfuscate code.](#de-obfuscation)
+- [Support most architectures & system emulation and work without any virtualization technology](#emulation-support)
+- [Emulate current binary in IDA](#load-emulate-debug)
+- [View real-time emulation context in standalone windows](#debug)
+- [Custom user scripts to control the emulation](#custom-user-scripts)
+- [Save and load snapshots of emulation context](#save-and-load-snapshot)
+- [Deobfuscate code](#de-obfuscation)
 
 A demo video about decrypting Mirai's secret with Qiling IDA plugin is available below:
 
@@ -24,7 +24,7 @@ A demo video about decrypting Mirai's secret with Qiling IDA plugin is available
 Before installing the plugin, Qiling should be installed properly. For now, installing from the "dev" branch of Qiling's repo is highly recommended.
 
 ```
-pip3 install git+https://github.com/qilingframework/qiling@dev
+pip3 install --user https://github.com/qilingframework/qiling/archive/dev.zip
 ```
 
 There are two ways to install the plugin.
