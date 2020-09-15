@@ -33,16 +33,18 @@ There are two ways to install the plugin.
 
 Make a symbol link to IDA Pro `plugins` directory.
 
-**In case your system is different, replace these paths to the proper paths**
+!!! note
+    In case your installation location is different, replace these paths with proper paths.
+
 ```bash
 # Linux
-ln -s ～/.local/lib/pyhon3.7/site-packages/qiling/extensions/idaplugin/qilingida.py /path/to/your/ida/plugins/
+ln -s ～/.local/lib/<python version>/site-packages/qiling/extensions/idaplugin/qilingida.py /path/to/your/ida/plugins/
 
 # Macos
-ln -s /usr/local/lib/python3.7/site-packages/qiling/extensions/idaplugin/qilingida.py /Applications/<Your IDA>/ida.app/Contents/MacOS/plugins/
+ln -s /usr/local/lib/<python version>/site-packages/qiling/extensions/idaplugin/qilingida.py /Applications/<Your IDA>/ida.app/Contents/MacOS/plugins/
 
 # Windows
-mklink C:\absolute\path\to\IDA\plugins\qilingida.py C:\Programs Files(x86)\Python37\Lib\site-packages\qiling\extensions\idaplugin\qilingida.py
+mklink C:\absolute\path\to\IDA\plugins\qilingida.py C:\Users\<username>\AppData\Roaming\Python\<python version>\site-packages\qiling\extensions\idaplugin\qilingida.py
 ```
 
 Copying `qilingida.py` from [dev branch](https://raw.githubusercontent.com/qilingframework/qiling/dev/qiling/extensions/idaplugin/qilingida.py) to IDA Pro plugin folder directly will also work, but considering the development of Qiling is always on the fast ring, a symbol link can save lots of tedious copy-and-paste work.
