@@ -12,9 +12,9 @@ Installation using pip
 ```
 pip3 install qiling --pre
 ```
-To install the latest dev version from pip
+To install the latest dev version using pip
 ```
-pip3 install git+https://github.com/qilingframework/qiling@dev
+pip3 install --user https://github.com/qilingframework/qiling/archive/dev.zip
 ```
 
 ### Manual Installation
