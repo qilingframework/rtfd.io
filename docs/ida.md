@@ -27,7 +27,7 @@ Before installing the plugin, Qiling should be installed properly. For now, inst
 pip3 install --user https://github.com/qilingframework/qiling/archive/dev.zip
 ```
 
-#### There are two ways to install the plugin.
+#### There are two ways to install the plugin
 
 ##### i. Use as an IDA Pro plugin
 
