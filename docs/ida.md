@@ -62,6 +62,9 @@ Recommend platforms: macOS & Linux.
 !!! warning
     Currently, due to [a Unicorn bug](https://github.com/unicorn-engine/unicorn/issues/1316), it makes Qiling crash on native Windows.
 
+!!! warning
+    When trying to use IDA Pro with **Python3.8**, IDA crashes. [The cause and solution of the problem](https://www.hex-rays.com/blog/ida-7-4-and-python-3-8/)
+
 ### Emulation Support
 
 Most emulation is supported natively by Qiling Framework. Below is a table for details.
