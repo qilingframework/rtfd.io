@@ -8,9 +8,9 @@ Qiling Framework is written in Python programming language and it works with dif
 
 ### One line installer
 
-Installation using pip
+Installation using pip (stable version)
 ```
-pip3 install qiling --pre
+pip3 install qiling
 ```
 To install the latest dev version using pip
 ```
