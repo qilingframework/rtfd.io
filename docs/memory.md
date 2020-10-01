@@ -34,12 +34,12 @@ address = ql.mem.search(b"\xFF\xFE\xFD\xFC\xFB\xFA", begin= 0x1000, end= 0x2000)
 
 ### Read from a memory address
 ```python
-ql.mem.read(address)
+ql.mem.read(address, size)
 ```
 
 ### Write to a memory address
 ```python
-ql.mem.read(address, data)
+ql.mem.write(address, data)
 ```
 
 ### Map a memory area
