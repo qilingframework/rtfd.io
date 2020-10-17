@@ -34,6 +34,8 @@ This project is released and distributed under [free software license GPLv2](htt
 - CHEN huitao (null) <null@qiling.io>
 - YU tong (sp1ke) <spikeinhouse@gmail.com>
 - Earl Marcus (klks84) <klks84@gmail.com> 
+- WU chenxu (kabeor) <kabeor@qiling.io>
+- KONG ziqiao <mio@lazym.io>
 
 #### Travis-CI, Docker, Website and Documentation
 
