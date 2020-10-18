@@ -25,18 +25,4 @@ This project is released and distributed under [free software license GPLv2](htt
 
 ---
 
-#### Core developers
-
-- LAU kaijern (xwings) <kj@qiling.io>
-- NGUYEN Anh Quynh <aquynh@gmail.com>
-- DING tianze (D1iv3) <dddliv3@gmail.com>
-- SUN bowen (w1tcher) <w1tcher.bupt@gmail.com>
-- CHEN huitao (null) <null@qiling.io>
-- YU tong (sp1ke) <spikeinhouse@gmail.com>
-- Earl Marcus (klks84) <klks84@gmail.com> 
-- WU chenxu (kabeor) <kabeor@qiling.io>
-- KONG ziqiao (lazymio) <mio@lazym.io>
-
-#### Travis-CI, Docker, Website and Documentation
-
-- FOO Kevin (chfl4gs) <chfl4gs@qiling.io>
+#### [https://www.qiling.io/about/]Core developers
