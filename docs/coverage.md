@@ -20,6 +20,27 @@ The command-line interface for controlling code coverage is comprise of two new 
 ./qltool run -f examples/rootfs/x8664_efi/bin/TcgPlatformSetupPolicy --rootfs examples/rootfs/x8664_efi --coverage-format drcov --coverage-file TcgPlatformSetupPolicy.cov
 ```
 
+### Script
+
+To generate a coverage file from the script, you need to import: 
+`qiling.extensions.coverage` and move `ql.run()` inside 
+` with cov_utils.collect_coverage(ql, covType, fileDest):`.
+
+Example:
+```python
+from qiling import *
+from qiling.extensions.coverage import utils as cov_utils
+
+[...]
+
+[...]
+ql.set_syscall(4118, my_syscall_fsync)
+with cov_utils.collect_coverage(ql, 'drcov', 'output.cov'):
+   ql.run()
+
+[...]
+```
+
 ### Extending the plugin to support additional coverage formats
 
 Currently, the plugin is only capable of omitting code coverage files which comform to the 'drcov' format used by the DynamoRIO [tool of the same name](https://dynamorio.org/dynamorio_docs/page_drcov.html).
