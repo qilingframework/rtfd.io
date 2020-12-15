@@ -17,7 +17,7 @@ Before creating your first pull request, please read this page carefully.
 
 ## Check existing issue/PR
 
-Before submitting your pull request, please search in issues and PRs firstly. Also remember to check our [TODO](https://github.com/qilingframework/qiling/issues/333).
+Before submitting your pull request, please search in issues and PRs firstly. Also remember to check our [TODO](https://github.com/qilingframework/qiling/issues/333) and [FAQ](https://docs.qiling.io/en/latest/faq/).
 
 ## Reading materials
 
