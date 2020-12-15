@@ -12,7 +12,6 @@ Before creating your first pull request, please read this page carefully.
 
 - Join our [telegram group](https://t.me/qilingframework), most of our developers are active in this group.
 - Follow our twitter [@qiling_io](https://twitter.com/qiling_io) to get latest news.
-- We also have a QQ group: 486812017.
 - Don't forget to give us a star on [Github](https://github.com/qilingframework/qiling)!
 
 ## Check existing issue/PR
