@@ -4,7 +4,7 @@ title: Contribution Guide
 
 ## Introduction
 
-Qiling Framework is always a fast-evolving project, thanks to the efforts of the whole community. Since more and more developers join us, it's also a big challenge to maintain the whole project clean and thus here comes the contribution guide.
+Qiling Framework is always a fast-evolving project thanks to the efforts of the whole community. Since more and more developers join us, it's also a big challenge to maintain the whole project clean and thus here comes the contribution guide.
 
 Before creating your first pull request, please read this page carefully.
 
