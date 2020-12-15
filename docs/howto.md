@@ -123,7 +123,7 @@ Available options:
 > - Remote debugger. Please refer to [here](https://docs.qiling.io/en/latest/debugger/)
 
 - ql.multithread = False
-> - Default is false. Due to the instablity of multi-threading, added a swtich for multi-threading
+> - Default is false. Due to the instability of multi-threading, added a switch for multi-threading
 
 - ql.ipv6 = False
 > - Default is false. Use IPv6 or not, to avoid binary double bind. ipv6 and ipv4 bind the same port at the same time
@@ -132,7 +132,7 @@ Available options:
 > - Bind to localhost
 
 - ql.root = False
-> - change to True means analysis must run with with sudo. Impact, bind on default port which is 1024 or lower
+> - change to True means analysis must run with sudo. Impact, bind on default port which is 1024 or lower
 
 
 ### Execution: ql.run()
