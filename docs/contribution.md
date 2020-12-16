@@ -164,4 +164,4 @@ Of course, the more, the better.
 
 ## Changelog
 
-Finally, before merging your PR into dev branch, one last thing you have to do is to update [Changelog](https://github.com/qilingframework/qiling/issues/134).
+Finally, before merging your PR into dev branch, one last thing you have to do is to update [Changelog](https://github.com/qilingframework/qiling/blob/dev/ChangeLog).
