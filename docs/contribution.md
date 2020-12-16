@@ -94,9 +94,9 @@ Whenever possible, add docstring for your method or property.
 
 ```python
 def ql_dumb_function():
-    ```
+    """
     This is a docstring
-    ```
+    """
     pass
 ```
 
