@@ -43,10 +43,39 @@ ql.mem.write(address, data)
 ```
 
 ### Map a memory area
-map a memory before writing into it. Info can be empty
+map a memory before writing into it. Info can be empty.
 ```python
 ql.mem.map(addr,size,info = [my_first_map])
 ```
+
+Address:
+
+You need to align the memory offset and address for mapping.
+
+`addr//size*size` -> `0x7fefc9e0//4096*4096`
+
+Size:
+
+The amounts of memory that should be mapped
+
+> This parameter is OS dependant; If you use a linux system, consider at least a multiple of 4096 for alignment
+
+
+example (Linux):
+```python
+[..]
+def memory_fix(ql, access, addr, size, value):
+    ql.nprint("[_] Mapping "+str(size)+" bytes at "+hex(addr)+" | access: "+ str(access)+" | value: "+ str(value))
+    ql.mem.map(addr//4096*4096, 4096)
+    ql.mem.write(addr, struct.pack(">I",value)) # memory packing is OS dependant
+    return 
+
+[...]
+ql.hook_mem_unmapped(memory_fix)
+[...]
+```
+
+See **qiling/loader/elf.py** for a proper mapping example
 
 ### read and write string
 to read a string from memory
