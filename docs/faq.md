@@ -10,6 +10,13 @@ git clone https://github.com/qilingframework/qiling.git
 git checkout dev
 ```
 
+### How to run MBR, MS-DOS COM and MS-DOS EXE
+Preset arch and os or filename extensions must be as follow
+- filename.DOS_EXE
+- filename.DOS_COM
+- filename.DOS_MBR
+
+
 ### How to install the latest dev branch with pip3
 ```
 pip3 install --user https://github.com/qilingframework/qiling/archive/dev.zip
