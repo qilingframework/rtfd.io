@@ -95,7 +95,7 @@ To setup the plugin, right-click anywhere and choose the submenu `Qiling Emulato
 
 [![](img/ida1.png){: style="height:auto;width:500px;display:block;margin:left"}](img/ida1.png)
 
-Select `Setup` from the menu, pop-up window will appear and ask for `rootfs` and `custom user script`
+Select `Setup` from the menu, pop-up window will appear and ask for `rootfs`, `custom user script` and an optional parameter `env`
 
 [![](img/ida2.png){: style="height:auto;width:500px;display:block;margin:left"}](img/ida2.png)
 
@@ -229,6 +229,10 @@ Every time you step an instruction, the output window is updated with the latest
 [![](img/ida19.png){: style="height:auto;width:600px;display:block;margin:left"}](img/ida19.png)
 
 The plugin can also reload user scripts dynamically. Edit and save your script, select `Reload User Scripts` from the menu and all modifications will take effect immediately.
+
+### Custom Environment
+
+The env parameter during the setup phase allow to provide a valid json from a chose file, the structure must follow the usual Qiling env dict structure.
 
 ### Save and Restore Snapshot
 
