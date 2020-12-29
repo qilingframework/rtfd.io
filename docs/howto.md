@@ -56,7 +56,7 @@ Available options:
 - env=None
 > - always in {}, example {"SHELL":"/bin/bash","HOME":"/tmp"}
 - output=None
-> - output = ["default", "debug", "disasm", "dump"] and dump=(disam + debug)  
+> - output = ["default", "debug", "disasm", "dump"] and dump=(disasm + debug)
 - verbose=1
 > - from 1 till n, please refer to [print section](https://docs.qiling.io/en/latest/print/) for more details
 - profile=None
@@ -133,6 +133,12 @@ Available options:
 
 - ql.root = False
 > - change to True means analysis must run with sudo. Impact, bind on default port which is 1024 or lower
+
+- ql.output = None
+> - refer to the section above
+
+- ql.verbose = 1
+> - from 1 till n, please refer to [print section](https://docs.qiling.io/en/latest/print/) for more details
 
 
 ### Execution: ql.run()
