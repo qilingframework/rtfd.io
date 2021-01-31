@@ -36,7 +36,7 @@ X8664_WIN = unhexlify(
 )
 
 
-ql = Qiling(shellcoder=X8664_WIN, archtype="x86", ostype="windows", rootfs="../examples/rootfs/x86_windows", output="default")
+ql = Qiling(code=X8664_WIN, archtype="x86", ostype="windows", rootfs="../examples/rootfs/x86_windows", output="default")
 ql.run()
 ```
 
@@ -84,7 +84,7 @@ In pre-loader (during initialization) state, there are multiple options that can
 
 Available options:
 
-- shellcoder=None
+- code=None
 > - shellcode in binary mode
 - rootfs=None
 > - refer to above section, but not compulsory in shellcode  
