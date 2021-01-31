@@ -10,9 +10,9 @@ With qltool, easy execution can be performed:
 ### shellcode:
 
 ```bash
-$ ./qltool shellcode --os linux --arch arm --hex -f examples/shellcodes/linarm32_tcp_reverse_shell.hex
-$ ./qltool shellcode --os linux --arch x86 --asm -f examples/shellcodes/lin32_execve.asm
-$ ./qltool shellcode --os linux --arch arm --hex -f examples/shellcodes/linarm32_tcp_reverse_shell.hex --strace
+$ ./qltool code --os linux --arch arm --hex -f examples/shellcodes/linarm32_tcp_reverse_shell.hex
+$ ./qltool code --os linux --arch x86 --asm -f examples/shellcodes/lin32_execve.asm
+$ ./qltool code --os linux --arch arm --hex -f examples/shellcodes/linarm32_tcp_reverse_shell.hex --strace
 ```
 
 ### binary file:
