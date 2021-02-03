@@ -37,23 +37,16 @@ In Qiling Framework, dev branch means new features, new fixes and testing functi
 
 ### Logging
 
-`ql.nprint` and `ql.dprint` is **being depreciated** and will be removed in a future release. Please use python `logging` module directly.
+Please use `ql.log`, which is a `logging.Logger` object.
 
-```python
-# ql.dprint(D_INFO, "A debug message")
-logging.debug("A debug message")
-# ql.nprint("An info message")
-logging.info("An info message")
-```
-
-When catching an exception, besides simply raising it, `logging.exception` can be of great help.
+When catching an exception, besides simply raising it, `ql.log.exception` can be of great help.
 
 ```python
 try:
     1/0
 except ZeroDivisionError as e:
     #print(e)
-    logging.exception("Divide by zero!")
+    ql.log.exception("Divide by zero!")
 ```
 
 ### Property
