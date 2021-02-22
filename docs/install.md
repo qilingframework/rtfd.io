@@ -88,7 +88,7 @@ CMake Error at /usr/local/Cellar/cmake/3.15.4/share/cmake/Modules/CMakeTestCComp
 ```
 
 A temporary workaround is to install keystone-engine from source:
-* Remove `keystone-engine>=0.9.1.post3` line from `requirements.txt`
+
 * Install keystone-engine Python binding from source:
 ```sh
 git clone https://github.com/keystone-engine/keystone
