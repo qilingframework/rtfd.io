@@ -11,7 +11,7 @@ git checkout dev
 ```
 
 ### How to run MBR, MS-DOS COM and MS-DOS EXE
-Preset arch and os or filename extensions must be as follow
+Preset arch and os or filename extensions must be as follows
 
 - filename.DOS_EXE
 
