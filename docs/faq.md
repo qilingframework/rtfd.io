@@ -95,5 +95,5 @@ This is not a "bug", just some scripts running too slow so gdb is waiting timeou
 This is not a "bug". By default ql.multithread = False in order to turn on multithread. You need to add ql.multithread = True or with --multithread if you are using qltool.
 
 ### I tried to run example scripts but prompted with "file not found" error.
-As an effort to streamline Qiling Framework code base, rootfs directory is now hosted separately in its own [repo](https://github.com/qilingframework/rootfs). You can download it by clone the repo. ```cd examples; git clone https://github.com/qilingframework/rootfs.git```
+As an effort to streamline Qiling Framework code base, rootfs directory is now hosted separately in its own [repo](https://github.com/qilingframework/rootfs). You can download it by cloning the repo. ```cd examples; git clone https://github.com/qilingframework/rootfs.git```
 
