@@ -10,6 +10,11 @@ git clone https://github.com/qilingframework/qiling.git
 git checkout dev
 ```
 
+
+### I tried to run example scripts but prompted with "file not found" error.
+As an effort to streamline Qiling Framework code base, rootfs directory is now hosted separately in its own [repo](https://github.com/qilingframework/rootfs). You can download it by cloning the repo. ```git submodule update --init --recursive``` or simply ```cd examples; git clone https://github.com/qilingframework/rootfs.git```
+
+
 ### How to run MBR, MS-DOS COM and MS-DOS EXE
 Preset arch and os or filename extensions must be as follows
 
@@ -93,7 +98,4 @@ This is not a "bug", just some scripts running too slow so gdb is waiting timeou
 
 ### Syscall not implemented or AttributeError: 'NoneType' object has no attribute 'cur_thread' error
 This is not a "bug". By default ql.multithread = False in order to turn on multithread. You need to add ql.multithread = True or with --multithread if you are using qltool.
-
-### I tried to run example scripts but prompted with "file not found" error.
-As an effort to streamline Qiling Framework code base, rootfs directory is now hosted separately in its own [repo](https://github.com/qilingframework/rootfs). You can download it by cloning the repo. ```cd examples; git clone https://github.com/qilingframework/rootfs.git```
 
