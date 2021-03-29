@@ -31,9 +31,10 @@ Example code
 import sys
 sys.path.append("..")
 from qiling import *
+from qiling.const import QL_VERBOSE
 
 def my_sandbox(path, rootfs):
-    ql = Qiling(path, rootfs, output = "debug")
+    ql = Qiling(path, rootfs, verbose=QL_VERBOSE.DEBUG)
     ql.run()
 
 
@@ -55,13 +56,14 @@ Example code
 import sys
 sys.path.append("..")
 from qiling import *
+from qiling.const import QL_VERBOSE
 
 def stopatkillerswtich(ql):
     print("killerswtch found")
     ql.emu_stop()
 
 if __name__ == "__main__":
-    ql = Qiling(["rootfs/x86_windows/bin/wannacry.bin"], "rootfs/x86_windows", output="debug")
+    ql = Qiling(["rootfs/x86_windows/bin/wannacry.bin"], "rootfs/x86_windows", verbose=QL_VERBOSE.DEBUG)
     ql.hook_address(stopatkillerswtich, 0x40819a)
     ql.run()
 ```
@@ -298,7 +300,7 @@ import sys
 sys.path.append("..")
 from qiling import *
 from qiling.os.posix import syscall
-
+from qiling.const import QL_VERBOSE
 
 def my_syscall_write(ql, write_fd, write_buf, write_count, *rest):
     if write_fd == 2 and ql.os.file_des[2].__class__.__name__ == 'ql_pipe':
@@ -311,7 +313,7 @@ def my_netgear(path, rootfs):
     ql = Qiling(
                 path, 
                 rootfs, 
-                output      = "debug", 
+                verbose      = QL_VERBOSE.DEBUG, 
                 profile     = "netgear_6220.ql"
                 )
 
@@ -346,6 +348,7 @@ Example code
 import os, socket, sys, threading
 sys.path.append("..")
 from qiling import *
+from qiling.const import QL_VERBOSE
 
 def patcher(ql):
     br0_addr = ql.mem.search("br0".encode() + b'\x00')
@@ -394,7 +397,7 @@ def nvram_listener():
                 connection.close() 
 
 def my_sandbox(path, rootfs):
-    ql = Qiling(path, rootfs, output = "debug")
+    ql = Qiling(path, rootfs, verbose=QL_VERBOSE.DEBUG)
     ql.add_fs_mapper("/dev/urandom","/dev/urandom")
     ql.hook_address(patcher ,ql.loader.elf_entry)
     ql.run()

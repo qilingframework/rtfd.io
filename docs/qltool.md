@@ -44,7 +44,7 @@ $ ./qltool run --rootfs examples/rootfs/x8664_linux examples/rootfs/x8664_linux/
 ### Binary file and various output format:
 
 ```bash
-$ ./qltool run -f examples/rootfs/mips32el_linux/bin/mips32el_hello --rootfs examples/rootfs/mips32el_linux --output=disasm
+$ ./qltool run -f examples/rootfs/mips32el_linux/bin/mips32el_hello --rootfs examples/rootfs/mips32el_linux --disasm
 $ ./qltool run -f examples/rootfs/mips32el_linux/bin/mips32el_hello --rootfs examples/rootfs/mips32el_linux --strace
 ```
 

@@ -8,9 +8,10 @@ Few examples are exhibited in this document and we will illustrate how Qiling Fr
 ```python
 import sys
 from qiling import *
+from qiling.const import QL_VERBOSE
 
 def my_sandbox(path, rootfs):
-    ql = Qiling(path, rootfs, output="debug", profile = 'netgear.ql', log_dir='qlog')
+    ql = Qiling(path, rootfs, verbose=QL_VERBOSE.DEBUG, profile = 'netgear.ql', log_dir='qlog')
     ql.add_fs_mapper('/proc', '/proc')
     ql.run()
 
@@ -30,13 +31,14 @@ import sys
 
 from binascii import unhexlify
 from qiling import *
+from qiling.const import QL_VERBOSE
 
 X8664_WIN = unhexlify(
     'fc4881e4f0ffffffe8d0000000415141505251564831d265488b52603e488b52183e488b52203e488b72503e480fb74a4a4d31c94831c0ac3c617c022c2041c1c90d4101c1e2ed5241513e488b52203e8b423c4801d03e8b80880000004885c0746f4801d0503e8b48183e448b40204901d0e35c48ffc93e418b34884801d64d31c94831c0ac41c1c90d4101c138e075f13e4c034c24084539d175d6583e448b40244901d0663e418b0c483e448b401c4901d03e418b04884801d0415841585e595a41584159415a4883ec204152ffe05841595a3e488b12e949ffffff5d49c7c1000000003e488d95fe0000003e4c8d850f0100004831c941ba45835607ffd54831c941baf0b5a256ffd548656c6c6f2c2066726f6d204d534621004d657373616765426f7800'
 )
 
 
-ql = Qiling(code=X8664_WIN, archtype="x86", ostype="windows", rootfs="../examples/rootfs/x86_windows", output="default")
+ql = Qiling(code=X8664_WIN, archtype="x86", ostype="windows", rootfs="../examples/rootfs/x86_windows", verbose=QL_VERBOSE.DEBUG)
 ql.run()
 ```
 
@@ -55,8 +57,6 @@ Available options:
 > - virtual "/" folder, this is a "jail" file system when executing Qiling
 - env=None
 > - always in {}, example {"SHELL":"/bin/bash","HOME":"/tmp"}
-- output=None
-> - output = ["default", "debug", "disasm", "dump"] and dump=(disasm + debug)
 - verbose=1
 > - from 1 till n, please refer to [print section](https://docs.qiling.io/en/latest/print/) for more details
 - profile=None
@@ -96,8 +96,6 @@ Available options:
 > - "x8664", "x86", "arm", "arm64", "mips"
 - bigendian=False
 > - Default is false, only available for "arm" and "mips" arch for now
-- output=None
-> - refer to above section
 - verbose=1
 > - refer to above section
 - profile=None
@@ -133,9 +131,6 @@ Available options:
 
 - ql.root = False
 > - change to True means analysis must run with sudo. Impact, bind on default port which is 1024 or lower
-
-- ql.output = None
-> - refer to the section above
 
 - ql.verbose = 1
 > - from 1 till n, please refer to [print section](https://docs.qiling.io/en/latest/print/) for more details

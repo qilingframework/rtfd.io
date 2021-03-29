@@ -24,33 +24,17 @@ ql = Qiling(['/bin/ls'], "examples/rootfs/x86_linux", console=False)
 
 `console=False` will disable terminal outputs.
 
-#### output
-
-```python
-ql = Qiling(['/bin/ls'], "examples/rootfs/x86_linux", output="off")
-```
-
-`output` is a parameter for compatibility. Its possible values are as follows.
-
-- "default": equals to "output=None", do nothing.
-- "off": an alias to "default".
-- "debug": set the log level to logging.DEBUG.
-- "disasm": diasm each executed instruction.
-- "dump": the most verbose output, dump registers and diasm the function blocks.
-
-Note that `output` can be configured dynamically.
-
 #### verbose
 
 ```python
-ql = Qiling(['/bin/ls'], "examples/rootfs/x86_linux", verbose=5)
+ql = Qiling(['/bin/ls'], "examples/rootfs/x86_linux", verbose=QL_VERBOSE.DEFAULT)
 ```
 
-- 0  : logging.WARNING, almost no additional logs except the program output.
-- >=1: logging.INFO, the default logging level.
-- >=4: logging.DEBUG.
-
-`verbose` is another parameter for compatibiliy, which is an alias of different logging levels.
+- QL_VERBOSE.OFF(0): logging.WARNING, almost no additional logs except the program output.
+- QL_VERBOSE.DEFAULT(1): logging.INFO, the default logging level.
+- QL_VERBOSE.DEBUG(4): logging.DEBUG.
+- QL_VERBOSE.DISASM(10): Disasm each executed instruction.
+- QL_VERBOSE.DUMP(20): The most verbose output, dump registers and disasm the function blocks.
 
 Note that `verbose` can be configured dynamically.
 
@@ -58,13 +42,13 @@ Note that `verbose` can be configured dynamically.
 
 Filter some specific logs. Very useful if you would like to achieve something like `strace`.
 
-```
+```python
 #!/usr/bin/env python3
 from qiling import *
 
 if __name__ == "__main__":
     ql = Qiling(["examples/rootfs/arm_linux/bin/arm_hello"], "examples/rootfs/arm_linux", log_dir="qlog")
-    ql.filter = ["^open"]
+    ql.filter = "^open"
     ql.run()
 ```
 

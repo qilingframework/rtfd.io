@@ -6,9 +6,10 @@ Using custom user profile will override default Qiling Framework profile values.
 
 ```python
 from qiling import *
+from qiling.const import QL_VERBOSE.DEBUG
 
 def my_sandbox(path, rootfs):
-    ql = Qiling(path, rootfs, output="debug", profile= "netgear.ql")
+    ql = Qiling(path, rootfs, verbose=QL_VERBOSE.DEBUG, profile= "netgear.ql")
     ql.add_fs_mapper("/proc", "/proc")
     ql.run()
 

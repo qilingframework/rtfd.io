@@ -8,9 +8,10 @@ Qiling supports **remote debugging**, it will work with gdbserver compatible cli
 
 ```python
 from qiling import *
+from qiling.const import QL_VERBOSE
 
 def test_gdb(path, rootfs):
-    ql = Qiling(path, rootfs, output="off")
+    ql = Qiling(path, rootfs, verbose=QL_VERBOSE.OFF)
 
     # Enable debugger to listen at localhost address, default port 9999
     ql.debugger = True
@@ -163,9 +164,10 @@ Qiling已支持**远程调试**。这意味着它能够与gdbserver兼容的客�
 
 ```python
 from qiling import *
+from qiling.const import QL_VERBOSE
 
 def test_gdb(path, rootfs):
-    ql = Qiling(path, rootfs, output="off")
+    ql = Qiling(path, rootfs, verbose=QL_VERBOSE.OFF)
 
     # 开启调试模式，监听本地，默认端口9999
     ql.debugger = True

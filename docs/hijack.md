@@ -78,7 +78,7 @@ if __name__ == "__main__":
 
 This is advanced usage for fs mapper. Below is an example which maps '/dev/urandom' to a user-defined implementation. Note all such objects should inherit from `QlFsMappedObject`.
 
-```
+```python
 from qiling import *
 from qiling.os.mapper import QlFsMappedObject
 
@@ -101,15 +101,16 @@ if __name__ == "__main__":
 
 Another usage can be disk emulation. As is often the case, a program would like to access disks directly and you can utilize fs mapper to emulate a disk.
 
-```
+```python
 from qiling import *
 from qiling.os.disk import QlDisk
+from qiling.const import QL_VERBOSE
 
 if __name__ == "__main__":
     ql = Qiling(["rootfs/8086_dos/petya/mbr.bin"], 
                  "rootfs/8086_dos",
                  console=False, 
-                 output="debug", 
+                 verbose=QL_VERBOSE.DEBUG, 
                  log_dir=".")
     # Note:
     # This image is only intended for PoC since the core petya code resides in the
@@ -130,6 +131,7 @@ The `QlDisk` in practice inherits from `QlFsMappedObejct` and implements disk op
 
 ```python
 from qiling import *
+from qiling.const import *
 
 def my_syscall_write(ql, write_fd, write_buf, write_count, *args, **kw):
     regreturn = 0
@@ -142,14 +144,14 @@ def my_syscall_write(ql, write_fd, write_buf, write_count, *args, **kw):
     except:
         regreturn = -1
         ql.nprint("\n+++++++++\nmy write(%d,%x,%i) = %d\n+++++++++" % (write_fd, write_buf, write_count, regreturn))
-        if ql.output in (QL_OUTPUT.DEBUG, QL_OUTPUT.DUMP):
+        if ql.verbose >= QL_VERBOSE.DEBUG:
             raise
 
     ql.os.definesyscall_return(regreturn)
 
 
 if __name__ == "__main__":
-    ql = Qiling(["rootfs/arm_linux/bin/arm_hello"], "rootfs/arm_linux", output = "debug")
+    ql = Qiling(["rootfs/arm_linux/bin/arm_hello"], "rootfs/arm_linux", verbose=QL_VERBOSE.DEBUG)
     ql.set_syscall(0x04, my_syscall_write)
     ql.set_syscall("write", my_syscall_write)
     ql.run()
@@ -159,13 +161,14 @@ if __name__ == "__main__":
 -  Posix's Libc function replacement
 ```python
 from qiling import *
+from qiling.const import QL_VERBOSE
 
 def my_puts(ql):
     addr = ql.os.function_arg[0]
     print("puts(%s)" % ql.mem.string(addr))
 
 if __name__ == "__main__":
-    ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", output="debug")
+    ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", verbose=QL_VERBOSE.DEBUG)
     ql.set_api('puts', my_puts)
     ql.run()
 ```
@@ -204,7 +207,7 @@ def my_onexit(ql, address, params):
 
 
 def my_sandbox(path, rootfs):
-    ql = Qiling(path, rootfs, output = "debug")
+    ql = Qiling(path, rootfs, verbose=QL_VERBOSE.DEBUG)
     ql.set_api("_cexit", my_onenter, QL_INTERCEPT.ENTER)
     ql.set_api("puts", my_puts)
     ql.set_api("atexit", my_onexit, QL_INTERCEPT.EXIT)
@@ -227,7 +230,7 @@ def my_puts(ql):
     print("Hijack Libc puts(%s)" % ql.mem.string(addr))
 
 if __name__ == "__main__":
-    ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", output="debug")
+    ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", verbose=QL_VERBOSE.DEBUG)
     ql.set_api('puts', my_puts, QL_INTERCEPT.ENTER)
     ql.run()
 ```
@@ -247,7 +250,7 @@ def my_onenter(ql, address, params):
 
 
 def my_sandbox(path, rootfs):
-    ql = Qiling(path, rootfs, output = "debug")
+    ql = Qiling(path, rootfs, verbose=QL_VERBOSE.DEBUG)
     ql.set_api("_cexit", my_onenter, QL_INTERCEPT.ENTER)
     ql.run()
 
@@ -269,7 +272,7 @@ def write_onenter(ql, arg1, arg2, arg3, *args):
     ql.reg.rdx = arg3 - 1
 
 if __name__ == "__main__":
-    ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", output="debug")
+    ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", verbose=QL_VERBOSE.DEBUG)
     ql.set_syscall(1, write_onenter, QL_INTERCEPT.ENTER)
     ql.run()
 ```
@@ -287,7 +290,7 @@ def write_onExit(ql, arg1, arg2, arg3, *args):
     ql.reg.rax = arg3 + 1
 
 if __name__ == "__main__":
-    ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", output="debug")
+    ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", verbose=QL_VERBOSE.DEBUG)
     ql.set_syscall(1, write_onExit, QL_INTERCEPT.EXIT)
     ql.run()
 ```
@@ -306,7 +309,7 @@ def my_onexit(ql, address, params):
 
 
 def my_sandbox(path, rootfs):
-    ql = Qiling(path, rootfs, output = "debug")
+    ql = Qiling(path, rootfs, verbose=QL_VERBOSE.DEBUG)
     ql.set_api("RegDeleteValueW", my_onexit, QL_INTERCEPT.EXIT)
     ql.run()
 

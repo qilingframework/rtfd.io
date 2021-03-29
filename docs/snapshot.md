@@ -31,16 +31,18 @@ int main(int argc, const char **argv)
 - Rerun sleep_hello and start at 0x10bc which is right after the sleep 3600 seconds
 
 ```python
+from qiling.const import QL_VERBOSE
+
 def dump(ql, *args, **kw):
     ql.save(reg=False, cpu_context=True, snapshot="/tmp/snapshot.bin")
     ql.emu_stop()
 
-ql = Qiling(["../examples/rootfs/x8664_linux/bin/sleep_hello"], "../examples/rootfs/x8664_linux", output= "default")
+ql = Qiling(["../examples/rootfs/x8664_linux/bin/sleep_hello"], "../examples/rootfs/x8664_linux", verbose=QL_VERBOSE.DEFAULT)
 X64BASE = int(ql.profile.get("OS64", "load_address"), 16)
 ql.hook_address(dump, X64BASE + 0x1094)
 ql.run()
 
-ql = Qiling(["../examples/rootfs/x8664_linux/bin/sleep_hello"], "../examples/rootfs/x8664_linux", output= "debug", verbose=4)
+ql = Qiling(["../examples/rootfs/x8664_linux/bin/sleep_hello"], "../examples/rootfs/x8664_linux", verbose=QL_VERBOSE.DEBUG)
 X64BASE = int(ql.profile.get("OS64", "load_address"), 16)
 ql.restore(snapshot="/tmp/snapshot.bin")
 begin_point = X64BASE + 0x109e
