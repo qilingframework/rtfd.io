@@ -12,8 +12,7 @@ git checkout dev
 
 
 ### I tried to run example scripts but prompted with "file not found" error.
-As an effort to streamline Qiling Framework code base, rootfs directory is now hosted separately in its own [repo](https://github.com/qilingframework/rootfs). You can download it by cloning the repo. ```git submodule update --init --recursive``` or simply ```cd examples; git clone https://github.com/qilingframework/rootfs.git```
-
+As an effort to streamline Qiling Framework code base, rootfs directory is now hosted separately in its own [repo](https://github.com/qilingframework/rootfs). You can download it by cloning the repo. ```git submodule update --init --recursive``` 
 
 ### How to run MBR, MS-DOS COM and MS-DOS EXE
 Preset arch and os or filename extensions must be as follows
