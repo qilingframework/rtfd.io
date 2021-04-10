@@ -32,9 +32,15 @@ cd qiling
 sudo pip3 install . 
 ```
 
+Also don't forget to initialize the rootfs.
+```sh
+git submodule update --init --recursive
+```
+
 ### Dev branch: latest and greatest
 ```
 git clone -b dev https://github.com/qilingframework/qiling.git
+cd qiling && git submodule update --init --recursive
 ```
 
 ### Pyenv Installation
