@@ -34,7 +34,7 @@ There are two ways to install the plugin
 Make a symbol link to IDA Pro `plugins` directory.
 
 !!! note
-    In case your installation location is different, replace these paths with proper paths.
+    In case your installation location is different (due to different installion methods), replace these paths with proper paths.
 
 ```bash
 # Linux
@@ -58,9 +58,6 @@ Once loaded, the plugin is available under "Edit->Plugins->Qiling Emulator" and 
 The plugin supports IDA Pro 7.x with Python3.6+.
 
 Recommend platforms: macOS & Linux.
-
-!!! warning
-    Currently, due to [a Unicorn bug](https://github.com/unicorn-engine/unicorn/issues/1316), it makes Qiling crash on native Windows.
 
 !!! warning
     When trying to use IDA Pro with **Python3.8**, IDA crashes. [The cause and solution of the problem](https://www.hex-rays.com/blog/ida-7-4-and-python-3-8/)
