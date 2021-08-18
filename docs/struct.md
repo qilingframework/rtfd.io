@@ -191,9 +191,16 @@ struct in_addr {
 #### Code
 ```python
 def my_bind(ql, *args, **kw):
-    bind_fd = ql.os.function_arg[0]
-    bind_addr = ql.os.function_arg[1]
-    bind_addrlen = ql.os.function_arg[2]
+    params = ql.os.resolve_fcall_params({
+        'fd': UINT,
+        'addr': POINTER,
+        'addrlen': UINT
+    })
+
+    bind_fd = params['fd']
+    bind_addr = params['addr']
+    bind_addrlen = params['addrlen']
+
     # read from memory (start_address, len)
     data = ql.mem.read(bind_addr, bind_addrlen)
     # custom unpack (your own ql.unpack) of a C struct from memory
