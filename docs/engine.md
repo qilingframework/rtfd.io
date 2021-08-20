@@ -12,9 +12,9 @@ pip3 install -e .[evm]
 
 ### How to test EVM modules
 ```
-cd qiling/engine/test
+cd tests
 pyton3 ./test_evm.py
 ```
 
 ### Examples?
-yes, refer to our [github repo](https://github.com/qilingframework/qiling/tree/dev/qiling/engine/examples)
+yes, refer to our [github repo](https://github.com/qilingframework/qiling/tree/dev/qiling/examples/evm)
