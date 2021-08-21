@@ -29,7 +29,7 @@ nav:
 - 'Qiling Debugger': 'qdb.md'
 - 'Coverage': 'coverage.md'
 - 'Adding Syscall and OS API': 'syscall_api.md'
-- 'Customized Engine': 'engine.md'
+- 'EVM Engine': 'evm.md'
 - 'Extending Arch, OS or Loader': 'extension.md'
 - 'IDAPro Plugin': 'ida.md'
 - 'FAQ': 'faq.md'
