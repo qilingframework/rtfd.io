@@ -17,4 +17,4 @@ pyton3 ./test_evm.py
 ```
 
 ### Examples?
-yes, refer to our [github repo](https://github.com/qilingframework/qiling/tree/dev/qiling/examples/evm)
+yes, refer to our [github repo](https://github.com/qilingframework/qiling/tree/dev/examples/evm)
