@@ -47,8 +47,8 @@ def force_call_dialog_func(ql):
 
 def our_sandbox(path, rootfs):
     ql = Qiling(path, rootfs)
-    ql.stdin = StringBuffer()
-    ql.stdin.write(b"Ea5yR3versing\n")
+    ql.os.stdin = StringBuffer()
+    ql.os.stdin.write(b"Ea5yR3versing\n")
     ql.hook_address(force_call_dialog_func, 0x00401016)
     ql.run()
 
@@ -65,7 +65,7 @@ Fs mapper works in two ways.
 
 - Hijack the path in emulated environment to the paht on your host machine. e.g. Bind '/dev/urandom' to the real device.
 
-```
+```python
 from qiling import *
 
 if __name__ == "__main__":
