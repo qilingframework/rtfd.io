@@ -138,6 +138,31 @@ CPU registers can also be edited in the register view window. Right-click on the
 
 [![](img/ida13.png){: style="height:auto;width:500px;display:block;margin:left"}](img/ida13.png)
 
+### Obtain a Reference to Qiling Object
+
+If you would like to handle Qiling object manually in the IDAPython output windows, you may type
+
+```python
+ql_plugin = ida_ida.ql_plugin
+qlemu = ql_plugin.qlemu
+ql = qlemu.ql
+```
+
+to get a reference to the inner Qiling object after you setup the plugin previously.
+
+Also, some protips:
+
+```python
+# Convert an IDA address to ql internal address
+qladdr = qlemu.ql_addr_from_ida(idaaddr)
+ql.mem.read(qladdr)
+# Convert a ql address to IDA address
+qlemu.ida_addr_from_ql_addr(qladdr)
+```
+
+!!! note
+    Be cautious with `ql_plugin` and `qlemu`. Some functionalities are not designed to called in the output window and you should know what you are doing. However, it's safe to play with `ql` instance in most cases.
+
 ### Custom User Scripts
 
 `Custom user scripts` is for users to implement their own logic when the Qiling IDA plugin emulates, continues or steps.
