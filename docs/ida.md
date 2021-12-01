@@ -140,7 +140,7 @@ CPU registers can also be edited in the register view window. Right-click on the
 
 ### Obtain a Reference to Qiling Object
 
-If you would like to handle Qiling object manually in the IDAPython output windows, you may type
+If you would like to handle Qiling object manually in the IDAPython output window, you may type
 
 ```python
 ql_plugin = ida_ida.ql_plugin
@@ -155,7 +155,7 @@ Also, some protips:
 ```python
 # Convert an IDA address to ql internal address
 qladdr = qlemu.ql_addr_from_ida(idaaddr)
-ql.mem.read(qladdr)
+ql.mem.read(qladdr, 4)
 # Convert a ql address to IDA address
 qlemu.ida_addr_from_ql_addr(qladdr)
 ```
