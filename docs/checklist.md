@@ -52,10 +52,10 @@ __version__ = "X.X.X" + "-dev"
 - commit and push
 - Done
 
-## Adding New Arch
+## Adding New Arch (WIP)
 - Instrumentation
 
-## Adding New OS
+## Adding New OS (WIP)
 - Test for hello asm, dynamic and static 
 - set_api() test
 
