@@ -33,5 +33,6 @@ nav:
 - 'Extending Arch, OS or Loader': 'extension.md'
 - 'IDAPro Plugin': 'ida.md'
 - 'FAQ': 'faq.md'
+- 'Checklist': 'checklist.md'
 - 'Contribution Guide': 'contribution.md'
 - 'References': 'references.md'
