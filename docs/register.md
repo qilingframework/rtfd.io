@@ -6,7 +6,7 @@ Reference: qiling/arch/register.py
 
 ### Read
 
-- Reading from string "exa"
+- Reading from string "eax"
 
 ```python
 ql.reg.read("EAX")
