@@ -286,7 +286,7 @@ if __name__ == "__main__":
 
 Screenshot
 
-[![qiling DEMO 2: Fuzzing with Qiling Unicornafl](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/qilingfzz-s.png)](https://raw.githubusercontent.com/qilingframework/qiling/dev/examples/fuzzing/qilingfzz.png "Demo #2 Fuzzing with Qiling Unicornafl")
+[![qiling DEMO 2: Fuzzing with Qiling Unicornafl](img/qilingfuzz.png)](https://github.com/qilingframework/qiling/blob/master/examples/fuzzing/linux_x8664/qilingfzz.png "Demo #2 Fuzzing with Qiling Unicornafl")
 
 
 ### Emulating Netgear R6220
@@ -411,7 +411,7 @@ if __name__ == "__main__":
 
 Youtube video
 
-[![qiling DEMO 3: Fully emulating httpd from ARM router firmware with Qiling on Ubuntu X64 machine](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/demo3-en.jpg)](https://www.youtube.com/watch?v=Nxu742-SNvw "Demo #3 Emulating ARM router firmware on Ubuntu X64 machine")
+[![qiling DEMO 3: Fully emulating httpd from ARM router firmware with Qiling on Ubuntu X64 machine](img/demo3.png)](https://www.youtube.com/watch?v=Nxu742-SNvw "Demo #3 Emulating ARM router firmware on Ubuntu X64 machine")
 
 
 ### Emulating UEFI
@@ -448,4 +448,4 @@ if __name__ == "__main__":
 
 Screenshot
 
-[![qiling DEMO 4: Emulating UEFI](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/demo4-s.png)](https://raw.githubusercontent.com/qilingframework/qilingframework.github.io/master/images/demo4-en.png "Demo #4 Emulating UEFI")
+[![qiling DEMO 4: Emulating UEFI](img/demo4-s.png)](https://github.com/qilingframework/rtfd.io/blob/master/docs/img/demo4-en.png "Demo #4 Emulating UEFI")
