@@ -34,7 +34,7 @@ from qiling.extensions.coverage import utils as cov_utils
 [...]
 
 [...]
-ql.set_syscall(4118, my_syscall_fsync)
+ql.os.set_syscall(4118, my_syscall_fsync)
 with cov_utils.collect_coverage(ql, 'drcov', 'output.cov'):
    ql.run()
 

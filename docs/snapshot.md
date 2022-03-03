@@ -73,12 +73,12 @@ ql.fd.restore(all_fd)
 - context_save and context_restore are interfaces to uc_context_save and uc_context_restore.
 > - Save all the current running CPU state
 ```python
-all_registers_context = ql.reg.context_save()
+all_registers_context = ql.arch.regs.context_save()
 ```
 
 > - Restore all the saved CPU state
 ```python
-ql.reg.context_restore(all_registers_context)
+ql.arch.regs.context_restore(all_registers_context)
 ```
 
 ### Memory: save and restore
@@ -92,11 +92,11 @@ ql.mem.restore(all_mem)
 - Save all the current running state register
 - replace eip with new value
 ```python
-all_registers = ql.reg.save()
+all_registers = ql.arch.regs.save()
 all_registers["eip"] = 0xaabbccdd
 ```
 
 - Restore all the saved registers from "all_registers"
 ```python
-ql.reg.restore(all_registers)
+ql.arch.regs.restore(all_registers)
 ```

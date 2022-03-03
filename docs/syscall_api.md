@@ -15,7 +15,7 @@ For example, syscall setpriority is defined in resource.h, ql_syscall_setpriorit
 This is applicable to operational API as well, the header file will be the guideline how we can split the API into different files.
 
 ### How to start
-Before writing an API or syscall, user can always try ql.set_api or ql.set_syscall. Please see [Hijack](https://docs.qiling.io/en/latest/hijack/). This will be a very simple way to test out customized syscall or API before modifying the core source codes.
+Before writing an API or syscall, user can always try ql.os.set_api or ql.os.set_syscall. Please see [Hijack](https://docs.qiling.io/en/latest/hijack/). This will be a very simple way to test out customized syscall or API before modifying the core source codes.
 
 ### Contributing
 After adding syscall into core. Please make sure edit qiling/os/linux/<arch>.py to match the syscall function and syscall number.
