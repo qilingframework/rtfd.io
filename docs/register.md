@@ -9,19 +9,19 @@ Reference: qiling/arch/register.py
 - Reading from string "eax"
 
 ```python
-ql.reg.read("EAX")
+ql.arch.regs.read("EAX")
 ```
 
 - Reading from Unicorn Engine const
 
 ```python
-ql.reg.read(UC_X86_REG_EAX)
+ql.arch.regs.read(UC_X86_REG_EAX)
 ```
 
 - Reading eax
 
 ```python
-eax = ql.reg.eax
+eax = ql.arch.regs.eax
 ```
 
 
@@ -30,19 +30,19 @@ eax = ql.reg.eax
 - Writing 0xFF to "eax"
 
 ```python
-ql.reg.write("EAX", 0xFF)
+ql.arch.regs.write("EAX", 0xFF)
 ```
 
 - Writing 0xFF to eax, via Unicorn Engine const
 
 ```python
-ql.reg.write(UC_X86_REG_EAX, 0xFF)
+ql.arch.regs.write(UC_X86_REG_EAX, 0xFF)
 ```
 
 - Writing 0xFF to eax
 
 ```python
-ql.reg.eax =  0xFF
+ql.arch.regs.eax =  0xFF
 ```
 
 
@@ -51,15 +51,15 @@ ql.reg.eax =  0xFF
 - This is for pc and sp only.
 
 ```python
-ql.reg.arch_pc
-ql.reg.arch_sp
+ql.arch.regs.arch_pc
+ql.arch.regs.arch_sp
 ```
 
-> - Reading from PC/SP on current arch, defined by ql.archtype
+> - Reading from PC/SP on current arch, defined by ql.arch.type
 
 ```python
-ql.reg.arch_pc = 0xFF
-ql.reg.arch_sp = 0xFF
+ql.arch.regs.arch_pc = 0xFF
+ql.arch.regs.arch_sp = 0xFF
 ```
 
 
@@ -68,7 +68,7 @@ ql.reg.arch_sp = 0xFF
 - Getting the list of current arch register table
 
 ```python
-ql.reg.register_mapping()
+ql.arch.regs.register_mapping()
 ```
 
 
@@ -79,11 +79,11 @@ ql.reg.register_mapping()
 > - In 64bit environment this will return 64
 
 ```python
-ql.reg.bit("rax")
+ql.arch.reg_bits("rax")
 ```
 
 > - In 64bit environment this will return 32
 
 ```python
-ql.reg.bit("eax")
+ql.arch.reg_bits("eax")
 ```

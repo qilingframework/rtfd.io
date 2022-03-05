@@ -5,7 +5,7 @@ title: Pack and Unpack
 ```python
 ql.pack()
 ```
-- depends on ql.archbit, ql.pack64 for 64-bit and so on
+- depends on ql.arch.bits, ql.pack64 for 64-bit and so on
 
 ```python
 ql.pack64()
@@ -35,7 +35,7 @@ ql.pack16()
 ```python
 ql.unpack()
 ```
-- depends on ql.archbit, ql.unpack64 for 64-bit and so on 
+- depends on ql.arch.bits, ql.unpack64 for 64-bit and so on 
 
 ```python
 ql.upack64()
@@ -66,7 +66,7 @@ ql.unpack16()
 ql.packs()
 ```
 - signed packing
-- depends on ql.archbit, ql.pack64s for 64-bit and so on 
+- depends on ql.arch.bits, ql.pack64s for 64-bit and so on 
 
 ```python
 ql.pack64s()
@@ -97,7 +97,7 @@ ql.pack16s()
 ql.unpacks()
 ```
 - signed unpacking
-- depends on ql.archbit, ql.unpack64s for 64-bit and so on 
+- depends on ql.arch.bits, ql.unpack64s for 64-bit and so on 
 
 ```python
 ql.unpack64s()

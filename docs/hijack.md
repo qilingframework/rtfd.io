@@ -34,7 +34,7 @@ class StringBuffer:
 
 def force_call_dialog_func(ql):
     # get DialogFunc address
-    lpDialogFunc = ql.unpack32(ql.mem.read(ql.reg.esp - 0x8, 4))
+    lpDialogFunc = ql.unpack32(ql.mem.read(ql.arch.regs.esp - 0x8, 4))
     # setup stack for DialogFunc
     ql.stack_push(0)
     ql.stack_push(1001)
@@ -42,7 +42,7 @@ def force_call_dialog_func(ql):
     ql.stack_push(0)
     ql.stack_push(0x0401018)
     # force EIP to DialogFunc
-    ql.reg.eip = lpDialogFunc
+    ql.arch.regs.eip = lpDialogFunc
 
 
 def our_sandbox(path, rootfs):
@@ -122,12 +122,12 @@ if __name__ == "__main__":
 
 The `QlDisk` in practice inherits from `QlFsMappedObejct` and implements disk operation logic like cylinder, head, sectors and logic block address. `out_1M.raw` is a raw disk image and `0x80` is the disk drive index in BIOS and DOS. For Linux and Windows, the drive index could be '/dev/sda' or '\\.\PHYSICALDRIVE0'.
 
-### ql.set_syscall()
+### ql.os.set_syscall()
 
 - Custom syscall handler by syscall name or syscall number.
 - Notes: If the syscall function is not be implemented in qiling, qiling does not know which function should be replaced.
 - In that case, you must specify syscall by its number.
-- To reset, ql.set_syscall("write", None)
+- To reset, ql.os.set_syscall("write", None)
 
 ```python
 from qiling import *
@@ -152,12 +152,12 @@ def my_syscall_write(ql, write_fd, write_buf, write_count, *args, **kw):
 
 if __name__ == "__main__":
     ql = Qiling(["rootfs/arm_linux/bin/arm_hello"], "rootfs/arm_linux", verbose=QL_VERBOSE.DEBUG)
-    ql.set_syscall(0x04, my_syscall_write)
-    ql.set_syscall("write", my_syscall_write)
+    ql.os.set_syscall(0x04, my_syscall_write)
+    ql.os.set_syscall("write", my_syscall_write)
     ql.run()
 ```
 
-### Posix - ql.set_api()
+### Posix - ql.os.set_api()
 -  Posix's Libc function replacement
 ```python
 from qiling import *
@@ -170,11 +170,11 @@ def my_puts(ql):
 
 if __name__ == "__main__":
     ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", verbose=QL_VERBOSE.DEBUG)
-    ql.set_api('puts', my_puts)
+    ql.os.set_api('puts', my_puts)
     ql.run()
 ```
 
-### Non Posix - ql.set_api()
+### Non Posix - ql.os.set_api()
 
 - Mostly used in Windows API
 
@@ -209,9 +209,9 @@ def my_onexit(ql, address, params):
 
 def my_sandbox(path, rootfs):
     ql = Qiling(path, rootfs, verbose=QL_VERBOSE.DEBUG)
-    ql.set_api("_cexit", my_onenter, QL_INTERCEPT.ENTER)
-    ql.set_api("puts", my_puts)
-    ql.set_api("atexit", my_onexit, QL_INTERCEPT.EXIT)
+    ql.os.set_api("_cexit", my_onenter, QL_INTERCEPT.ENTER)
+    ql.os.set_api("puts", my_puts)
+    ql.os.set_api("atexit", my_onexit, QL_INTERCEPT.EXIT)
     ql.run()
 
 if __name__ == "__main__":
@@ -219,7 +219,7 @@ if __name__ == "__main__":
 
 ```
 
-### On enter interceptor on Posix function with ql.set_api()
+### On enter interceptor on Posix function with ql.os.set_api()
 - Hijack parameter before Posix function
 - Posix's Libc function replacement
 ```python
@@ -233,7 +233,7 @@ def my_puts(ql):
 
 if __name__ == "__main__":
     ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", verbose=QL_VERBOSE.DEBUG)
-    ql.set_api('puts', my_puts, QL_INTERCEPT.ENTER)
+    ql.os.set_api('puts', my_puts, QL_INTERCEPT.ENTER)
     ql.run()
 ```
 
@@ -253,14 +253,14 @@ def my_onenter(ql, address, params):
 
 def my_sandbox(path, rootfs):
     ql = Qiling(path, rootfs, verbose=QL_VERBOSE.DEBUG)
-    ql.set_api("_cexit", my_onenter, QL_INTERCEPT.ENTER)
+    ql.os.set_api("_cexit", my_onenter, QL_INTERCEPT.ENTER)
     ql.run()
 
 if __name__ == "__main__":
     my_sandbox(["rootfs/x8664_windows/bin/x8664_hello.exe"], "rootfs/x8664_windows")
 ```
 
-### On enter interceptor with ql.set_syscall
+### On enter interceptor with ql.os.set_syscall
 
 - Hijack parameter before OS APIs or syscall
 - Example below shows replaced parameter of syscall 0x1 with write_onenter
@@ -270,16 +270,16 @@ from qiling.const import *
 
 def write_onenter(ql, arg1, arg2, arg3, *args):
     print("enter write syscall!")
-    ql.reg.rsi = arg2 + 1
-    ql.reg.rdx = arg3 - 1
+    ql.arch.regs.rsi = arg2 + 1
+    ql.arch.regs.rdx = arg3 - 1
 
 if __name__ == "__main__":
     ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", verbose=QL_VERBOSE.DEBUG)
-    ql.set_syscall(1, write_onenter, QL_INTERCEPT.ENTER)
+    ql.os.set_syscall(1, write_onenter, QL_INTERCEPT.ENTER)
     ql.run()
 ```
 
-### On exit interceptor with ql.set_syscall()
+### On exit interceptor with ql.os.set_syscall()
 
 - Hijack returns value after OS APIs or syscall execution
 - Example below shows replaced output result of syscall 0x1 with write_onExit
@@ -289,15 +289,15 @@ from qiling.const import *
 
 def write_onExit(ql, arg1, arg2, arg3, *args):
     print("exit write syscall!")
-    ql.reg.rax = arg3 + 1
+    ql.arch.regs.rax = arg3 + 1
 
 if __name__ == "__main__":
     ql = Qiling(["rootfs/x8664_linux/bin/x8664_hello"], "rootfs/x8664_linux", verbose=QL_VERBOSE.DEBUG)
-    ql.set_syscall(1, write_onExit, QL_INTERCEPT.EXIT)
+    ql.os.set_syscall(1, write_onExit, QL_INTERCEPT.EXIT)
     ql.run()
 ```
 
-### On exit interceptor with ql.set_api()
+### On exit interceptor with ql.os.set_api()
 
 - However, Windows and UEFI usages are different from posix.
 ```python
@@ -312,7 +312,7 @@ def my_onexit(ql, address, params):
 
 def my_sandbox(path, rootfs):
     ql = Qiling(path, rootfs, verbose=QL_VERBOSE.DEBUG)
-    ql.set_api("RegDeleteValueW", my_onexit, QL_INTERCEPT.EXIT)
+    ql.os.set_api("RegDeleteValueW", my_onexit, QL_INTERCEPT.EXIT)
     ql.run()
 
 if __name__ == "__main__":
@@ -333,5 +333,5 @@ ql.patch(0x0000000000000575, b'qiling\x00')
 - Backed by keystone engine, compile any code into binary. Mainly for ql.patch()
 
 ```python
-ql.compile(ASM, ql.archtype)
+ql.compile(ASM, ql.arch.type)
 ```

@@ -8,7 +8,6 @@ title: Hook
 ```python
     def stop(ql):
         ql.nprint("killerswtichfound")
-        ql.console = False
         ql.nprint("No Print")
         ql.emu_stop()
 

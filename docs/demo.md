@@ -83,7 +83,7 @@ from qiling import *
 
 def force_call_dialog_func(ql):
     # get DialogFunc address
-    lpDialogFunc = ql.unpack32(ql.mem.read(ql.reg.esp - 0x8, 4))
+    lpDialogFunc = ql.unpack32(ql.mem.read(ql.arch.regs.esp - 0x8, 4))
     # setup stack memory for DialogFunc
 
     ql.stack_push(0)
@@ -92,7 +92,7 @@ def force_call_dialog_func(ql):
     ql.stack_push(0)
     ql.stack_push(0x0401018)
     # force EIP to DialogFunc
-    ql.reg.eip = lpDialogFunc
+    ql.arch.regs.eip = lpDialogFunc
 
 
 def my_sandbox(path, rootfs):
@@ -321,7 +321,7 @@ def my_netgear(path, rootfs):
     ql.bindtolocalhost  = True
     ql.multithread      = False
     ql.add_fs_mapper('/proc', '/proc')
-    ql.set_syscall(4004, my_syscall_write)
+    ql.os.set_syscall(4004, my_syscall_write)
     ql.run()
 
 
@@ -442,7 +442,7 @@ if __name__ == "__main__":
     with open("rootfs/x8664_efi/rom2_nvar.pickel", 'rb') as f:
         env = pickle.load(f)
     ql = Qiling(["rootfs/x8664_efi/bin/TcgPlatformSetupPolicy"], "rootfs/x8664_efi", env=env)
-    ql.set_api("hook_RegisterProtocolNotify", force_notify_RegisterProtocolNotify)
+    ql.os.set_api("hook_RegisterProtocolNotify", force_notify_RegisterProtocolNotify)
     ql.run()
 ```
 
