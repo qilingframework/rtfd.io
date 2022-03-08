@@ -4,52 +4,46 @@ title: Print and Filter
 
 ### Log Printing
 
-We use python `logging` module directly. You can use them directly in your callbacks.
+Qiling logging uses Python's `logging` module indirectly, and may be used anywhere Qiling instance is available.
 
 ```python
-logging.info("Hello from Qiling Framework!")
+ql.log.info('Hello from Qiling Framework!')
 ```
-
-`ql.nprint` and `ql.dprint` will be depreciated and removed in a later release.
 
 ### Verbosity
 
-By default, Qiling only outputs of `logging.INFO` level to terminal. You may configure such behavior in different ways.
-
-#### console
-
-```python
-ql = Qiling(['/bin/ls'], "examples/rootfs/x86_linux", console=False)
-```
-
-`console=False` will disable terminal outputs.
+Qiling logging verbosity may configure to various verbosity levels based on one's needs. This does no affect the program's output in any way. By default, Qiling logging verbosity is set to `logging.INFO`.
 
 #### verbose
 
 ```python
-ql = Qiling(['/bin/ls'], "examples/rootfs/x86_linux", verbose=QL_VERBOSE.DEFAULT)
+from qiling.const import QL_VERBOSE
+
+ql = Qiling([r'/bin/ls'], r'examples/rootfs/x86_linux', verbose=QL_VERBOSE.DEBUG)
 ```
 
-- QL_VERBOSE.OFF(0): logging.WARNING, almost no additional logs except the program output.
-- QL_VERBOSE.DEFAULT(1): logging.INFO, the default logging level.
-- QL_VERBOSE.DEBUG(4): logging.DEBUG.
-- QL_VERBOSE.DISASM(10): Disasm each executed instruction.
-- QL_VERBOSE.DUMP(20): The most verbose output, dump registers and disasm the function blocks.
+| Verbosity Level       | Desciprtion
+| :--                   | :--
+| `QL_VERBOSE.DISABLED` | logging is disabled entirely
+| `QL_VERBOSE.OFF`      | logging is restricted to warnings, errors and critical entries
+| `QL_VERBOSE.DEFAULT`  | info verbosity
+| `QL_VERBOSE.DEBUG`    | debug verbosity; increased verbosity
+| `QL_VERBOSE.DISASM`   | emit disassembly for every emulated instruction; this implies debug verbosity
+| `QL_VERBOSE.DUMP`     | emit cpu context along with disassembled instructions; this implies debug verbosity
 
-Note that `verbose` can be configured dynamically.
+Note that Qiling `verbose` property may be configured dynamically throughout the emulation.
 
 ### ql.filter
 
-Filter some specific logs. Very useful if you would like to achieve something like `strace`.
+Qiling log entires may be filteres using a regular expression. That may help filtering excessive logs and focusing on what matters.
 
 ```python
-#!/usr/bin/env python3
-from qiling import *
+from qiling import Qiling
 
 if __name__ == "__main__":
-    ql = Qiling(["examples/rootfs/arm_linux/bin/arm_hello"], "examples/rootfs/arm_linux", log_dir="qlog")
-    ql.filter = "^open"
+    ql = Qiling([r'examples/rootfs/arm_linux/bin/arm_hello'], r'examples/rootfs/arm_linux')
+
+    # show only log entries that start with "open"
+    ql.filter = '^open'
     ql.run()
 ```
-
-Note that the content of filter is considered as a regular expression.
