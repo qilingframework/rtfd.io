@@ -4,108 +4,93 @@ title: Getting Started
 
 Few examples are exhibited in this document and we will illustrate how Qiling Framework works
 
-### Executing a file
+### Emulating a binary
 ```python
-import sys
-from qiling import *
+from qiling import Qiling
 from qiling.const import QL_VERBOSE
 
-def my_sandbox(path, rootfs):
-    ql = Qiling(path, rootfs, verbose=QL_VERBOSE.DEBUG, profile = 'netgear.ql', log_dir='qlog')
-    ql.add_fs_mapper('/proc', '/proc')
-    ql.run()
-
 if __name__ == "__main__":
-    my_sandbox(["rootfs/netgear_r6220/bin/mini_httpd","-d","/www","-r","NETGEAR R6220","-c","**.cgi","-t","300"], "rootfs/netgear_r6220")
+    # set up command line argv and emulated os root path
+    argv = r'examples/rootfs/netgear_r6220/bin/mini_httpd -d /www -r NETGEAR R6220 -c **.cgi -t 300'.split()
+    rootfs = r'examples/rootfs/netgear_r6220'
+
+    # instantiate a Qiling object using above arguments and set emulation verbosity level to DEBUG.
+    # additional settings are read from profile file
+    ql = Qiling(argv, rootfs, verbose=QL_VERBOSE.DEBUG, profile='netgear.ql')
+
+    # map emulated fs '/proc' dir to the hosting os '/proc' dir
+    ql.add_fs_mapper('/proc', '/proc')
+  
+    # do the magic!
+    ql.run()
 ```
 
-content of netgear.ql
-```
+Content of the netgear.ql profile file:
+```ini
 [MIPS]
 mmap_address = 0x7f7ee000
 ```
 
-### Executing a shellcode
+### Emulating a shellcode
 ```python
-import sys
-
-from binascii import unhexlify
-from qiling import *
+from qiling import Qiling
 from qiling.const import QL_VERBOSE
 
-X8664_WIN = unhexlify(
-    'fc4881e4f0ffffffe8d0000000415141505251564831d265488b52603e488b52183e488b52203e488b72503e480fb74a4a4d31c94831c0ac3c617c022c2041c1c90d4101c1e2ed5241513e488b52203e8b423c4801d03e8b80880000004885c0746f4801d0503e8b48183e448b40204901d0e35c48ffc93e418b34884801d64d31c94831c0ac41c1c90d4101c138e075f13e4c034c24084539d175d6583e448b40244901d0663e418b0c483e448b401c4901d03e418b04884801d0415841585e595a41584159415a4883ec204152ffe05841595a3e488b12e949ffffff5d49c7c1000000003e488d95fe0000003e4c8d850f0100004831c941ba45835607ffd54831c941baf0b5a256ffd548656c6c6f2c2066726f6d204d534621004d657373616765426f7800'
-)
+# set up a shellcode to emulate
+shellcode = bytes.fromhex('''
+   fc4881e4f0ffffffe8d0000000415141505251564831d265488b52603e488b52
+   183e488b52203e488b72503e480fb74a4a4d31c94831c0ac3c617c022c2041c1
+   c90d4101c1e2ed5241513e488b52203e8b423c4801d03e8b80880000004885c0
+   746f4801d0503e8b48183e448b40204901d0e35c48ffc93e418b34884801d64d
+   31c94831c0ac41c1c90d4101c138e075f13e4c034c24084539d175d6583e448b
+   40244901d0663e418b0c483e448b401c4901d03e418b04884801d0415841585e
+   595a41584159415a4883ec204152ffe05841595a3e488b12e949ffffff5d49c7
+   c1000000003e488d95fe0000003e4c8d850f0100004831c941ba45835607ffd5
+   4831c941baf0b5a256ffd548656c6c6f2c2066726f6d204d534621004d657373
+   616765426f7800
+''')
 
+# instantiate a Qiling object to emulate the shellcode. when emulating a binary Qiling would be able to automatically
+# infer the target architecture and operating system. this, however, is not possible when emulating a shellcode, therefore
+# both 'archtype' and 'ostype' arguments must be provided
+ql = Qiling(code=shellcode, rootfs=r'examples/rootfs/x8664_windows', archtype='x8664', ostype='Windows', verbose=QL_VERBOSE.DEBUG)
 
-ql = Qiling(code=X8664_WIN, archtype="x86", ostype="windows", rootfs="../examples/rootfs/x86_windows", verbose=QL_VERBOSE.DEBUG)
+# do the magic!
 ql.run()
 ```
 
-### Initialization: ql=Qiling()
+### Initialization: ql = Qiling()
 
 How to initialize Qiling
 
-##### Binary file: ql = Qiling()
+##### Emulating a binary file
 In pre-loader (during initialization) state, there are multiple options that can be configured.
 
-Available options:
+Basic Qiling initialization options for **binary** emulation:
+| Name                     | Type                             | Description
+| :--                      | :--                              | :--
+| `argv`                   | `Sequence[str]`                  | a sequence of command line arguments to emulate
+| `rootfs`                 | `str`                            | the emulated filesystem root directory. all paths accessed by the emulated program will be based on this directory
+| `env` (optional)         | `MutableMapping[AnyStr, AnyStr]` | a dictionary of environment variables available for the emualted program
 
-- filename=None 
-> - binary file and argv in [] format, example ["filename","-argv1","argv2"]
-- rootfs=None
-> - virtual "/" folder, this is a "jail" file system when executing Qiling
-- env=None
-> - always in {}, example {"SHELL":"/bin/bash","HOME":"/tmp"}
-- verbose=1
-> - from 1 till n, please refer to [print section](https://docs.qiling.io/en/latest/print/) for more details
-- profile=None
-> - please refer to [profile section](https://docs.qiling.io/en/latest/profile/) for more details
-- log_dir=None 
-> - send print out to a log file
-- log_split=None 
-> - split log, only use it with multi-threading
-- append=None 
-> - append a string to standard log directory or filename
-- console=True 
-> - print out to console. console = False means no print out
-- libcache=False
-> - cache and reuse preloaded library. Do not have to reparse the same library
-- stdin=0
-> - stdio hijack, please refer to [hijack](https://docs.qiling.io/en/latest/hijack/)
-- stdout=0
-> - stdout hijack, please refer to [hijack](https://docs.qiling.io/en/latest/hijack/)
-- stderr=0
-> - stdout hijack, please refer to [hijack](https://docs.qiling.io/en/latest/hijack/)
+Basic Qiling initialization options for **shellcode** emulation:
+| Name                     | Type                             | Description
+| :--                      | :--                              | :--
+| `code`                   | `bytes`                          | shellcode to emulate. that comes instead of `argv`
+| `rootfs` (optional)      | `str`                            | _refer to above table_                          
+| `ostype`                 | `str` or `QL_OS`                 | sets target operating system (case insensitive): `'Linux'`, `'FreeBSD'`, `'MacOS'`, `'Windows'`, `'UEFI'`, `'DOS'`, `'EVM'` or `'QNX'`
+| `archtype`               | `str` or `QL_ARCH`               | sets target architecture (case insensitive): `'a8086'`, `'x86'`, `'x8664'`, `'ARM'`, `'ARM64'`, `'MIPS'`, `'EVM'`, `'Cortex_M'`, `'RISCV'` or `'RISCV64'`
+| `endian` (optional)      | `bool`                           | indicates architecture endianess (relevant only to ARM and MIPS)
+| `thumb` (optional)       | `bool`                           | indicates ARM thumb mode (relevant only to ARM)
 
-
-##### Shellcode: ql = Qiling()
-In pre-loader (during initialization) state, there are multiple options that can be configured.
-
-Available options:
-
-- code=None
-> - shellcode in binary mode
-- rootfs=None
-> - refer to above section, but not compulsory in shellcode  
-- env=None
-> - refer to above section
-- ostype=None
-> - "linux", "macos", "windows", "uefi", "freebsd"
-- archtype=None
-> - "x8664", "x86", "arm", "arm64", "mips"
-- bigendian=False
-> - Default is false, only available for "arm" and "mips" arch for now
-- verbose=1
-> - refer to above section
-- profile=None
-> - refer to above section
-- log_dir=None
-> - refer to above section
-- console=True
-> - refer to above section
-- libcache=False
-> - refer to above section
+Common Qiling initialization options:
+| Name                     | Type                             | Description
+| :--                      | :--                              | :--
+| `verbose` (optional)     | `QL_VERBOSE`                     | sets Qiling logging verbosity level (default: `QL_VERBOSE.DEFAULT`). for more details see [print section](https://docs.qiling.io/en/latest/print/)
+| `profile` (optional)     | `str`                            | path to profile file holding additional settings. for more details see [profile section](https://docs.qiling.io/en/latest/profile/)
+| `console` (optional)     | `bool`                           | when set to `False`, disables Qiling logging entirely. this is equivalent to setting `verbose=QL_VERBOSE.DISABLED`
+| `multithread` (optional) | `bool`                           | indicates whether the target should be emulated as a multi-threaded program
+| `libcache` (optional)    | `bool`                           | indicates whether libraries should be loaded from cache. this saves libraries parsing and relocating time on consequent runs. currently available only for Windows
 
 ### Setup: after ql=Qiling() and before ql.run()
 
@@ -119,18 +104,6 @@ Available options:
   
 - ql.debugger = None 
 > - Remote debugger. Please refer to [here](https://docs.qiling.io/en/latest/debugger/)
-
-- ql.multithread = False
-> - Default is false. Due to the instability of multi-threading, added a switch for multi-threading
-
-- ql.ipv6 = False
-> - Default is false. Use IPv6 or not, to avoid binary double bind. ipv6 and ipv4 bind the same port at the same time
-
-- ql.bindtolocalhost = True
-> - Bind to localhost
-
-- ql.root = False
-> - change to True means analysis must run with sudo. Impact, bind on default port which is 1024 or lower
 
 - ql.verbose = 1
 > - from 1 till n, please refer to [print section](https://docs.qiling.io/en/latest/print/) for more details
