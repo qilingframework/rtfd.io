@@ -27,4 +27,4 @@ This project is released and distributed under [free software license GPLv2](htt
 
 #### Core developers
 
-See [CREDITS.TXT](https://github.com/qilingframework/qiling/blob/master/CREDITS.TXT).
+See [CREDITS.md](https://github.com/qilingframework/qiling/blob/master/CREDITS.md).
