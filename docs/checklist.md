@@ -4,13 +4,15 @@ title: List of Checklists
 
 ## Release TAG
 
-- Update Qiling version number @ qiling/__version__.py
+- Checkout rootfs
+```
+    - cd examples/rootfs
+    - git pull origin master
+```
+
+- Make sure version development status in setup.py is correct
 ```
     - __version__ = "1.[x].[x]"
-```    
-
-- Make sure development status in setup.py is correct
-```
     - 'Development Status :: 5 - Production/Stable'
 ```
 
