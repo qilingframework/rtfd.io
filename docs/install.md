@@ -68,14 +68,6 @@ For 64bit Windows dlls, please refer to [DLLX8664.txt](https://github.com/qiling
 
 Additional Notes: .travis.yml will be able to clearly list out dlls needed
 
-To export Windows Registry from Windows
-```cmd
-ntuser hive C:\Users\Default\NTUSER.DAT 
-reg save hklm\system SYSTEM
-reg save hklm\security SECURITY
-reg save hklm\software SOFTWARE
-reg save hklm\SAM SAM
-```
 ---
 
 #### Notes on macOS >= 10.14
