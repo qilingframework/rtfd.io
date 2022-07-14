@@ -55,9 +55,10 @@ pip install .
 
 Due to distribution restriction, Qiling Framework will not bundle Microsoft Windows DLL files and registry. Please copy respective DLLs and registry from Microsoft Windows System. For Windows 10 usually found in C:\Windows\system32 (64bit dll) and C:\Windows\SysWOW64 (32bits dll) and place them in $rootfs/dlls
 
-We also included a dlls "collector" script, copy into Windows and it will start to collect dlls and registrty
+We also included a dlls "collector" script. Run this on Windows to collect all the necessary dlls and registries
+
 ```cmd
-qiling/examples/scripts/dllscollector.bat
+examples/scripts/dllscollector.bat
 ```
 
 Any other dlls and registry references, as below:
