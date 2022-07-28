@@ -9,16 +9,20 @@ Qiling Framework is written in Python programming language and it works with dif
 ### One line installer
 
 Installation using pip (stable version)
+
 ```
 pip3 install qiling
 ```
+
 To install the latest dev version using pip
+
 ```
 pip3 install --user https://github.com/qilingframework/qiling/archive/dev.zip
 ```
 
 ### Manual Installation
 For this installation guide, Ubuntu desktop 18.04.3 LTS 64bit is the base example (Qiling Framework works in other Linux distributions that run Python 3.5 and above). Grab a copy of official Ubuntu ISO images from [Ubuntu CD mirrors](https://launchpad.net/ubuntu/+cdmirrors). Update and the system and also install pip3, git and cmake
+
 ```sh
 sudo apt-get update
 sudo apt-get upgrade
@@ -26,6 +30,7 @@ sudo apt install python3-pip git cmake
 ```
 
 Once completed, clone a copy of Qiling Framework source from github and run setup to install it.
+
 ```sh
 git clone https://github.com/qilingframework/qiling
 cd qiling
@@ -33,11 +38,13 @@ sudo pip3 install .
 ```
 
 Also don't forget to initialize the rootfs.
+
 ```sh
 git submodule update --init --recursive
 ```
 
 ### Dev branch: latest and greatest
+
 ```
 git clone -b dev https://github.com/qilingframework/qiling.git
 cd qiling && git submodule update --init --recursive
@@ -46,6 +53,7 @@ cd qiling && git submodule update --init --recursive
 ### Pyenv Installation
 
 If you are using pyenv, run the command shown below.
+
 ```sh
 mv $(dirname $(which python))/python2.7 $(dirname $(which python))/python2.7.bak
 pip install .
@@ -55,7 +63,7 @@ pip install .
 
 Due to distribution restriction, Qiling Framework will not bundle Microsoft Windows DLL files and registry. Please copy respective DLLs and registry from Microsoft Windows System. For Windows 10 usually found in C:\Windows\system32 (64bit dll) and C:\Windows\SysWOW64 (32bits dll) and place them in $rootfs/dlls
 
-We also included a dlls "collector" script. Run this on Windows to collect all the necessary dlls and registries
+We also included a script named `dllscollector.bat`. Run this on Windows, under **Administrator** privilege, to collect all the necessary dlls and registries.
 
 ```cmd
 examples/scripts/dllscollector.bat
@@ -89,6 +97,7 @@ CMake Error at /usr/local/Cellar/cmake/3.15.4/share/cmake/Modules/CMakeTestCComp
 A temporary workaround is to install keystone-engine from source:
 
 * Install keystone-engine Python binding from source:
+
 ```sh
 git clone https://github.com/keystone-engine/keystone
 cd keystone
