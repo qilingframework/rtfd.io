@@ -1,26 +1,88 @@
 ---
 title: Memory
 ---
-### Stack related
-- Pop
+
+### Architectural stack operations
+Qiling abstracts the architectural stack operations as follows:
+
+Pop a value off the top of stack:
 ```python
-ql.stack_pop(offset)
+value = ql.arch.stack_pop()
 ```
 
-- push
+Push a value to the top of stack:
 ```python
-ql.stack_push(offset)
+ql.arch.stack_push(value)
 ```
 
-- Read
+Peek the value at a certain offset from the top without modifying the stack pointer:
+Note: the offset may be either positive, negative or zero (to peek the top of stack)
 ```python
-ql.stack_read(offset)
+value = ql.arch.stack_read(offset)
 ```
 
-- Write
+Replace a value at a certain offset from the top without modifying the stack pointer:
+Note: the offset may be either positive, negative or zero (to replace the top of stack)
 ```python
-ql.stack_write(offset, data)
+ql.arch.stack_write(offset, value)
 ```
+
+# Memory subsystem
+Represents the emulated memory space.
+
+## Managing memory
+Qiling offers several methods for managing the emulated memory space:
+
+| Method            | Description
+|:--                | :--
+| `map`             | Map a memory region at a certain location so it become available for access
+| `unmap`           | Reclaim a mapped memory region
+| `unmap_all`       | Reclaim all mapped memory regions
+| `map_anywhere`    | Map a memory region in an unspecified location
+| `protect`         | Modify access protection bits of a mapped region (rwx)
+| `find_free_space` | Find an available memory region
+| `is_available`    | Query whether a memory region is available
+| `is_mapped`       | Query whether a memory region is mapped
+
+Note: `is_available` and `is_mapped` are not necessarily ooposites; when a memory region is _partially taken_ (mapped), both methods will return `False`.
+
+
+### Mapping memory pages
+Memory has to be mapped before it can be accessed. The `map` method binds a contiguous memory region at a specified location, and sets its access protection bits. A string label may be provided for easy identification on the mapping info table (see: `get_map_info`).
+
+Synposys:
+```python
+ql.mem.map(addr: int, size: int, perms: int = UC_PROT_ALL, info: Optional[str] = None) -> None
+```
+Arguments:
+- `addr` - requested mapping base address; should be on a page granularity (see: `pagesize`)
+- `size` - mapping size in bytes; must be a multiplication of page size
+- `perms` - protection bitmap; defines whether this memory range is readable, writeable and / or executable (optional, see: `UC_PROT_*` constants)
+- `info` - sets a string label to the mapped range for easy identification (optional)
+
+Returns: `None`
+
+Raises: `QlMemoryMappedError` if the requested memory range is not entirely available
+
+
+### Unmapping memory pages
+Mapped memory regions may be reclaimed by unmapping them. The `unmap` method reclaims a memory region at a specified location. The unmapping functionality is not limited to compelte memory regions, and may be used for partial ranges as well.
+
+Synposys:
+```python
+ql.mem.unmap(addr: int, size: int) -> None:
+```
+Arguments:
+- `addr` - region base address to unmap
+- `size` - region size in bytes
+
+Returns: `None`
+
+Raises: `QlMemoryMappedError` if the requested memory range is not entirely mapped
+
+
+
+
 
 ### Search bytes pattern from memory
 - Search for a pattern from entire memory
@@ -91,16 +153,6 @@ ql.mem.string(address, "stringwith")
 ### Show all the mapped area
 ```python
 ql.mem.show_mapinfo()
-```
-
-### Unmap a mapped area
-```python
-ql.mem.unmap(self, addr, size) 
-```
-
-### Unmap all mapped area
-```python
-ql.mem.unmap_all()
 ```
 
 ### find a free space
