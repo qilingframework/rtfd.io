@@ -8,6 +8,7 @@ Qiling Framework also provides a friendly tool named `qltool` to quickly emulate
 `qltool` has three available commands:
 - `run`: to emulate a program binary
 - `code`: to execute a shellcode excerpt
+- `qltui`: to show terminal user interface for qltool
 - `examples`: to emit usage examples
 
 ## Run Options
@@ -248,6 +249,27 @@ Notes:
     </tbody>
 </table>
 
+## qltui
+
+A Terminal User Interface for `qltool`.
+
+-   Runs on top of  `qltool`.
+-   Accept data using an interface for  `run`  and  `code`  commands.
+-   Returns an  `Argparse Namespace`  object back to  `qltool`  for execution.
+-   Interactive report viewer plus an option to save it as a pdf.
+
+### qltui in action
+
+<p>
+<img width="400" alt="qltui1" src="img/qltui1.png">
+<img width="400" alt="qltui2" src="img/qltui2.png">
+<img width="400" alt="qltui3" src="img/qltui3.png">
+<img width="400" alt="qltui4" src="img/qltui4.png">
+<img width="400" alt="qltui5" src="img/qltui5.png">
+<img width="400" alt="qltui6" src="img/qltui6.png">
+<img width="400" alt="qltui7" src="img/qltui7.png">
+</p>
+
 ## Examples
 
 ### shellcode:
@@ -292,4 +314,9 @@ $ ./qltool run -f examples/rootfs/mips32el_linux/bin/mips32el_hello --rootfs exa
 ### Binary file and env:
 ```bash
 $ ./qltool run -f jexamples/rootfs/x8664_linux/bin/tester --rootfs jexamples/rootfs/x8664_linux --env '{"LD_PRELOAD":"hijack.so"}' --verbose debug
+```
+
+### qltui
+```bash
+$ ./qltool qltui
 ```
