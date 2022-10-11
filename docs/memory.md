@@ -152,7 +152,7 @@ ql.mem.string(address, "stringwith")
 
 ### Show all the mapped area
 ```python
-ql.mem.show_mapinfo()
+ql.mem.get_formatted_mapinfo()
 ```
 
 ### find a free space
