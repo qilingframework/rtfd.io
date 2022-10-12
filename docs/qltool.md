@@ -6,10 +6,10 @@ Qiling Framework also provides a friendly tool named `qltool` to quickly emulate
 
 ## Commands
 `qltool` has three available commands:
-- `run`: to emulate a program binary
-- `code`: to execute a shellcode excerpt
-- `qltui`: to show terminal user interface for qltool
-- `examples`: to emit usage examples
+ - `run`: to emulate a program binary
+ - `code`: to execute a shellcode excerpt
+ - `qltui`: to show terminal user interface for qltool
+ - `examples`: to emit usage examples
 
 ## Run Options
 <table>
@@ -44,8 +44,8 @@ Qiling Framework also provides a friendly tool named `qltool` to quickly emulate
 </table>
 
 Notes:
-- If `--filename` is not specified, the last argument will be considered as program binary
-- If `--args` is not speified, all trailing arguments will be considered as program command line arguments
+ - If `--filename` is not specified, the last argument will be considered as program binary
+ - If `--args` is not speified, all trailing arguments will be considered as program command line arguments
 
 ## Code Options
 <table>
@@ -122,7 +122,7 @@ Notes:
 </table>
 
 Notes:
-- When `--format` is set to `hex`, `qltool` will first look for data in `--input`. If no input string specified, it will refer to the file specified in `--filename`
+ - When `--format` is set to `hex`, `qltool` will first look for data in `--input`. If no input string specified, it will refer to the file specified in `--filename`
 
 ## Common Options
 <table>
@@ -253,10 +253,10 @@ Notes:
 
 A Terminal User Interface for `qltool`.
 
--   Runs on top of  `qltool`.
--   Accept data using an interface for  `run`  and  `code`  commands.
--   Returns an  `Argparse Namespace`  object back to  `qltool`  for execution.
--   Interactive report viewer plus an option to save it as a pdf.
+ -   Runs on top of  `qltool`.
+ -   Accept data using an interface for  `run`  and  `code`  commands.
+ -   Returns an  `Argparse Namespace`  object back to  `qltool`  for execution.
+ -   Interactive report viewer plus an option to save it as a pdf.
 
 ### qltui in action
 
