@@ -260,15 +260,13 @@ A Terminal User Interface for `qltool`.
 
 ### qltui in action
 
-<p>
-<img width="400" alt="qltui1" src="img/qltui1.png">
-<img width="400" alt="qltui2" src="img/qltui2.png">
-<img width="400" alt="qltui3" src="img/qltui3.png">
-<img width="400" alt="qltui4" src="img/qltui4.png">
-<img width="400" alt="qltui5" src="img/qltui5.png">
-<img width="400" alt="qltui6" src="img/qltui6.png">
-<img width="400" alt="qltui7" src="img/qltui7.png">
-</p>
+![qltui1](./img/qltui1.png)
+![qltui2](./img/qltui2.png)
+![qltui3](./img/qltui3.png)
+![qltui4](./img/qltui4.png)
+![qltui5](./img/qltui5.png)
+![qltui6](./img/qltui6.png)
+![qltui7](./img/qltui7.png)
 
 ## Examples
 
