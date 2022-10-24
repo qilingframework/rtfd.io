@@ -155,6 +155,12 @@ ql.mem.string(address, "stringwith")
 ql.mem.get_formatted_mapinfo()
 ```
 
+Example:
+```python
+for info_line in self.ql.mem.get_formatted_mapinfo():
+    self.ql.log.error(info_line)
+```
+
 ### find a free space
 Find a specific free space size.
 ```python
