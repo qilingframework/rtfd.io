@@ -12,7 +12,7 @@ If you are using pyenv, run the command shown below.
 
 ```sh
 python3 -m venv qilingenv
-qilingenv/bin/activate
+source qilingenv/bin/activate
 git clone -b dev https://github.com/qilingframework/qiling.git
 cd qiling && git submodule update --init --recursive
 pip3 install .
