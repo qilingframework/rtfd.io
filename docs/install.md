@@ -6,7 +6,19 @@ title: Installation
 
 Qiling Framework is written in Python programming language and it works with different operating system and not limiting to any CPU architecture.
 
-### One line installer
+### Pyenv Installation with latest dev branch
+
+If you are using pyenv, run the command shown below.
+
+```sh
+python3 -m venv qilingenv
+qilingenv/bin/activate
+git clone -b dev https://github.com/qilingframework/qiling.git
+cd qiling && git submodule update --init --recursive
+pip3 install .
+```
+
+### pip3 install latest dev branch Qiling
 
 Installation using pip (stable version)
 
@@ -41,22 +53,6 @@ Also don't forget to initialize the rootfs.
 
 ```sh
 git submodule update --init --recursive
-```
-
-### Dev branch: latest and greatest
-
-```
-git clone -b dev https://github.com/qilingframework/qiling.git
-cd qiling && git submodule update --init --recursive
-```
-
-### Pyenv Installation
-
-If you are using pyenv, run the command shown below.
-
-```sh
-mv $(dirname $(which python))/python2.7 $(dirname $(which python))/python2.7.bak
-pip install .
 ```
 
 #### Important note on Windows DLLs and registry
