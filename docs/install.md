@@ -18,13 +18,15 @@ cd qiling && git submodule update --init --recursive
 pip3 install .
 ```
 
-### pip3 install latest dev branch Qiling
+### pip3 install Qiling
 
 Installation using pip (stable version)
 
 ```
 pip3 install qiling
 ```
+
+### pip3 install Qiling latest dev branch
 
 To install the latest dev version using pip
 
