@@ -6,7 +6,7 @@ title: Installation
 
 Qiling Framework is written in Python programming language and it works with different operating system and not limiting to any CPU architecture.
 
-### Pyenv Installation with latest dev branch
+### Pyenv Installation with latest dev branch (recommended)
 
 If you are using pyenv, run the command shown below.
 
@@ -33,7 +33,7 @@ pip3 install --user https://github.com/qilingframework/qiling/archive/dev.zip
 ```
 
 ### Manual Installation
-For this installation guide, Ubuntu desktop 18.04.3 LTS 64bit is the base example (Qiling Framework works in other Linux distributions that run Python 3.5 and above). Grab a copy of official Ubuntu ISO images from [Ubuntu CD mirrors](https://launchpad.net/ubuntu/+cdmirrors). Update and the system and also install pip3, git and cmake
+For this installation guide, Ubuntu desktop latest LTS 64bit is the base example (Qiling Framework works in other Linux distributions that run Python 3.5 and above). Grab a copy of official Ubuntu ISO images from [Ubuntu CD mirrors](https://launchpad.net/ubuntu/+cdmirrors). Update and the system and also install pip3, git and cmake
 
 ```sh
 sudo apt-get update
