@@ -38,6 +38,18 @@ if __name__ == "__main__":
     ql.run()
 ```
 
+`stdin` can be substituted with `pipe.InteractiveInStream`, enabling interaction with the running program, similar to the `interactive` feature in [pwntools](https://docs.pwntools.com/en/stable/tubes.html?highlight=interactive#pwnlib.tubes.tube.tube.interactive)
+
+```python
+from qiling import Qiling
+from qiling.extensions import pipe
+
+if __name__ == "__main__":
+    ql = Qiling([r'rootfs/x86_linux/bin/crackme_linux'], r'rootfs/x86_linux')
+    ql.os.stdin = pipe.InteractiveInStream() # you will want to type L1NUX when the program waits for input
+    ql.run()
+```
+
 ### Hijacking VFS objects
 
 While the files and folders included within rootfs are all static, the emulated program might need to access virtual file system objects like udev, procfs, sysfs, etc. To bridge that gap Qiling allows binding virtual paths to either existing files on the hosting system, or to custom file objects.
