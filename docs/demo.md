@@ -44,7 +44,7 @@ if __name__ == "__main__":
 
 Youtube video
 
-[![Qiling Framework: Emulating Windows Registry](https://i.ytimg.com/vi/4nk8KNgbNzw/0.jpg)](https://www.youtube.com/watch?v=4nk8KNgbNzw)
+[![Qiling Framework: Emulating Windows Registry](https://i.ytimg.com/vi/qq53McBh0mA/0.jpg)](https://www.youtube.com/watch?v=qq53McBh0mA)
 
 
 ### Catching Wannacry's killer swtich
@@ -70,7 +70,7 @@ if __name__ == "__main__":
 
 Youtube video
 
-[![Catching Wannacry's killer swtich](https://i.ytimg.com/vi/gVtpcXBxwE8/0.jpg)](https://www.youtube.com/watch?v=gVtpcXBxwE8)
+[![Catching Wannacry's killer swtich](https://i.ytimg.com/vi/oRSX9SS5VFI/0.jpg)](https://www.youtube.com/watch?v=oRSX9SS5VFI)
 
 
 ### Dynamically patch a Windows crackme, make it always displays "Congratulation" dialog.
@@ -113,7 +113,7 @@ if __name__ == "__main__":
 
 Youtube video
 
-[![qiling DEMO 2: Hotpatching a windows crackme](https://img.youtube.com/vi/p17ONUbCnUU/0.jpg)](https://www.youtube.com/watch?v=p17ONUbCnUU "Video DEMO 2")
+[![qiling DEMO 2: Hotpatching a windows crackme](https://img.youtube.com/vi/_0DpAYZODy8/0.jpg)](https://www.youtube.com/watch?v=_0DpAYZODy8 "Video DEMO 2")
 
 
 ### GDBserver with IDAPro
@@ -129,7 +129,7 @@ Youtube video
 
 Youtube video
 
-[![Solving malformed ELF header + Anti-Debug crackme, with Qiling GDBserver + Qiling qltool](https://i.ytimg.com/vi/TYGZ-GVRIaA/0.jpg)](https://www.youtube.com/watch?v=TYGZ-GVRIaA)
+[![Solving malformed ELF header + Anti-Debug crackme, with Qiling GDBserver + Qiling qltool](https://i.ytimg.com/vi/-Ipk0P3ppzo/0.jpg)](https://www.youtube.com/watch?v=-Ipk0P3ppzo)
 
 
 ### Fuzzing with Qiling's AFL extension 
@@ -262,7 +262,7 @@ if __name__ == "__main__":
 
 Youtube video
 
-[![Qiling Framework: Emulating Netgear R6220](https://i.ytimg.com/vi/fGncO4sVCnY/0.jpg)](https://www.youtube.com/watch?v=fGncO4sVCnY)
+[![Qiling Framework: Emulating Netgear R6220](https://i.ytimg.com/vi/Viy4gXwM4HE/0.jpg)](https://www.youtube.com/watch?v=Viy4gXwM4HE)
 
 
 ### Emulating ARM router firmware on Ubuntu X64 machine
