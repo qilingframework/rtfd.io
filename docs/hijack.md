@@ -104,7 +104,7 @@ The `QlDisk` object in practice inherits from `QlFsMappedObejct` and implements 
 
 ### Hijacking POSIX system calls
 
-POSIX system calls may be hooked to allow the user to modify their parameters, alter the return value or replace their funcionality altogether. System calls may be hooked either by their name or number, and intercepted at one or more stages:
+POSIX system calls may be hooked to allow the user to modify their parameters, alter the return value or replace their functionality altogether. System calls may be hooked either by their name or number, and intercepted at one or more stages:
   - `QL_INTERCEPT.CALL`  : when the specified system call is about to be called; may be used to replace the system call functionality altogether
   - `QL_INTERCEPT.ENTER` : before entering the system call; may be used to tamper with the system call parameters values
   - `QL_INTERCEPT.EXIT`  : after exiting the system call; may be used to tamper with the return value
@@ -197,7 +197,7 @@ The underlying hooking mechanism works differently for non-POSIX operating syste
 
 - `QL_INTERCEPT.CALL` - hooks intercepting on-call may return a value as necessary
 - `QL_INTERCEPT.ENTER` - hooks intercepting on-enter may return a 2-tuple containing an address and a parameters dictionary to override the ones that are passed to the API call
-- `QL_INTERCEPT.ENTER` - hooks intercepting on-exit receives an additional integer argument which reflects the return value as it was received from the API call. An alternate return value may be returned to override the one that was received
+- `QL_INTERCEPT.EXIT` - hooks intercepting on-exit receives an additional integer argument which reflects the return value as it was received from the API call. An alternate return value may be returned to override the one that was received
 
 #### Windows API
 Hooks should be decorated with `@winsdkapi`, specifying the calling convention and the paramters list. In case of an empty paramters list, an empty dictionary should be provided. For example, hooking the `memcpy` API:
