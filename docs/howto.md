@@ -7,11 +7,11 @@ Emulating a program or shellcode using Qiling requires a Qiling instance. Most o
 
 ### Initialization arguments for binary emulation
 
-| Name                     | Type                             | Description
-| :--                      | :--                              | :--
-| `argv`                   | `Sequence[str]`                  | a sequence of command line arguments to emulate
-| `rootfs`                 | `str`                            | the emulated filesystem root directory. all paths accessed by the emulated program will be based on this directory
-| `env` (optional)         | `MutableMapping[AnyStr, AnyStr]` | a dictionary of environment variables available for the emualted program
+| Name                     | Type                             | Description |
+|--------------------------|----------------------------------|-----|
+| `argv`                   | `Sequence[str]`                  | a sequence of command line arguments to emulate |
+| `rootfs`                 | `str`                            | the emulated filesystem root directory. all paths accessed by the emulated program will be based on this directory |
+| `env` (optional)         | `MutableMapping[AnyStr, AnyStr]` | a dictionary of environment variables available for the emualted program |
 
 Notes:
  - Qiling will automaticaly infer the target OS and architecture based on the target program
@@ -19,27 +19,27 @@ Notes:
 
 ### Initialization arguments for shellcode emulation
 
-| Name                     | Type       | Description
-| :--                      | :--        | :--
-| `code`                   | `bytes`    | shellcode to emulate. that comes instead of `argv`
-| `rootfs` (optional)      | `str`      | _refer to above table_
-| `ostype`                 | `QL_OS`    | sets target operating system: `LINUX`, `FREEBSD`, `MACOS`, `WINDOWS`, `UEFI`, `DOS`, `QNX`, `MCU`, or `BLOB`
-| `archtype`               | `QL_ARCH`  | sets target architecture: `X86`, `X8664`, `ARM`, `ARM64`, `MIPS`, `A8086`, `CORTEX_M'`, `RISCV`, `RISCV64` or `PPC`
-| `endian` (optional)      | `bool`     | indicates architecture endianess (relevant only to ARM and MIPS)
-| `thumb` (optional)       | `bool`     | indicates ARM thumb mode (relevant only to ARM)
+| Name                     | Type       | Description |
+|--------------------------|------------|------------ |
+| `code`                   | `bytes`    | shellcode to emulate. that comes instead of `argv` |
+| `rootfs` (optional)      | `str`      | _refer to above table_ |
+| `ostype`                 | `QL_OS`    | sets target operating system: `LINUX`, `FREEBSD`, `MACOS`, `WINDOWS`, `UEFI`, `DOS`, `QNX`, `MCU`, or `BLOB` |
+| `archtype`               | `QL_ARCH`  | sets target architecture: `X86`, `X8664`, `ARM`, `ARM64`, `MIPS`, `A8086`, `CORTEX_M'`, `RISCV`, `RISCV64` or `PPC` |
+| `endian` (optional)      | `bool`     | indicates architecture endianess (relevant only to ARM and MIPS) |
+| `thumb` (optional)       | `bool`     | indicates ARM thumb mode (relevant only to ARM) |
 
 ### Common initialization arguments
 
-| Name                      | Type                    | Description
-| :--                       | :--                     | :--
-| `cputype` (optional)      | `QL_CPU`                | sets the underlying CPU model. this is used to make sure certain architectural features are available
-| `verbose` (optional)      | `QL_VERBOSE`            | sets Qiling logging verbosity level (default: `QL_VERBOSE.DEFAULT`). for more details see [print section](https://docs.qiling.io/en/latest/print/)
-| `profile` (optional)      | `str`                   | path to profile file holding additional settings. for more details see [profile section](https://docs.qiling.io/en/latest/profile/)
-| `log_devices` (optional)  | `Collection[IO \| str]` | determines logging output devices: file streams and names are both supported. by default logging output goes to `stderr`
-| `log_override` (optional) | `Logger`                | used to override the default logger with a custom one
-| `log_plain` (optional)    | `bool`                  | indicates whether logger output should be colorful or plain. by default this is determined by the target log device and whether it supports colors
-| `multithread` (optional)  | `bool`                  | indicates whether the target should be emulated as a multi-threaded program
-| `libcache` (optional)     | `bool`                  | indicates whether libraries should be loaded from cache. this saves libraries parsing and relocating time on consequent runs. currently available only for Windows programs
+| Name                      | Type                    | Description|
+|---------------------------|-------------------------|------------|
+| `cputype` (optional)      | `QL_CPU`                | sets the underlying CPU model. this is used to make sure certain architectural features are available |
+| `verbose` (optional)      | `QL_VERBOSE`            | sets Qiling logging verbosity level (default: `QL_VERBOSE.DEFAULT`). for more details see [print section](https://docs.qiling.io/en/latest/print/) |
+| `profile` (optional)      | `str`                   | path to profile file holding additional settings. for more details see [profile section](https://docs.qiling.io/en/latest/profile/) |
+| `log_devices` (optional)  | `Collection[IO \| str]` | determines logging output devices: file streams and names are both supported. by default logging output goes to `stderr` |
+| `log_override` (optional) | `Logger`                | used to override the default logger with a custom one |
+| `log_plain` (optional)    | `bool`                  | indicates whether logger output should be colorful or plain. by default this is determined by the target log device and whether it supports colors |
+| `multithread` (optional)  | `bool`                  | indicates whether the target should be emulated as a multi-threaded program |
+| `libcache` (optional)     | `bool`                  | indicates whether libraries should be loaded from cache. this saves libraries parsing and relocating time on consequent runs. currently available only for Windows programs |
 
 ## Configuring the emulation environment
 During its initialization Qiling infers the target OS and architecture, which now may be configured as necessary.
